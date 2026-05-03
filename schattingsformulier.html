@@ -6,15 +6,7 @@
 <title>Schattingsformulier</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
-:root {
-  --bg:#f4f2ee;--surface:#fff;--border:#d8d4cc;--border-strong:#b0aa9e;
-  --text:#1a1916;--text-muted:#6b6760;--text-hint:#9e9a94;
-  --accent:#1a4f8a;--accent-light:#e8f0f8;
-  --green:#1a6b3c;--green-light:#e6f4ec;
-  --orange:#c25a00;--orange-light:#fdf0e6;
-  --red:#b01e1e;--red-light:#fbeaea;
-  --radius:10px;--radius-sm:6px;--shadow:0 1px 3px rgba(0,0,0,.08);
-}
+:root{--bg:#f4f2ee;--surface:#fff;--border:#d8d4cc;--border-strong:#b0aa9e;--text:#1a1916;--text-muted:#6b6760;--text-hint:#9e9a94;--accent:#1a4f8a;--accent-light:#e8f0f8;--green:#1a6b3c;--green-light:#e6f4ec;--orange:#c25a00;--orange-light:#fdf0e6;--red:#b01e1e;--red-light:#fbeaea;--radius:10px;--radius-sm:6px;--shadow:0 1px 3px rgba(0,0,0,.08);}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
 body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--text);font-size:16px;line-height:1.5;min-height:100vh;}
 .topbar{background:var(--text);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 20px;height:56px;position:sticky;top:0;z-index:100;}
@@ -22,20 +14,15 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 .topbar-sub{font-size:12px;color:#aaa;font-family:'IBM Plex Mono',monospace;}
 .topbar-right{display:flex;gap:8px;}
 .icon-btn{background:rgba(255,255,255,.1);border:none;border-radius:var(--radius-sm);color:#fff;padding:7px 12px;font-size:13px;font-family:inherit;cursor:pointer;display:flex;align-items:center;gap:5px;}
-.icon-btn:active{background:rgba(255,255,255,.2);}
 .screen{display:none;}.screen.active{display:block;}
 .list-wrap{padding:20px;max-width:780px;margin:0 auto;}
 .list-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;}
 .list-header h2{font-size:20px;font-weight:600;}
 .btn-primary{background:var(--accent);color:#fff;border:none;border-radius:var(--radius);padding:12px 20px;font-size:15px;font-family:inherit;font-weight:500;cursor:pointer;}
-.btn-primary:active{opacity:.85;}
 .btn-secondary{background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:var(--radius);padding:11px 18px;font-size:15px;font-family:inherit;font-weight:500;cursor:pointer;}
-.btn-secondary:active{background:var(--bg);}
 .btn-danger{background:var(--red-light);color:var(--red);border:1px solid #e8c0c0;border-radius:var(--radius);padding:11px 18px;font-size:15px;font-family:inherit;font-weight:500;cursor:pointer;}
 .btn-add{background:var(--accent-light);color:var(--accent);border:1.5px dashed var(--accent);border-radius:var(--radius);padding:12px 20px;font-size:14px;font-family:inherit;font-weight:500;cursor:pointer;width:100%;margin-top:10px;}
-.btn-add:active{opacity:.8;}
 .dossier-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;box-shadow:var(--shadow);cursor:pointer;}
-.dossier-card:active{background:var(--bg);}
 .dossier-addr{font-size:15px;font-weight:600;}
 .dossier-meta{font-size:13px;color:var(--text-muted);margin-top:2px;}
 .dossier-arrow{color:var(--text-hint);font-size:20px;}
@@ -46,7 +33,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 .badge-orange{background:var(--orange-light);color:var(--orange);}
 .badge-red{background:var(--red-light);color:var(--red);}
 .form-wrap{padding:16px 20px 100px;max-width:780px;margin:0 auto;}
-.progress-bar{display:flex;gap:4px;margin-bottom:20px;}
+.progress-bar{display:flex;gap:3px;margin-bottom:20px;}
 .prog-seg{flex:1;height:4px;border-radius:2px;background:var(--border);transition:background .2s;}
 .prog-seg.done{background:var(--green);}
 .prog-seg.active{background:var(--accent);}
@@ -61,26 +48,57 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);
 textarea{height:72px;resize:vertical;}
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 .g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
-.g4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;}
 .tile-group{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;}
 .tile-group input{display:none;}
 .tile-group label{border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:10px 14px;font-size:15px;font-weight:500;cursor:pointer;background:var(--bg);color:var(--text-muted);transition:all .15s;user-select:none;}
 .tile-group input:checked+label{border-color:var(--accent);background:var(--accent-light);color:var(--accent);}
+/* TOESTAND - duidelijke kleuren */
 .toestand-group{display:flex;gap:6px;margin-top:4px;}
-.ts{flex:1;border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:11px 6px;font-size:14px;font-weight:600;text-align:center;cursor:pointer;background:var(--bg);color:var(--text-muted);transition:all .15s;user-select:none;}
-.ts:active{opacity:.8;}
-.ts.sel-nieuw{border-color:var(--green);background:var(--green-light);color:var(--green);}
-.ts.sel-zg{border-color:var(--accent);background:var(--accent-light);color:var(--accent);}
-.ts.sel-goed{border-color:var(--border-strong);background:#f0ede8;color:var(--text);}
-.ts.sel-matig{border-color:var(--orange);background:var(--orange-light);color:var(--orange);}
-.ts.sel-slecht{border-color:var(--red);background:var(--red-light);color:var(--red);}
-.hidden-field{display:none;}
+.ts{flex:1;border:2px solid var(--border);border-radius:var(--radius-sm);padding:12px 6px;font-size:14px;font-weight:700;text-align:center;cursor:pointer;background:var(--bg);color:var(--text-muted);transition:all .2s;user-select:none;}
+.ts:active{transform:scale(.97);}
+.ts.sel-nieuw{border-color:var(--green);background:var(--green);color:#fff;}
+.ts.sel-zg{border-color:#1a7a50;background:#1a7a50;color:#fff;}
+.ts.sel-goed{border-color:#4a7a2a;background:#4a7a2a;color:#fff;}
+.ts.sel-matig{border-color:var(--orange);background:var(--orange);color:#fff;}
+.ts.sel-slecht{border-color:var(--red);background:var(--red);color:#fff;}
 .bottom-nav{position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-top:1px solid var(--border);padding:12px 20px;display:flex;gap:10px;z-index:100;}
 .bottom-nav button{flex:1;padding:14px;font-size:15px;font-weight:600;border-radius:var(--radius);cursor:pointer;font-family:inherit;border:none;}
 .btn-next{background:var(--accent);color:#fff;}
 .btn-back{background:var(--bg);color:var(--text);border:1px solid var(--border)!important;}
-.btn-next:active{opacity:.85;}
-.btn-back:active{background:var(--border);}
+/* RUIMTE CARDS */
+.ruimte-card{background:var(--bg);border:1.5px solid var(--border);border-radius:var(--radius);padding:14px;margin-bottom:10px;}
+.ruimte-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
+.ruimte-title{font-size:15px;font-weight:600;color:var(--accent);}
+.ruimte-del{background:none;border:none;color:var(--red);font-size:20px;cursor:pointer;padding:4px;}
+/* METING */
+.meting-row{display:flex;align-items:center;gap:8px;margin-bottom:8px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px 12px;}
+.meting-input{width:70px!important;padding:8px 10px!important;font-size:15px!important;text-align:center;}
+.meting-label-input{flex:1;padding:8px 10px!important;font-size:14px!important;}
+.meting-result{font-size:13px;font-weight:600;color:var(--accent);min-width:60px;text-align:right;}
+.meting-del{background:none;border:none;color:var(--red);font-size:18px;cursor:pointer;padding:0 4px;}
+.meting-totaal{background:var(--accent-light);border:1px solid var(--accent);border-radius:var(--radius-sm);padding:10px 14px;font-size:14px;font-weight:600;color:var(--accent);margin-top:4px;text-align:right;}
+/* RENOVATIE PRIORITEIT */
+.prio-group{display:flex;gap:6px;margin-top:4px;}
+.prio-btn{flex:1;border:2px solid var(--border);border-radius:var(--radius-sm);padding:10px 6px;font-size:13px;font-weight:700;text-align:center;cursor:pointer;background:var(--bg);color:var(--text-muted);transition:all .2s;user-select:none;}
+.prio-btn.sel-dringend{border-color:var(--red);background:var(--red);color:#fff;}
+.prio-btn.sel-mlt{border-color:var(--orange);background:var(--orange);color:#fff;}
+.prio-btn.sel-kan-wachten{border-color:var(--green);background:var(--green);color:#fff;}
+/* KAARTEN GRID */
+.kaart-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;}
+.kaart-slot{border:2px dashed var(--border);border-radius:var(--radius);overflow:hidden;background:var(--bg);}
+.kaart-slot.has-img{border-style:solid;border-color:var(--border);}
+.kaart-slot img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;}
+.kaart-slot-label{font-size:12px;font-weight:600;color:var(--text-muted);padding:8px 10px;background:var(--surface);display:flex;justify-content:space-between;align-items:center;}
+.kaart-slot-empty{aspect-ratio:4/3;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;color:var(--text-hint);font-size:13px;gap:6px;}
+.kaart-icon{font-size:28px;}
+/* FOTOS */
+.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px;}
+.photo-thumb{position:relative;border-radius:var(--radius-sm);overflow:hidden;background:var(--bg);border:1.5px solid var(--border);}
+.photo-thumb img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;}
+.photo-thumb .del-photo{position:absolute;top:4px;right:4px;background:rgba(0,0,0,.6);color:#fff;border:none;border-radius:50%;width:26px;height:26px;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.photo-label-input{width:100%;border:none;border-top:1px solid var(--border);padding:4px 6px;font-size:12px;font-family:inherit;background:var(--surface);color:var(--text);}
+input[type=file].hidden-file{display:none;}
+/* RAPPORT */
 .rapport-wrap{padding:16px 20px 100px;max-width:780px;margin:0 auto;}
 .r-header{background:var(--text);color:#fff;border-radius:var(--radius);padding:20px;margin-bottom:14px;}
 .r-header-addr{font-size:18px;font-weight:600;}
@@ -92,7 +110,7 @@ textarea{height:72px;resize:vertical;}
 .metric-box.red{background:var(--red-light);border-color:#e8c0c0;}
 .metric-box.orange{background:var(--orange-light);border-color:#f0c898;}
 .metric-lbl{font-size:12px;color:var(--text-muted);font-weight:500;margin-bottom:3px;}
-.metric-box.accent .metric-lbl{color:rgba(255,255,255,.7);}
+.metric-box.accent .metric-lbl,.metric-box.green .metric-lbl{color:rgba(0,0,0,.5);}
 .metric-val{font-size:22px;font-weight:600;color:var(--text);font-family:'IBM Plex Mono',monospace;}
 .metric-box.accent .metric-val{color:#fff;}
 .metric-box.green .metric-val{color:var(--green);}
@@ -117,16 +135,15 @@ textarea{height:72px;resize:vertical;}
 .verdict-box.green .verdict-title{color:var(--green);}
 .verdict-box.orange .verdict-title{color:var(--orange);}
 .verdict-box.red .verdict-title{color:var(--red);}
-.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px;}
-.photo-thumb{position:relative;border-radius:var(--radius-sm);overflow:hidden;background:var(--bg);border:1.5px solid var(--border);}
-.photo-thumb img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;}
-.photo-thumb .del-photo{position:absolute;top:4px;right:4px;background:rgba(0,0,0,.6);color:#fff;border:none;border-radius:50%;width:26px;height:26px;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
-.photo-label-input{width:100%;border:none;border-top:1px solid var(--border);padding:4px 6px;font-size:12px;font-family:inherit;background:var(--surface);color:var(--text);}
-input[type=file].hidden-file{display:none;}
-.ruimte-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:14px;margin-bottom:10px;}
-.ruimte-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
-.ruimte-title{font-size:14px;font-weight:600;color:var(--text);}
-.ruimte-del{background:none;border:none;color:var(--red);font-size:18px;cursor:pointer;padding:4px;}
+.ruimte-rapport{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px;margin-bottom:8px;}
+.ruimte-rapport-title{font-size:14px;font-weight:600;color:var(--accent);margin-bottom:6px;}
+.kaarten-rapport{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.kaart-rapport-item img{width:100%;border-radius:var(--radius-sm);}
+.kaart-rapport-item p{font-size:11px;color:var(--text-muted);margin-top:3px;text-align:center;}
+/* RENO BADGE */
+.reno-dringend{background:var(--red-light);color:var(--red);padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600;}
+.reno-mlt{background:var(--orange-light);color:var(--orange);padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600;}
+.reno-kan{background:var(--green-light);color:var(--green);padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600;}
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;align-items:flex-end;justify-content:center;}
 .modal-overlay.open{display:flex;}
 .modal-box{background:var(--surface);border-radius:var(--radius) var(--radius) 0 0;padding:24px 20px 36px;width:100%;max-width:600px;}
@@ -135,32 +152,28 @@ input[type=file].hidden-file{display:none;}
 .readonly-field{background:#f0ede8!important;font-family:'IBM Plex Mono',monospace;font-weight:600;color:var(--accent)!important;}
 @media print{
   .topbar,.bottom-nav,.no-print{display:none!important;}
-  body{background:#fff;font-size:13px;}
+  body{background:#fff;font-size:12px;}
   .screen{display:block!important;}
   #screen-list,#screen-form{display:none!important;}
   .rapport-wrap{padding:0;}
   .r-section,.metric-box,.r-header,.verdict-box{break-inside:avoid;}
-  .photo-thumb .del-photo{display:none!important;}
-  .photo-grid{grid-template-columns:repeat(3,1fr);gap:6px;}
+  .photo-thumb .del-photo,.kaart-slot-label button{display:none!important;}
+  .kaarten-rapport{grid-template-columns:repeat(3,1fr);}
 }
 </style>
 </head>
 <body>
 <div class="topbar">
-  <div>
-    <div class="topbar-title">Schattingsformulier</div>
-    <div class="topbar-sub" id="topbar-sub">Dossiers</div>
-  </div>
+  <div><div class="topbar-title">Schattingsformulier</div><div class="topbar-sub" id="topbar-sub">Dossiers</div></div>
   <div class="topbar-right">
     <button class="icon-btn no-print" onclick="exportCSV()" id="btn-export" style="display:none">↓ CSV</button>
-    <button class="icon-btn no-print" onclick="showDossiers()" id="btn-dossiers">☰ Dossiers</button>
+    <button class="icon-btn no-print" onclick="showDossiers()">☰ Dossiers</button>
   </div>
 </div>
 
 <div class="screen active" id="screen-list">
   <div class="list-wrap">
-    <div class="list-header">
-      <h2>Dossiers</h2>
+    <div class="list-header"><h2>Dossiers</h2>
       <div style="display:flex;gap:8px;">
         <button class="btn-secondary" onclick="exportCSV()">↓ CSV</button>
         <button class="btn-primary" onclick="nieuwDossier()">+ Nieuw</button>
@@ -172,16 +185,7 @@ input[type=file].hidden-file{display:none;}
 
 <div class="screen" id="screen-form">
   <div class="form-wrap">
-    <div class="progress-bar" id="progress-bar">
-      <div class="prog-seg active" id="seg0"></div>
-      <div class="prog-seg" id="seg1"></div>
-      <div class="prog-seg" id="seg2"></div>
-      <div class="prog-seg" id="seg3"></div>
-      <div class="prog-seg" id="seg4"></div>
-      <div class="prog-seg" id="seg5"></div>
-      <div class="prog-seg" id="seg6"></div>
-      <div class="prog-seg" id="seg7"></div>
-    </div>
+    <div class="progress-bar" id="progress-bar"></div>
     <div id="form-content"></div>
   </div>
   <div class="bottom-nav no-print">
@@ -200,10 +204,10 @@ input[type=file].hidden-file{display:none;}
 
 <div class="modal-overlay" id="modal-dossier">
   <div class="modal-box">
-    <div class="modal-title" id="modal-dossier-title">Dossier</div>
+    <div class="modal-title" id="modal-title">Dossier</div>
     <div class="modal-actions">
       <button class="btn-primary" onclick="openDossierEdit()">✏️ Bewerken</button>
-      <button class="btn-secondary" onclick="openDossierRapport()">📄 Rapport bekijken</button>
+      <button class="btn-secondary" onclick="openDossierRapport()">📄 Rapport</button>
       <button class="btn-danger" onclick="deleteDossier()">🗑 Verwijderen</button>
       <button class="btn-secondary" onclick="closeModal()">Annuleren</button>
     </div>
@@ -211,987 +215,874 @@ input[type=file].hidden-file{display:none;}
 </div>
 
 <script>
-const STEPS = 8;
-let currentStep = 0;
-let currentId = null;
-let selectedDossierId = null;
-const tsMap = {nieuw:5,zg:4,goed:3,matig:2,slecht:1};
-const stepTitles = ['Pre-visit & identificatie','Algemene informatie','Constructie & dak','Interieur','Energie & technieken','Woonplaatsen','Tuin & extra',"Foto's"];
-const WINDRICHTINGEN = ['N','NO','O','ZO','Z','ZW','W','NW'];
-const RUIMTELIJKE_ORDENING = ['Woongebied','Woonuitbreidingszone','Woongebied met landelijk karakter','Agrarisch gebied','Industriegebied','Recreatiegebied','Waterwegen','Bufferzone','Militair gebied','Havengebied'];
-const AARD_GOED = ['Huis','Appartement of studio','Industrieel vastgoed','Kantoor','Handelspand','Kamer of studentenkot','Bouwgrond','Garage','Iets anders','Investeringspand'];
-const SUBTYPE_APP = ['Appartement','Penthouse','Studio','Loft','Service flat'];
-const EPC_KLASSEN = ['A++','A+','A','B','C','D','E','F','G'];
-const VLOER_OPTIES = ['Parket','Laminaat','Tegels','Beton','Tapijt','Natuursteen','Marmer','Andere'];
-const BRON_OPP = ['Gemeten ter plaatse','Uit bouwplan','Geschat','Onbekend'];
-const VERDIEP_OPTIES = ['Gelijkvloers','1e verdiep','2e verdiep','3e verdiep','4e verdiep','5e verdiep+'];
+// ── CONSTANTS ──
+const STEPS=9;
+const STEP_TITLES=['Pre-visit & identificatie','Algemene informatie','Constructie & dak','Interieur','Energie & technieken','Woonplaatsen','Renovatie','Tuin & extra',"Foto's"];
+const WINDRICHTINGEN=['N','NO','O','ZO','Z','ZW','W','NW'];
+const RUIMTELIJKE_ORDENING=['Woongebied','Woonuitbreidingszone','Woongebied met landelijk karakter','Agrarisch gebied','Industriegebied','Recreatiegebied','Waterwegen','Bufferzone','Militair gebied','Havengebied'];
+const AARD_GOED=['Huis','Appartement of studio','Industrieel vastgoed','Kantoor','Handelspand','Kamer of studentenkot','Bouwgrond','Garage','Iets anders','Investeringspand'];
+const SUBTYPE_APP=['Appartement','Penthouse','Studio','Loft','Service flat'];
+const EPC_KLASSEN=['A++','A+','A','B','C','D','E','F','G'];
+const ISO_TYPES=['Minerale wol (glaswol/steenwol)','PUR/PIR platen','Cellulosevlokken','Houtvezel','EPS (piepschuim)','XPS','Andere'];
+const VLOER_OPTIES=['Parket','Laminaat','Tegels','Beton','Tapijt','Natuursteen','Marmer','Andere'];
+const VERDIEP_OPTIES=['Gelijkvloers','1e verdiep','2e verdiep','3e verdiep','4e verdiep','5e verdiep+'];
+const BRON_OPP=['Gemeten ter plaatse','Uit bouwplan','Geschat','Onbekend'];
+const ERFGOED_TYPES=['Beschermd monument','Beschermd stads- of dorpsgezicht','Beschermd cultuurhistorisch landschap','Vastgesteld bouwkundig erfgoed','Ankerplaats','Werelderfgoed'];
+const RUIMTE_TYPES=['Living','Eetkamer','Keuken','Slaapkamer','Badkamer','WC','Bureau','Hobbyruimte','Wasplaats','Berging','Kelder','Zolder','Garage','Andere'];
+const KAART_SLOTS=[
+  {key:'kaart_maps',label:'📍 Google Maps',icon:'📍'},
+  {key:'kaart_earth',label:'🛰️ Google Earth / luchtfoto',icon:'🛰️'},
+  {key:'kaart_kadaster',label:'🗺️ Kadasterkaart',icon:'🗺️'},
+  {key:'kaart_ro',label:'🏘️ Ruimtelijke ordening',icon:'🏘️'},
+  {key:'kaart_overstr',label:'🌊 Overstromingskaart',icon:'🌊'},
+  {key:'kaart_street',label:'🏠 Street View',icon:'🏠'},
+];
+
+let currentStep=0;
+let selectedDossierId=null;
+let formData=emptyData();
+const tsMap={nieuw:5,zg:4,goed:3,matig:2,slecht:1};
 
 function emptyData(){
-  return {
+  return{
     id:Date.now().toString(),created:new Date().toISOString(),updated:new Date().toISOString(),
-    // stap 0
     schattingnummer:'',datum:'',naam:'',tel:'',
     straat:'',huisnummer:'',postcode:'',gemeente:'',
     grond:'',breedte_perc:'',diepte_perc:'',tuin_opp:'',orientatie:'',
     ro:'',overstr:'Niet in overstromingsgebied',pscore:'',gscore:'',
-    bewoonbaar:'',bouwgebied:'',bouwjaar:'',gevel_b:'',gebouw_d:'',gebouw_h:'',
+    bewoonbaar:'',bouwgebied:'',bouwjaar:'',bouwjaar_bron:'',gevel_b:'',gebouw_d:'',gebouw_h:'',
     verdiep:'',bebouwing:'Open',typepand:'Huis',
     gem_verkoop:'',gem_huur:'',gem_ppm2:'',mobiliteit:'',vraagprijs:'',
-    // stap 1
+    kaart_maps:'',kaart_earth:'',kaart_kadaster:'',kaart_ro:'',kaart_overstr:'',kaart_street:'',
     aard:'',aard_subtype:'',
     app_verdieping:'',app_type:'Enkel',app_verdiepingen_gebouw:'',app_welke_verdiep:'',
     app_lift:false,terrassen:[],
     ki:'',overtred:'Neen',overtred_comment:'',eigenaar_verd:'',eigenaar_comment:'',
-    vkr:'Neen',erfd:'Neen',gekl:'Neen',
-    // stap 2 - constructie
+    vkr:'Neen',erfd:'Neen',erfgoed:'Neen',erfgoed_type:'',
     con_trad:false,con_gelijmd:false,con_prefab:false,con_houtskelet:false,con_houtmassief:false,con_staal:false,con_andere:'',
     tv_hout:false,tv_beton:false,tv_metselwerk:false,tv_andere:'',
     gev_trad:false,gev_prefab:false,gev_baksteen:false,gev_beton:false,gev_pleister:false,gev_hout:false,gev_natuur:false,gev_metaal:false,gev_silex:false,gev_leien:false,gev_trespa:false,gev_andere:'',
     bui_hout:false,bui_pvc:false,bui_alu:false,bui_andere:'',
-    // dak
     dak_plat:false,dak_schild:false,dak_shed:false,dak_stro:false,dak_zadel:false,dak_toren:false,dak_vlinder:false,dak_wolfs:false,dak_andere:'',
     dakmat_glas:false,dakmat_koper:false,dakmat_asbest:false,dakmat_natuurleien:false,dakmat_kunststofleien:false,dakmat_natuur:false,dakmat_pannen:false,dakmat_betonpannen:false,dakmat_tegelpannen:false,dakmat_riet:false,dakmat_bitumen_dek:false,dakmat_zink:false,dakmat_groen:false,dakmat_epdm:false,dakmat_bitumen:false,dakmat_metalen:false,dakmat_stro:false,dakmat_andere:'',
     goten_koper:false,goten_alu:false,goten_pvc:false,goten_pvc_bekleed:false,goten_zink:false,goten_hout_ges:false,goten_hout_bek:false,goten_andere:'',
-    // stap 3 - interieur
     int_pleister:false,int_behang:false,int_geschilderd:false,int_beton:false,int_betegeld:false,int_metselwerk:false,int_gips:false,int_schroten:false,int_sandwich:false,int_andere:'',
     plaf_pleister:false,plaf_behang:false,plaf_geschilderd:false,plaf_beton:false,plaf_gips:false,plaf_schroten_h:false,plaf_schroten_p:false,plaf_span:false,plaf_welf:false,plaf_tegels:false,plaf_andere:'',
     bd_geschilderd:false,bd_fineer:false,bd_volhout:false,bd_veiligheid:false,bd_glas:false,bd_staal:false,bd_andere:'',
     trap_hout:false,trap_beton_teg:false,trap_beton_hout:false,trap_natuur:false,trap_metaal:false,trap_glas:false,trap_andere:'',
-    // stap 4 - energie
-    epc_klasse:'',epc_waarde:'',
-    verw_gasketel:false,verw_stookolie:false,verw_elek:false,verw_conv:false,verw_hout:false,verw_zonne:false,verw_kolen:false,verw_wp:false,verw_pellets:false,verw_geo:false,verw_warme_lucht:false,verw_elek_acc:false,verw_elek_geen_acc:false,verw_houtkachel:false,verw_kolenkachel:false,verw_pelletkachel:false,verw_ind:false,verw_coll:false,verw_airco:false,verw_wp_lw:false,verw_wp_ll:false,verw_wp_gw:false,verw_wp_ww:false,verw_wp_hyb:false,verw_rad:false,verw_vloer:false,verw_gaskachel:false,verw_oliekachel:false,verw_cv:false,verw_geen:false,verw_andere:'',
+    epc_klasse:'',epc_geschat:'',epc_waarde:'',
+    verw_gasketel:false,verw_stookolie:false,verw_elek:false,verw_conv:false,verw_hout:false,verw_kolen:false,verw_wp:false,verw_pellets:false,verw_geo:false,verw_warme_lucht:false,verw_elek_acc:false,verw_elek_geen_acc:false,verw_houtkachel:false,verw_kolenkachel:false,verw_pelletkachel:false,verw_ind:false,verw_coll:false,verw_airco:false,verw_wp_lw:false,verw_wp_ll:false,verw_wp_gw:false,verw_wp_ww:false,verw_wp_hyb:false,verw_rad:false,verw_vloer:false,verw_gaskachel:false,verw_oliekachel:false,verw_cv:false,verw_geen:false,verw_andere:'',
     ketel_locatie:'',ketel_locatie_andere:'',
-    iso_akoestisch:false,iso_dak:false,iso_spouw:false,iso_hr_glas:false,iso_vloer:false,iso_binnenmuur:false,iso_buitengevel:false,iso_andere:'',
+    iso_akoestisch:false,
+    iso_dak:false,iso_dak_type:'',iso_dak_dikte:'',iso_dak_ligging:'',
+    iso_spouw:false,iso_spouw_type:'',iso_spouw_dikte:'',
+    iso_hr_glas:false,
+    iso_vloer:false,iso_vloer_type:'',iso_vloer_dikte:'',
+    iso_binnenmuur:false,iso_binnenmuur_type:'',iso_binnenmuur_dikte:'',
+    iso_buitengevel:false,iso_buitengevel_type:'',iso_buitengevel_dikte:'',iso_buitengevel_ligging:'',
+    iso_andere:'',
     ramen_enkel:false,ramen_dubbel:false,ramen_drievoud:false,ramen_zonwerend:false,ramen_hr:false,ramen_rolluiken:false,ramen_andere:'',
     zonnepanelen:false,zp_aantal:'',zp_vermogen:'',zp_orientatie:'',zp_jaar:'',
     zonneboiler:false,zb_m2:'',
     batterij:false,bat_kwh:'',
-    // elektro
     domotica:'Neen',domotica_comment:'',parlefoon:'Geen',inbraak:'Neen',inbraak_comment:'',brand:'Neen',teller:'Digitaal',
-    // ventilatie
     vent_a:false,vent_b:false,vent_c:false,vent_cplus:false,vent_d:false,vent_nat:false,vent_geen:false,
     vent_warmterec:'Neen',vent_comment:'',
-    // stap 5 - woonplaatsen
     globaal_sk:'',globaal_bdk:'',globaal_wc_in:'',globaal_wc_buiten:'',
     globaal_kelder:'Neen',globaal_zolder:'Neen',zolder_toegang:'Vaste trap',zolder_type:'',globaal_garage:'Neen',
     ruimtes:[],
-    // stap 6 - tuin & extra
+    renovaties_historiek:[],
     tuin_aanwezig:'Neen',tuin_oppervlakte:'',tuin_opp_bron:'',tuin_orientatie:'',tuin_ligging:'',
-    tuin_sier:false,tuin_moes:false,tuin_fruit:false,tuin_gazon:false,tuin_natuur:false,tuin_andere:'',
+    tuin_sier:false,tuin_moes:false,tuin_fruit:false,tuin_gazon:false,tuin_natuur:false,tuin_type_andere:'',
     afsluiting:'',afsluiting_andere:'',
     bestrating_tegels:false,bestrating_kassein:false,bestrating_hout:false,bestrating_grind:false,bestrating_beton:false,bestrating_andere:'',
-    tuinhuis:'Neen',carport:'Neen',oprit:'',oprit_andere:'',
+    tuinhuis:'Neen',carport:'Neen',oprit:'',
     buitenverlichting:'Neen',beregening:'Neen',tuin_toestand:'',tuin_comment:'',
     zwembad:'Neen',zwembad_type:'',sauna:'Neen',jacuzzi:'Neen',tennis:'Neen',vijver:'Neen',extra_comment:'',
-    // stap 7 - fotos
-    photos:[],
-    // financieel
-    kost_dringend:'',kost_mlt:'',kost_reno:''
+    photos:[]
   };
 }
 
-let formData = emptyData();
-
-function getDossiers(){try{return JSON.parse(localStorage.getItem('schatt_dossiers')||'[]');}catch(e){return[];}}
-function saveDossiers(arr){localStorage.setItem('schatt_dossiers',JSON.stringify(arr));}
+// ── STORAGE ──
+function getDossiers(){try{return JSON.parse(localStorage.getItem('schatt_v2')||'[]');}catch(e){return[];}}
+function saveDossiers(arr){localStorage.setItem('schatt_v2',JSON.stringify(arr));}
 function saveCurrentDossier(){
   formData.updated=new Date().toISOString();
-  const arr=getDossiers();
-  const idx=arr.findIndex(d=>d.id===formData.id);
+  const arr=getDossiers();const idx=arr.findIndex(d=>d.id===formData.id);
   if(idx>=0)arr[idx]=formData;else arr.unshift(formData);
   saveDossiers(arr);
 }
-
-function generateSchattingnummer(){
+function generateNr(){
   const now=new Date();
-  const d=String(now.getDate()).padStart(2,'0');
-  const m=String(now.getMonth()+1).padStart(2,'0');
-  const y=now.getFullYear();
-  const prefix=`${y}-${m}-${d}`;
-  const arr=getDossiers();
-  const vandaag=arr.filter(x=>x.schattingnummer&&x.schattingnummer.startsWith(prefix));
-  return`${prefix}-${String(vandaag.length+1).padStart(3,'0')}`;
+  const prefix=`${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
+  const arr=getDossiers().filter(x=>x.schattingnummer&&x.schattingnummer.startsWith(prefix));
+  return`${prefix}-${String(arr.length+1).padStart(3,'0')}`;
 }
 
-function showScreen(name){
-  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-  document.getElementById('screen-'+name).classList.add('active');
-  document.getElementById('btn-export').style.display=name==='list'?'flex':'none';
-}
-
+// ── NAV ──
+function showScreen(n){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById('screen-'+n).classList.add('active');document.getElementById('btn-export').style.display=n==='list'?'flex':'none';}
 function showDossiers(){showScreen('list');document.getElementById('topbar-sub').textContent='Dossiers';renderDossierList();}
-
-function nieuwDossier(){
-  formData=emptyData();
-  formData.schattingnummer=generateSchattingnummer();
-  currentStep=0;showScreen('form');renderStep();
-}
-
-function openDossierById(id){
-  const arr=getDossiers();const d=arr.find(x=>x.id===id);
-  if(!d)return;
-  formData=Object.assign(emptyData(),d);
-  if(!formData.ruimtes)formData.ruimtes=[];
-  if(!formData.terrassen)formData.terrassen=[];
-  if(!formData.photos)formData.photos=[];
-  currentStep=0;showScreen('form');renderStep();
-}
-
+function nieuwDossier(){formData=emptyData();formData.schattingnummer=generateNr();currentStep=0;showScreen('form');renderStep();}
+function openDossierById(id){const d=getDossiers().find(x=>x.id===id);if(!d)return;formData=Object.assign(emptyData(),d);['ruimtes','terrassen','photos','renovaties_historiek'].forEach(k=>{if(!formData[k])formData[k]=[];});formData.ruimtes.forEach(r=>{if(!r.photos)r.photos=[];if(!r.metingen)r.metingen=[];if(!r.renovatie)r.renovatie={nodig:false,prioriteit:'',omschrijving:'',kost:''};});currentStep=0;showScreen('form');renderStep();}
 function stepNext(){collectStep();saveCurrentDossier();if(currentStep<STEPS-1){currentStep++;renderStep();}else{showRapport();}}
 function stepBack(){collectStep();if(currentStep>0){currentStep--;renderStep();}else showDossiers();}
 
+// ── DOSSIER LIST ──
 function renderDossierList(){
   const arr=getDossiers();const el=document.getElementById('dossier-list');
   if(!arr.length){el.innerHTML='<div class="empty-state"><div class="empty-icon">🏠</div><p>Nog geen dossiers.<br>Tik op "+ Nieuw" om te starten.</p></div>';return;}
   el.innerHTML=arr.map(d=>{
-    const verd=calcVerdict(d);
-    const cls=verd.cls==='green'?'badge-green':verd.cls==='orange'?'badge-orange':'badge-red';
-    const date=d.datum||d.updated?.slice(0,10)||'';
-    const photoCount=d.photos&&d.photos.length?` · ${d.photos.length} foto${d.photos.length>1?'s':''}`:'';
-    const adres=d.straat?`${d.straat} ${d.huisnummer}, ${d.gemeente}`:(d.adres||'Geen adres');
+    const v=calcVerdict(d);
+    const cls=v.cls==='green'?'badge-green':v.cls==='orange'?'badge-orange':'badge-red';
+    const adres=d.straat?`${d.straat} ${d.huisnummer}, ${d.gemeente}`:'Geen adres';
+    const pc=d.photos&&d.photos.length?` · ${d.photos.length}📷`:'';
     return`<div class="dossier-card" onclick="openModal('${d.id}')">
-      <div>
-        <div class="dossier-addr">${adres}<span class="badge ${cls}">${verd.short}</span></div>
-        <div class="dossier-meta">${d.schattingnummer?d.schattingnummer+' · ':''}${d.typepand||d.aard||'—'} · ${date}${photoCount}</div>
-      </div>
-      <div class="dossier-arrow">›</div>
-    </div>`;
+      <div><div class="dossier-addr">${adres}<span class="badge ${cls}">${v.short}</span></div>
+      <div class="dossier-meta">${d.schattingnummer||'—'} · ${d.aard||d.typepand||'—'} · ${d.datum||d.updated?.slice(0,10)||''}${pc}</div></div>
+      <div class="dossier-arrow">›</div></div>`;
   }).join('');
 }
 
-function openModal(id){
-  selectedDossierId=id;const arr=getDossiers();const d=arr.find(x=>x.id===id);
-  const adres=d?.straat?`${d.straat} ${d.huisnummer}, ${d.gemeente}`:(d?.adres||'Dossier');
-  document.getElementById('modal-dossier-title').textContent=adres;
-  document.getElementById('modal-dossier').classList.add('open');
-}
+function openModal(id){selectedDossierId=id;const d=getDossiers().find(x=>x.id===id);document.getElementById('modal-title').textContent=d?.straat?`${d.straat} ${d.huisnummer}`:'Dossier';document.getElementById('modal-dossier').classList.add('open');}
 function closeModal(){document.getElementById('modal-dossier').classList.remove('open');}
 function openDossierEdit(){closeModal();openDossierById(selectedDossierId);}
-function openDossierRapport(){closeModal();const arr=getDossiers();const d=arr.find(x=>x.id===selectedDossierId);if(d){formData=Object.assign(emptyData(),d);showRapport();}}
-function deleteDossier(){if(!confirm('Dossier verwijderen?'))return;closeModal();saveDossiers(getDossiers().filter(x=>x.id!==selectedDossierId));renderDossierList();}
+function openDossierRapport(){closeModal();const d=getDossiers().find(x=>x.id===selectedDossierId);if(d){formData=Object.assign(emptyData(),d);showRapport();}}
+function deleteDossier(){if(!confirm('Verwijderen?'))return;closeModal();saveDossiers(getDossiers().filter(x=>x.id!==selectedDossierId));renderDossierList();}
 document.getElementById('modal-dossier').addEventListener('click',function(e){if(e.target===this)closeModal();});
 
+// ── RENDER STEP ──
 function renderStep(){
-  document.getElementById('topbar-sub').textContent=`Stap ${currentStep+1}/8 – ${stepTitles[currentStep]}`;
-  for(let i=0;i<STEPS;i++){const s=document.getElementById('seg'+i);if(s)s.className='prog-seg'+(i<currentStep?' done':i===currentStep?' active':'');}
+  document.getElementById('topbar-sub').textContent=`Stap ${currentStep+1}/${STEPS} – ${STEP_TITLES[currentStep]}`;
+  const pb=document.getElementById('progress-bar');
+  pb.innerHTML=Array.from({length:STEPS},(_,i)=>`<div class="prog-seg${i<currentStep?' done':i===currentStep?' active':''}"></div>`).join('');
   document.getElementById('btn-back').textContent=currentStep===0?'← Dossiers':'← Terug';
-  document.getElementById('btn-next').textContent=currentStep===STEPS-1?'Rapport genereren →':'Volgende →';
-  const c=document.getElementById('form-content');c.innerHTML='';
-  const renders=[renderStep0,renderStep1,renderStep2,renderStep3,renderStep4,renderStep5,renderStep6,renderStep7];
-  c.innerHTML=renders[currentStep]();
+  document.getElementById('btn-next').textContent=currentStep===STEPS-1?'Rapport →':'Volgende →';
+  const c=document.getElementById('form-content');
+  c.innerHTML=[s0,s1,s2,s3,s4,s5,s6,s7,s8][currentStep]();
   fillStep();
-  if(currentStep===7)renderPhotoGrid('photo-grid-main',formData.photos,'photos');
+  if(currentStep===5){renderRuimtesContainer();}
+  if(currentStep===6){renderHistoriekContainer();}
+  if(currentStep===8){renderPhotoGrid('pg-main',formData.photos,'photos');}
   window.scrollTo(0,0);
 }
 
 // ── HELPERS ──
-function secLabel(t){return`<div class="section-label">${t}</div>`;}
-function field(label,inner){return`<div class="field"><label>${label}</label>${inner}</div>`;}
-function txt(id,ph=''){return`<input type="text" id="${id}" placeholder="${ph}">`;}
-function num(id,ph=''){return`<input type="number" id="${id}" placeholder="${ph}">`;}
-function sel(id,opts,blank=''){return`<select id="${id}">${blank?`<option value="">${blank}</option>`:''}${opts.map(o=>`<option>${o}</option>`).join('')}</select>`;}
-function tiles(name,opts,multi=false){
-  return`<div class="tile-group">${opts.map(o=>{
-    const id=name+'_'+o.replace(/\s+/g,'_').replace(/[^a-zA-Z0-9_]/g,'');
-    return multi?`<input type="checkbox" id="${id}" name="${name}"><label for="${id}">${o}</label>`
-      :`<input type="radio" id="${id}" name="${name}" value="${o}"><label for="${id}">${o}</label>`;
-  }).join('')}</div>`;
-}
-function toestand(id){
-  return`<div class="toestand-group" id="tsg_${id}">${['Nieuw','ZG','Goed','Matig','Slecht'].map(t=>`<div class="ts" data-val="${t.toLowerCase()}" onclick="setTs('${id}','${t.toLowerCase()}',this)">${t}</div>`).join('')}</div>`;
-}
-function checkRow(id,label){return`<label style="display:flex;align-items:center;gap:10px;font-size:14px;padding:6px 0;cursor:pointer;"><input type="checkbox" id="${id}"> ${label}</label>`;}
+const F=(l,i)=>`<div class="field"><label>${l}</label>${i}</div>`;
+const T=(id,ph='')=>`<input type="text" id="${id}" placeholder="${ph}">`;
+const N=(id,ph='')=>`<input type="number" id="${id}" placeholder="${ph}">`;
+const S=(id,opts,blank='')=>`<select id="${id}">${blank?`<option value="">${blank}</option>`:''}${opts.map(o=>`<option>${o}</option>`).join('')}</select>`;
+const SL=(n,opts)=>`<div class="section-label">${n}</div>`;
+const CB=(id,lbl)=>`<label style="display:flex;align-items:center;gap:10px;font-size:14px;padding:5px 0;cursor:pointer;"><input type="checkbox" id="${id}"> ${lbl}</label>`;
+const TILES=(n,opts,m=false)=>`<div class="tile-group">${opts.map(o=>{const id=n+'_'+o.replace(/[^a-zA-Z0-9]/g,'_');return m?`<input type="checkbox" id="${id}" name="${n}"><label for="${id}">${o}</label>`:`<input type="radio" id="${id}" name="${n}" value="${o}"><label for="${id}">${o}</label>`;}).join('')}</div>`;
+const TS=(id)=>`<div class="toestand-group" id="tsg_${id}">${['Nieuw','ZG','Goed','Matig','Slecht'].map(t=>`<div class="ts" data-val="${t.toLowerCase()}" onclick="setTs('${id}','${t.toLowerCase()}',this)">${t}</div>`).join('')}</div>`;
+const SC=(t)=>`<div class="section-card">`;
+const secLabel=(t)=>`<div class="section-label">${t}</div>`;
 
-// ── STEP 0: PRE-VISIT ──
-function renderStep0(){return`
+function isoDetail(key,label,liggingOpts=[]){
+  const show=formData[key];
+  return`<div class="field"><label>${label}</label>${TILES('f_'+key,['Ja','Neen'])}</div>
+  <div id="${key}_detail" style="display:${show?'block':'none'};background:var(--accent-light);border-radius:var(--radius-sm);padding:12px;margin-bottom:10px;">
+    <div class="g2" style="margin-bottom:8px;">
+      ${F('Type isolatie',S('f_'+key+'_type',ISO_TYPES,'— kies —'))}
+      ${F('Dikte (cm)',N('f_'+key+'_dikte',''))}
+    </div>
+    ${liggingOpts.length?F('Ligging',S('f_'+key+'_ligging',liggingOpts,'— kies —')):''}
+  </div>`;
+}
+
+// ── STEP 0 ──
+function s0(){return`
 <div class="section-card">${secLabel('Identificatie')}
-  ${field('Schattingnummer',`<input type="text" id="f_schattingnummer" class="readonly-field" readonly>`)}
-  <div class="g2">${field('Datum bezoek',txt('f_datum','dd/mm/jjjj – uu:mm'))}${field('Naam eigenaar',txt('f_naam','Naam'))}</div>
-  ${field('Telefoon',txt('f_tel','+32 …'))}
+  ${F('Schattingnummer',`<input type="text" id="f_schattingnummer" class="readonly-field" readonly>`)}
+  <div class="g2">${F('Datum bezoek',T('f_datum','dd/mm/jjjj – uu:mm'))}${F('Naam eigenaar',T('f_naam','Naam'))}</div>
+  ${F('Telefoon',T('f_tel','+32 …'))}
 </div>
 <div class="section-card">${secLabel('Adres')}
-  <div class="g2" style="margin-bottom:10px;">${field('Straat',txt('f_straat','Straatnaam'))}${field('Nummer',txt('f_huisnummer','Nr'))}</div>
-  <div class="g2">${field('Postcode',txt('f_postcode','0000'))}${field('Gemeente',txt('f_gemeente','Gemeente'))}</div>
+  <div class="g2" style="margin-bottom:10px;">${F('Straat',T('f_straat','Straatnaam'))}${F('Nummer',T('f_huisnummer','Nr'))}</div>
+  <div class="g2">${F('Postcode',T('f_postcode','0000'))}${F('Gemeente',T('f_gemeente','Gemeente'))}</div>
 </div>
-<div class="section-card">${secLabel('Perceelgegevens (pre-visit)')}
-  <div class="g3">${field('Grondoppervlakte (m²)',num('f_grond',''))}${field('Breedte perceel (m)',num('f_breedte_perc',''))}${field('Diepte perceel (m)',num('f_diepte_perc',''))}</div>
-  <div class="g2">${field('Gesch. tuinoppervlakte (m²)',num('f_tuin_opp',''))}${field('Oriëntatie achterkant',sel('f_orientatie',WINDRICHTINGEN,'— kies —'))}</div>
-  <div class="g2">${field('Overstromingsgebied',sel('f_overstr',['Niet in overstromingsgebied','Mogelijk overstromingsgebied','Overstromingsgebied']))}${field('Ruimtelijke ordening',sel('f_ro',RUIMTELIJKE_ORDENING,'— kies —'))}</div>
-  <div class="g2">${field('P-Score',sel('f_pscore',['A','B','C','D'],'— kies —'))}${field('G-Score',sel('f_gscore',['A','B','C','D'],'— kies —'))}</div>
+<div class="section-card">${secLabel('Kaarten & referentiebeelden')}
+  <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px;">Upload op voorhand kaarten en foto's om de eigenaar te tonen tijdens het bezoek.</p>
+  <div class="kaart-grid" id="kaart-grid"></div>
 </div>
-<div class="section-card">${secLabel('Gebouwgegevens (pre-visit)')}
-  <div class="g3">${field('Bewoonbaar (m², geschat)',num('f_bewoonbaar',''))}${field('Bouwgebied (m²)',num('f_bouwgebied',''))}${field('Bouwjaar (geschat)',num('f_bouwjaar',''))}</div>
-  <div class="g3">${field('Gevelbreedte (m)',num('f_gevel_b',''))}${field('Diepte gebouw (m)',num('f_gebouw_d',''))}${field('Hoogte gebouw (m)',num('f_gebouw_h',''))}</div>
-  <div class="g3">${field('Verdiepingen',num('f_verdiep',''))}${field('Bebouwing',sel('f_bebouwing',['Open','Half-open','Gesloten']))}${field('Type pand',sel('f_typepand',['Huis','Appartement','Villa','Meergezinswoning','Commercieel']))}</div>
+<div class="section-card">${secLabel('Perceelgegevens')}
+  <div class="g3">${F('Grondoppervlakte (m²)',N('f_grond',''))}${F('Breedte perceel (m)',N('f_breedte_perc',''))}${F('Diepte perceel (m)',N('f_diepte_perc',''))}</div>
+  <div class="g2">${F('Tuin (m², geschat)',N('f_tuin_opp',''))}${F('Oriëntatie achterkant',S('f_orientatie',WINDRICHTINGEN,'— kies —'))}</div>
+  <div class="g2">${F('Overstromingsgebied',S('f_overstr',['Niet in overstromingsgebied','Mogelijk overstromingsgebied','Overstromingsgebied']))}${F('Ruimtelijke ordening',S('f_ro',RUIMTELIJKE_ORDENING,'— kies —'))}</div>
+  <div class="g2">${F('P-Score',S('f_pscore',['A','B','C','D'],'— kies —'))}${F('G-Score',S('f_gscore',['A','B','C','D'],'— kies —'))}</div>
 </div>
-<div class="section-card">${secLabel('Buurtprijzen & mobiliteit (pre-visit)')}
-  <div class="g3">${field('Gem. verkoopprijs (€)',num('f_gem_verkoop',''))}${field('Gem. huurprijs (€/mnd)',num('f_gem_huur',''))}${field('Gem. prijs/m² (€)',num('f_gem_ppm2',''))}</div>
-  <div class="g2">${field('Mobiliteitsscore (%)',num('f_mobiliteit',''))}${field('Vraagprijs eigenaar (€)',num('f_vraagprijs',''))}</div>
+<div class="section-card">${secLabel('Gebouwgegevens')}
+  <div class="g2">${F('Bouwjaar',N('f_bouwjaar',''))}${F('Bron bouwjaar',S('f_bouwjaar_bron',['Officieel (kadaster/plannen)','Gevraagd aan eigenaar','Geschat','Onbekend'],'— kies —'))}</div>
+  <div class="g3">${F('Bewoonbaar (m²)',N('f_bewoonbaar',''))}${F('Bouwgebied (m²)',N('f_bouwgebied',''))}${F('Verdiepingen',N('f_verdiep',''))}</div>
+  <div class="g3">${F('Gevelbreedte (m)',N('f_gevel_b',''))}${F('Diepte (m)',N('f_gebouw_d',''))}${F('Hoogte (m)',N('f_gebouw_h',''))}</div>
+  <div class="g2">${F('Bebouwing',S('f_bebouwing',['Open','Half-open','Gesloten']))}${F('Type pand',S('f_typepand',['Huis','Appartement','Villa','Meergezinswoning','Commercieel']))}</div>
+</div>
+<div class="section-card">${secLabel('Buurtprijzen & mobiliteit')}
+  <div class="g3">${F('Gem. verkoopprijs (€)',N('f_gem_verkoop',''))}${F('Gem. huurprijs (€/mnd)',N('f_gem_huur',''))}${F('Gem. prijs/m² (€)',N('f_gem_ppm2',''))}</div>
+  <div class="g2">${F('Mobiliteitsscore (%)',N('f_mobiliteit',''))}${F('Vraagprijs eigenaar (€)',N('f_vraagprijs',''))}</div>
 </div>`;}
 
-// ── STEP 1: ALGEMENE INFO ──
-function renderStep1(){
-  const aard=formData.aard||'';
-  const isApp=aard==='Appartement of studio';
-  const heeftOvertred=formData.overtred==='Ja – gekend'||formData.overtred==='Onbekend';
+// ── STEP 1 ──
+function s1(){
+  const isApp=(formData.aard||'')==='Appartement of studio';
+  const hasOvertred=formData.overtred==='Ja – gekend'||formData.overtred==='Onbekend';
+  const hasErfgoed=formData.erfgoed==='Ja';
   return`
 <div class="section-card">${secLabel('Aard van het goed')}
-  ${field('Type',sel('f_aard',AARD_GOED,'— kies —'))}
-  <div id="app-subtype-wrap" style="display:${isApp?'block':'none'}">
-    ${field('Subtype',sel('f_aard_subtype',SUBTYPE_APP,'— kies —'))}
-    <div class="g2">${field('Verdieping',num('f_app_verdieping',''))}${field('Aantal verdiepingen gebouw',num('f_app_verdiepingen_gebouw',''))}</div>
-    ${field('Type',tiles('f_app_type',['Enkel','Duplex','Triplex']))}
-    <div id="app-welke-wrap" style="display:${formData.app_type!=='Enkel'?'block':'none'}">
-      ${field('Welke verdiepingen',txt('f_app_welke_verdiep','bv. 2 en 3'))}
-    </div>
-    ${field('Lift',tiles('f_app_lift',['Ja','Neen']))}
-    <div style="margin-top:10px;">
-      <label style="font-size:14px;color:var(--text-muted);font-weight:500;">Terras(sen)</label>
-      <div id="terrassen-container"></div>
-      <button class="btn-add" onclick="addTerras()">+ Terras toevoegen</button>
-    </div>
+  ${F('Type',S('f_aard',AARD_GOED,'— kies —'))}
+  <div id="app-wrap" style="display:${isApp?'block':'none'}">
+    ${F('Subtype',S('f_aard_subtype',SUBTYPE_APP,'— kies —'))}
+    <div class="g2">${F('Verdieping',N('f_app_verdieping',''))}${F('Verdiepingen in gebouw',N('f_app_verdiepingen_gebouw',''))}</div>
+    ${F('Type',TILES('f_app_type',['Enkel','Duplex','Triplex']))}
+    <div id="app-welke" style="display:${formData.app_type!=='Enkel'?'block':'none'}">${F('Welke verdiepingen',T('f_app_welke_verdiep','bv. 2 en 3'))}</div>
+    ${F('Lift',TILES('f_app_lift',['Ja','Neen']))}
+    <div style="margin-top:10px;"><label style="font-size:14px;color:var(--text-muted);font-weight:500;">Terras(sen)</label>
+    <div id="terrassen-container"></div>
+    <button class="btn-add" onclick="addTerras()">+ Terras toevoegen</button></div>
   </div>
 </div>
 <div class="section-card">${secLabel('Juridische informatie')}
-  <div class="g2">${field('Kadastraal inkomen (€)',num('f_ki',''))}${field('Bouwovertredingen?',sel('f_overtred',['Neen','Ja – gekend','Onbekend']))}</div>
-  <div id="overtred-comment-wrap" style="display:${heeftOvertred?'block':'none'}">
-    ${field('Omschrijving overtreding',`<textarea id="f_overtred_comment" placeholder="Beschrijf de overtreding…"></textarea>`)}
-  </div>
-  <div class="g3">${field('Voorkooprecht',sel('f_vkr',['Neen','Ja']))}${field('Erfdienstbaarheden',sel('f_erfd',['Neen','Ja']))}${field('Geklasseerd',sel('f_gekl',['Neen','Ja']))}</div>
-  ${field('Eigenaar-verdeling',txt('f_eigenaar_verd','bv. 100% / 50-50'))}
-  ${field('Commentaar eigenaarsverdeling',`<textarea id="f_eigenaar_comment" placeholder="bv. vruchtgebruik, blote eigendom…"></textarea>`)}
+  <div class="g2">${F('Kadastraal inkomen (€)',N('f_ki',''))}${F('Bouwovertredingen?',S('f_overtred',['Neen','Ja – gekend','Onbekend']))}</div>
+  <div id="overtred-wrap" style="display:${hasOvertred?'block':'none'}">${F('Omschrijving',`<textarea id="f_overtred_comment" placeholder="Beschrijf de overtreding…"></textarea>`)}</div>
+  <div class="g3">${F('Voorkooprecht',S('f_vkr',['Neen','Ja']))}${F('Erfdienstbaarheden',S('f_erfd',['Neen','Ja']))}${F('Erfgoed',S('f_erfgoed',['Neen','Ja']))}</div>
+  <div id="erfgoed-wrap" style="display:${hasErfgoed?'block':'none'}">${F('Type erfgoed',S('f_erfgoed_type',ERFGOED_TYPES,'— kies —'))}</div>
+  ${F('Eigenaar-verdeling',T('f_eigenaar_verd','bv. 100% / 50-50'))}
+  ${F('Commentaar eigenaarsverdeling',`<textarea id="f_eigenaar_comment" placeholder="bv. vruchtgebruik, blote eigendom…"></textarea>`)}
 </div>`;}
 
-// ── STEP 2: CONSTRUCTIE & DAK ──
-function renderStep2(){return`
+// ── STEP 2 ──
+function s2(){return`
 <div class="section-card">${secLabel('Constructie')}
-  <div class="g2">
-    ${checkRow('f_con_trad','Traditionele metselwerk')}${checkRow('f_con_gelijmd','Gelijmd metselwerk')}
-    ${checkRow('f_con_prefab','Prefab woning')}${checkRow('f_con_houtskelet','Houtskeletbouw')}
-    ${checkRow('f_con_houtmassief','Houtmassiefbouw')}${checkRow('f_con_staal','Staalconstructie')}
-  </div>
-  ${field('Andere',txt('f_con_andere',''))}
+  <div class="g2">${CB('f_con_trad','Traditionele metselwerk')}${CB('f_con_gelijmd','Gelijmd metselwerk')}${CB('f_con_prefab','Prefab woning')}${CB('f_con_houtskelet','Houtskeletbouw')}${CB('f_con_houtmassief','Houtmassiefbouw')}${CB('f_con_staal','Staalconstructie')}</div>
+  ${F('Andere',T('f_con_andere',''))}
 </div>
 <div class="section-card">${secLabel('Tussenvloer')}
-  ${checkRow('f_tv_hout','Houten tussenvloer')}${checkRow('f_tv_beton','Betonnen tussenvloer')}${checkRow('f_tv_metselwerk','Tussenvloer in metselwerk')}
-  ${field('Andere',txt('f_tv_andere',''))}
+  ${CB('f_tv_hout','Houten tussenvloer')}${CB('f_tv_beton','Betonnen tussenvloer')}${CB('f_tv_metselwerk','Tussenvloer in metselwerk')}
+  ${F('Andere',T('f_tv_andere',''))}
 </div>
 <div class="section-card">${secLabel('Gevels')}
-  <div class="g2">
-    ${checkRow('f_gev_trad','Traditionele metselwerk')}${checkRow('f_gev_prefab','Prefab')}
-    ${checkRow('f_gev_baksteen','Baksteen')}${checkRow('f_gev_beton','Betonpanelen')}
-    ${checkRow('f_gev_pleister','Gevelpleister')}${checkRow('f_gev_hout','Hout')}
-    ${checkRow('f_gev_natuur','Natuursteen')}${checkRow('f_gev_metaal','Metaal wandplaten')}
-    ${checkRow('f_gev_silex','Silexpanelen')}${checkRow('f_gev_leien','Leien')}
-    ${checkRow('f_gev_trespa','Trespa')}
-  </div>
-  ${field('Andere',txt('f_gev_andere',''))}
+  <div class="g2">${CB('f_gev_trad','Traditionele metselwerk')}${CB('f_gev_prefab','Prefab')}${CB('f_gev_baksteen','Baksteen')}${CB('f_gev_beton','Betonpanelen')}${CB('f_gev_pleister','Gevelpleister')}${CB('f_gev_hout','Hout')}${CB('f_gev_natuur','Natuursteen')}${CB('f_gev_metaal','Metaal wandplaten')}${CB('f_gev_silex','Silexpanelen')}${CB('f_gev_leien','Leien')}${CB('f_gev_trespa','Trespa')}</div>
+  ${F('Andere',T('f_gev_andere',''))}
 </div>
 <div class="section-card">${secLabel('Buitenschrijnwerk')}
-  ${checkRow('f_bui_hout','Hout')}${checkRow('f_bui_pvc','PVC')}${checkRow('f_bui_alu','Aluminium')}
-  ${field('Andere',txt('f_bui_andere',''))}
+  ${CB('f_bui_hout','Hout')}${CB('f_bui_pvc','PVC')}${CB('f_bui_alu','Aluminium')}
+  ${F('Andere',T('f_bui_andere',''))}
 </div>
 <div class="section-card">${secLabel('Type dak')}
-  <div class="g2">
-    ${checkRow('f_dak_plat','Plat dak')}${checkRow('f_dak_schild','Schilddak')}
-    ${checkRow('f_dak_shed','Sheddak')}${checkRow('f_dak_stro','Strodak')}
-    ${checkRow('f_dak_zadel','Zadeldak')}${checkRow('f_dak_toren','Torendak')}
-    ${checkRow('f_dak_vlinder','Vlinderdak')}${checkRow('f_dak_wolfs','Wolfsdak')}
-  </div>
-  ${field('Andere',txt('f_dak_andere',''))}
+  <div class="g2">${CB('f_dak_plat','Plat dak')}${CB('f_dak_schild','Schilddak')}${CB('f_dak_shed','Sheddak')}${CB('f_dak_stro','Strodak')}${CB('f_dak_zadel','Zadeldak')}${CB('f_dak_toren','Torendak')}${CB('f_dak_vlinder','Vlinderdak')}${CB('f_dak_wolfs','Wolfsdak')}</div>
+  ${F('Andere',T('f_dak_andere',''))}
 </div>
 <div class="section-card">${secLabel('Dakmateriaal')}
-  <div class="g2">
-    ${checkRow('f_dakmat_glas','Glas')}${checkRow('f_dakmat_koper','Koper')}
-    ${checkRow('f_dakmat_asbest','Asbestleien')}${checkRow('f_dakmat_natuurleien','Natuurleien')}
-    ${checkRow('f_dakmat_kunststofleien','Kunststofleien')}${checkRow('f_dakmat_natuur','Natuursteen')}
-    ${checkRow('f_dakmat_pannen','Pannen')}${checkRow('f_dakmat_betonpannen','Betonnen pannen')}
-    ${checkRow('f_dakmat_tegelpannen','Tegelpannen')}${checkRow('f_dakmat_riet','Riet')}
-    ${checkRow('f_dakmat_bitumen_dek','Bitumen dakbedekking')}${checkRow('f_dakmat_zink','Zink')}
-    ${checkRow('f_dakmat_groen','Groen dak')}${checkRow('f_dakmat_epdm','EPDM')}
-    ${checkRow('f_dakmat_bitumen','Bitumen')}${checkRow('f_dakmat_metalen','Metalen dakplaten')}
-    ${checkRow('f_dakmat_stro','Stro')}
-  </div>
-  ${field('Andere',txt('f_dakmat_andere',''))}
+  <div class="g2">${CB('f_dakmat_glas','Glas')}${CB('f_dakmat_koper','Koper')}${CB('f_dakmat_asbest','Asbestleien ⚠')}${CB('f_dakmat_natuurleien','Natuurleien')}${CB('f_dakmat_kunststofleien','Kunststofleien')}${CB('f_dakmat_natuur','Natuursteen')}${CB('f_dakmat_pannen','Pannen')}${CB('f_dakmat_betonpannen','Betonnen pannen')}${CB('f_dakmat_tegelpannen','Tegelpannen')}${CB('f_dakmat_riet','Riet')}${CB('f_dakmat_bitumen_dek','Bitumen dakbedekking')}${CB('f_dakmat_zink','Zink')}${CB('f_dakmat_groen','Groen dak')}${CB('f_dakmat_epdm','EPDM')}${CB('f_dakmat_bitumen','Bitumen')}${CB('f_dakmat_metalen','Metalen dakplaten')}${CB('f_dakmat_stro','Stro')}</div>
+  ${F('Andere',T('f_dakmat_andere',''))}
 </div>
 <div class="section-card">${secLabel('Dakgoten')}
-  <div class="g2">
-    ${checkRow('f_goten_koper','Koper')}${checkRow('f_goten_alu','Aluminium')}
-    ${checkRow('f_goten_pvc','PVC')}${checkRow('f_goten_pvc_bekleed','PVC bekleed')}
-    ${checkRow('f_goten_zink','Zink')}${checkRow('f_goten_hout_ges','Hout geschilderd')}
-    ${checkRow('f_goten_hout_bek','Hout bekleed')}
-  </div>
-  ${field('Andere',txt('f_goten_andere',''))}
+  <div class="g2">${CB('f_goten_koper','Koper')}${CB('f_goten_alu','Aluminium')}${CB('f_goten_pvc','PVC')}${CB('f_goten_pvc_bekleed','PVC bekleed')}${CB('f_goten_zink','Zink')}${CB('f_goten_hout_ges','Hout geschilderd')}${CB('f_goten_hout_bek','Hout bekleed')}</div>
+  ${F('Andere',T('f_goten_andere',''))}
 </div>`;}
 
-// ── STEP 3: INTERIEUR ──
-function renderStep3(){return`
+// ── STEP 3 ──
+function s3(){return`
 <div class="section-card">${secLabel('Afwerking binnenmuren')}
-  <div class="g2">
-    ${checkRow('f_int_pleister','Pleisterwerk')}${checkRow('f_int_behang','Behang')}
-    ${checkRow('f_int_geschilderd','Geschilderd')}${checkRow('f_int_beton','Beton')}
-    ${checkRow('f_int_betegeld','Betegeld')}${checkRow('f_int_metselwerk','Metselwerk')}
-    ${checkRow('f_int_gips','Gipskartonplaat')}${checkRow('f_int_schroten','Schroten')}
-    ${checkRow('f_int_sandwich','Sandwichpanelen')}
-  </div>
-  ${field('Andere',txt('f_int_andere',''))}
+  <div class="g2">${CB('f_int_pleister','Pleisterwerk')}${CB('f_int_behang','Behang')}${CB('f_int_geschilderd','Geschilderd')}${CB('f_int_beton','Beton')}${CB('f_int_betegeld','Betegeld')}${CB('f_int_metselwerk','Metselwerk')}${CB('f_int_gips','Gipskartonplaat')}${CB('f_int_schroten','Schroten')}${CB('f_int_sandwich','Sandwichpanelen')}</div>
+  ${F('Andere',T('f_int_andere',''))}
 </div>
 <div class="section-card">${secLabel('Plafonds')}
-  <div class="g2">
-    ${checkRow('f_plaf_pleister','Pleisterwerk')}${checkRow('f_plaf_behang','Behang')}
-    ${checkRow('f_plaf_geschilderd','Geschilderd')}${checkRow('f_plaf_beton','Beton')}
-    ${checkRow('f_plaf_gips','Gipskartonplaat')}${checkRow('f_plaf_schroten_h','Schroten hout')}
-    ${checkRow('f_plaf_schroten_p','Schroten pvc')}${checkRow('f_plaf_span','Spanplafond')}
-    ${checkRow('f_plaf_welf','Welfsels')}${checkRow('f_plaf_tegels','Plafondtegels')}
-  </div>
-  ${field('Andere',txt('f_plaf_andere',''))}
+  <div class="g2">${CB('f_plaf_pleister','Pleisterwerk')}${CB('f_plaf_behang','Behang')}${CB('f_plaf_geschilderd','Geschilderd')}${CB('f_plaf_beton','Beton')}${CB('f_plaf_gips','Gipskartonplaat')}${CB('f_plaf_schroten_h','Schroten hout')}${CB('f_plaf_schroten_p','Schroten pvc')}${CB('f_plaf_span','Spanplafond')}${CB('f_plaf_welf','Welfsels')}${CB('f_plaf_tegels','Plafondtegels')}</div>
+  ${F('Andere',T('f_plaf_andere',''))}
 </div>
 <div class="section-card">${secLabel('Binnendeuren')}
-  <div class="g2">
-    ${checkRow('f_bd_geschilderd','Geschilderde deuren')}${checkRow('f_bd_fineer','Fineerdeuren')}
-    ${checkRow('f_bd_volhout','Volhouten deuren')}${checkRow('f_bd_veiligheid','Veiligheidsdeur')}
-    ${checkRow('f_bd_glas','Glazen deur')}${checkRow('f_bd_staal','Stalen deur')}
-  </div>
-  ${field('Andere',txt('f_bd_andere',''))}
+  <div class="g2">${CB('f_bd_geschilderd','Geschilderde deuren')}${CB('f_bd_fineer','Fineerdeuren')}${CB('f_bd_volhout','Volhouten deuren')}${CB('f_bd_veiligheid','Veiligheidsdeur')}${CB('f_bd_glas','Glazen deur')}${CB('f_bd_staal','Stalen deur')}</div>
+  ${F('Andere',T('f_bd_andere',''))}
 </div>
 <div class="section-card">${secLabel('Trappen')}
-  <div class="g2">
-    ${checkRow('f_trap_hout','Hout')}${checkRow('f_trap_beton_teg','Beton met tegels')}
-    ${checkRow('f_trap_beton_hout','Beton met houtbekleding')}${checkRow('f_trap_natuur','Natuursteen')}
-    ${checkRow('f_trap_metaal','Metaal')}${checkRow('f_trap_glas','Glas')}
-  </div>
-  ${field('Andere',txt('f_trap_andere',''))}
+  <div class="g2">${CB('f_trap_hout','Hout')}${CB('f_trap_beton_teg','Beton met tegels')}${CB('f_trap_beton_hout','Beton met houtbekleding')}${CB('f_trap_natuur','Natuursteen')}${CB('f_trap_metaal','Metaal')}${CB('f_trap_glas','Glas')}</div>
+  ${F('Andere',T('f_trap_andere',''))}
 </div>`;}
 
-// ── STEP 4: ENERGIE & TECHNIEKEN ──
-function renderStep4(){return`
+// ── STEP 4 ──
+function s4(){return`
 <div class="section-card">${secLabel('EPC')}
-  <div class="g2">${field('Energieclassificatie',sel('f_epc_klasse',EPC_KLASSEN,'— kies —'))}${field('EPC waarde (kWh/m²/jaar)',num('f_epc_waarde',''))}</div>
+  <div class="g3">${F('Officiële EPC klasse',S('f_epc_klasse',EPC_KLASSEN,'— kies —'))}${F('Geschatte EPC klasse',S('f_epc_geschat',EPC_KLASSEN,'— kies —'))}${F('EPC waarde (kWh/m²/jaar)',N('f_epc_waarde',''))}</div>
 </div>
 <div class="section-card">${secLabel('Verwarming & koeling')}
-  <div class="g2">
-    ${checkRow('f_verw_gasketel','Gasketel')}${checkRow('f_verw_stookolie','Stookolie')}
-    ${checkRow('f_verw_elek','Elektrisch')}${checkRow('f_verw_conv','Convectoren')}
-    ${checkRow('f_verw_hout','Hout')}${checkRow('f_verw_kolen','Kolen')}
-    ${checkRow('f_verw_wp','Warmtepomp')}${checkRow('f_verw_pellets','Pellets')}
-    ${checkRow('f_verw_geo','Geothermisch')}${checkRow('f_verw_warme_lucht','Warme lucht')}
-    ${checkRow('f_verw_elek_acc','Elektrisch met accumulatie')}${checkRow('f_verw_elek_geen_acc','Elektrisch zonder accumulatie')}
-    ${checkRow('f_verw_houtkachel','Houtkachel')}${checkRow('f_verw_kolenkachel','Kolenkachel')}
-    ${checkRow('f_verw_pelletkachel','Pelletkachel')}${checkRow('f_verw_ind','Individueel')}
-    ${checkRow('f_verw_coll','Collectief')}${checkRow('f_verw_airco','Air conditioning')}
-    ${checkRow('f_verw_wp_lw','Lucht-water warmtepomp')}${checkRow('f_verw_wp_ll','Lucht-lucht warmtepomp')}
-    ${checkRow('f_verw_wp_gw','Grond-water warmtepomp')}${checkRow('f_verw_wp_ww','Water-Water warmtepomp')}
-    ${checkRow('f_verw_wp_hyb','Hybride warmtepomp')}${checkRow('f_verw_rad','Radiatoren')}
-    ${checkRow('f_verw_vloer','Vloerverwarming')}${checkRow('f_verw_gaskachel','Gaskachel')}
-    ${checkRow('f_verw_oliekachel','Oliekachel')}${checkRow('f_verw_cv','Centrale verwarming')}
-    ${checkRow('f_verw_geen','Geen')}
-  </div>
-  ${field('Andere',txt('f_verw_andere',''))}
+  <div class="g2">${CB('f_verw_gasketel','Gasketel')}${CB('f_verw_stookolie','Stookolie')}${CB('f_verw_elek','Elektrisch')}${CB('f_verw_conv','Convectoren')}${CB('f_verw_hout','Hout')}${CB('f_verw_kolen','Kolen')}${CB('f_verw_wp','Warmtepomp')}${CB('f_verw_pellets','Pellets')}${CB('f_verw_geo','Geothermisch')}${CB('f_verw_warme_lucht','Warme lucht')}${CB('f_verw_elek_acc','Elektrisch met accumulatie')}${CB('f_verw_elek_geen_acc','Elektrisch zonder accumulatie')}${CB('f_verw_houtkachel','Houtkachel')}${CB('f_verw_kolenkachel','Kolenkachel')}${CB('f_verw_pelletkachel','Pelletkachel')}${CB('f_verw_ind','Individueel')}${CB('f_verw_coll','Collectief')}${CB('f_verw_airco','Air conditioning')}${CB('f_verw_wp_lw','Lucht-water warmtepomp')}${CB('f_verw_wp_ll','Lucht-lucht warmtepomp')}${CB('f_verw_wp_gw','Grond-water warmtepomp')}${CB('f_verw_wp_ww','Water-Water warmtepomp')}${CB('f_verw_wp_hyb','Hybride warmtepomp')}${CB('f_verw_rad','Radiatoren')}${CB('f_verw_vloer','Vloerverwarming')}${CB('f_verw_gaskachel','Gaskachel')}${CB('f_verw_oliekachel','Oliekachel')}${CB('f_verw_cv','Centrale verwarming')}${CB('f_verw_geen','Geen')}</div>
+  ${F('Andere',T('f_verw_andere',''))}
 </div>
 <div class="section-card">${secLabel('Locatie ketel')}
-  ${field('Locatie',sel('f_ketel_locatie',['Keuken','Wasplaats','Kelder','Zolder'],'— kies —'))}
-  ${field('Andere locatie',txt('f_ketel_locatie_andere',''))}
+  ${F('Locatie',S('f_ketel_locatie',['Keuken','Wasplaats','Kelder','Zolder'],'— kies —'))}
+  ${F('Andere locatie',T('f_ketel_locatie_andere',''))}
 </div>
 <div class="section-card">${secLabel('Isolatie')}
-  <div class="g2">
-    ${checkRow('f_iso_akoestisch','Akoestische isolatie')}${checkRow('f_iso_dak','Dakisolatie')}
-    ${checkRow('f_iso_spouw','Spouwisolatie')}${checkRow('f_iso_hr_glas','Hoogrendementsglas')}
-    ${checkRow('f_iso_vloer','Vloerisolatie')}${checkRow('f_iso_binnenmuur','Binnenmuurisolatie')}
-    ${checkRow('f_iso_buitengevel','Buitengevelisolatie')}
-  </div>
-  ${field('Andere',txt('f_iso_andere',''))}
+  ${CB('f_iso_akoestisch','Akoestische isolatie')}
+  ${isoDetail('iso_dak','Dakisolatie',['Tussen de spanten','Op de zolderverdieping','Aan de binnenzijde','Aan de buitenzijde'])}
+  ${isoDetail('iso_spouw','Spouwisolatie',[])}
+  ${CB('f_iso_hr_glas','Hoogrendementsglas')}
+  ${isoDetail('iso_vloer','Vloerisolatie',['Onder de vloer','In de vloer'])}
+  ${isoDetail('iso_binnenmuur','Binnenmuurisolatie',[])}
+  ${isoDetail('iso_buitengevel','Buitengevelisolatie',['Aan de buitenzijde','Aan de binnenzijde'])}
+  ${F('Andere',T('f_iso_andere',''))}
 </div>
 <div class="section-card">${secLabel('Ramen & beglazing')}
-  <div class="g2">
-    ${checkRow('f_ramen_enkel','Enkel glas')}${checkRow('f_ramen_dubbel','Dubbel glas')}
-    ${checkRow('f_ramen_drievoud','Drievoudig glas')}${checkRow('f_ramen_zonwerend','Zonwerend glas')}
-    ${checkRow('f_ramen_hr','Dubbel glas met HR')}${checkRow('f_ramen_rolluiken','Rolluiken')}
-  </div>
-  ${field('Andere',txt('f_ramen_andere',''))}
+  <div class="g2">${CB('f_ramen_enkel','Enkel glas')}${CB('f_ramen_dubbel','Dubbel glas')}${CB('f_ramen_drievoud','Drievoudig glas')}${CB('f_ramen_zonwerend','Zonwerend glas')}${CB('f_ramen_hr','Dubbel glas met HR')}${CB('f_ramen_rolluiken','Rolluiken')}</div>
+  ${F('Andere',T('f_ramen_andere',''))}
 </div>
 <div class="section-card">${secLabel('Zonnepanelen')}
-  ${field('Aanwezig',tiles('f_zonnepanelen',['Ja','Neen']))}
-  <div id="zp-extra" style="display:${formData.zonnepanelen?'block':'none'}">
-    <div class="g2" style="margin-top:10px;">${field('Aantal panelen',num('f_zp_aantal',''))}${field('Vermogen (kWp)',num('f_zp_vermogen',''))}</div>
-    <div class="g2">${field('Oriëntatie',sel('f_zp_orientatie',WINDRICHTINGEN,'— kies —'))}${field('Jaar installatie',num('f_zp_jaar',''))}</div>
+  ${F('Aanwezig',TILES('f_zonnepanelen_r',['Ja','Neen']))}
+  <div id="zp-detail" style="display:${formData.zonnepanelen?'block':'none'}">
+    <div class="g2" style="margin-top:10px;">${F('Aantal panelen',N('f_zp_aantal',''))}${F('Vermogen (kWp)',N('f_zp_vermogen',''))}</div>
+    <div class="g2">${F('Oriëntatie',S('f_zp_orientatie',WINDRICHTINGEN,'— kies —'))}${F('Jaar installatie',N('f_zp_jaar',''))}</div>
   </div>
 </div>
 <div class="section-card">${secLabel('Zonneboiler')}
-  ${field('Aanwezig',tiles('f_zonneboiler',['Ja','Neen']))}
-  <div id="zb-extra" style="display:${formData.zonneboiler?'block':'none'}">
-    <div style="margin-top:10px;">${field('Aantal m² collectoren',num('f_zb_m2',''))}</div>
+  ${F('Aanwezig',TILES('f_zonneboiler_r',['Ja','Neen']))}
+  <div id="zb-detail" style="display:${formData.zonneboiler?'block':'none'}">
+    <div style="margin-top:10px;">${F('Collectoren (m²)',N('f_zb_m2',''))}</div>
   </div>
 </div>
 <div class="section-card">${secLabel('Batterij')}
-  ${field('Aanwezig',tiles('f_batterij',['Ja','Neen']))}
-  <div id="bat-extra" style="display:${formData.batterij?'block':'none'}">
-    <div style="margin-top:10px;">${field('Capaciteit (kWh)',num('f_bat_kwh',''))}</div>
+  ${F('Aanwezig',TILES('f_batterij_r',['Ja','Neen']))}
+  <div id="bat-detail" style="display:${formData.batterij?'block':'none'}">
+    <div style="margin-top:10px;">${F('Capaciteit (kWh)',N('f_bat_kwh',''))}</div>
   </div>
 </div>
 <div class="section-card">${secLabel('Elektro')}
-  <div class="g2">
-    ${field('Domotica',tiles('f_domotica',['Ja','Neen']))}
-    ${field('Parlefoon / videofoon',tiles('f_parlefoon',['Parlefoon','Videofoon','Geen']))}
-  </div>
-  <div id="domotica-comment-wrap" style="display:${formData.domotica==='Ja'?'block':'none'}">
-    ${field('Commentaar domotica',`<textarea id="f_domotica_comment" placeholder="Beschrijf het systeem…"></textarea>`)}
-  </div>
-  <div class="g2">
-    ${field('Inbraakbeveiliging',tiles('f_inbraak',['Ja','Neen']))}
-    ${field('Brandalarm',tiles('f_brand',['Ja','Neen']))}
-  </div>
-  <div id="inbraak-comment-wrap" style="display:${formData.inbraak==='Ja'?'block':'none'}">
-    ${field('Commentaar inbraakbeveiliging',`<textarea id="f_inbraak_comment" placeholder="Beschrijf het systeem…"></textarea>`)}
-  </div>
-  ${field('Elektrische teller',tiles('f_teller',['Digitaal','Analoog']))}
+  <div class="g2">${F('Domotica',TILES('f_domotica_r',['Ja','Neen']))}${F('Parlefoon / videofoon',TILES('f_parlefoon_r',['Parlefoon','Videofoon','Geen']))}</div>
+  <div id="dom-detail" style="display:${formData.domotica==='Ja'?'block':'none'}">${F('Commentaar domotica',`<textarea id="f_domotica_comment" placeholder="Beschrijf systeem…"></textarea>`)}</div>
+  <div class="g2">${F('Inbraakbeveiliging',TILES('f_inbraak_r',['Ja','Neen']))}${F('Brandalarm',TILES('f_brand_r',['Ja','Neen']))}</div>
+  <div id="inbraak-detail" style="display:${formData.inbraak==='Ja'?'block':'none'}">${F('Commentaar inbraakbeveiliging',`<textarea id="f_inbraak_comment" placeholder="Beschrijf systeem…"></textarea>`)}</div>
+  ${F('Elektrische teller',TILES('f_teller_r',['Digitaal','Analoog']))}
 </div>
 <div class="section-card">${secLabel('Ventilatie')}
-  <div class="g2">
-    ${checkRow('f_vent_a','Systeem A (natuurlijk toe- en afvoer)')}
-    ${checkRow('f_vent_b','Systeem B (mech. toevoer, nat. afvoer)')}
-    ${checkRow('f_vent_c','Systeem C (nat. toevoer, mech. afvoer)')}
-    ${checkRow('f_vent_cplus','Systeem C+ (vraaggestuurd)')}
-    ${checkRow('f_vent_d','Systeem D (mech. + warmterecuperatie)')}
-    ${checkRow('f_vent_nat','Natuurlijke ventilatie')}
-    ${checkRow('f_vent_geen','Geen')}
-  </div>
-  ${field('Warmterecuperatie',tiles('f_vent_warmterec',['Ja','Neen']))}
-  ${field('Commentaar',`<textarea id="f_vent_comment" placeholder="Opmerkingen…"></textarea>`)}
+  <div class="g2">${CB('f_vent_a','Systeem A')}${CB('f_vent_b','Systeem B')}${CB('f_vent_c','Systeem C')}${CB('f_vent_cplus','Systeem C+')}${CB('f_vent_d','Systeem D (WTW)')}${CB('f_vent_nat','Natuurlijk')}${CB('f_vent_geen','Geen')}</div>
+  ${F('Warmterecuperatie',TILES('f_vent_warmterec_r',['Ja','Neen']))}
+  ${F('Commentaar',`<textarea id="f_vent_comment" placeholder="…"></textarea>`)}
 </div>`;}
 
 // ── STEP 5: WOONPLAATSEN ──
-function renderStep5(){
-  return`
+function s5(){return`
 <div class="section-card">${secLabel('Globaal overzicht (aan tafel)')}
-  <div class="g3">${field('Aantal slaapkamers',num('f_globaal_sk',''))}${field('Aantal badkamers',num('f_globaal_bdk',''))}${field('WC in badkamer',num('f_globaal_wc_in',''))}</div>
-  <div class="g3">${field('WC buiten badkamer',num('f_globaal_wc_buiten',''))}${field('Kelder aanwezig',sel('f_globaal_kelder',['Neen','Ja']))}${field('Zolder aanwezig',sel('f_globaal_zolder',['Neen','Ja']))}</div>
-  <div id="zolder-detail" style="display:${formData.globaal_zolder==='Ja'?'grid':'none'};grid-template-columns:1fr 1fr;gap:10px;">
-    ${field('Toegang zolder',sel('f_zolder_toegang',['Vaste trap','Luik']))}
-    ${field('Type zolder',sel('f_zolder_type',['Uitgewerkte zolder','Stockagezolder'],'— kies —'))}
+  <div class="g3">${F('Slaapkamers',N('f_globaal_sk',''))}${F('Badkamers',N('f_globaal_bdk',''))}${F('WC in badkamer',N('f_globaal_wc_in',''))}</div>
+  <div class="g3">${F('WC buiten badkamer',N('f_globaal_wc_buiten',''))}${F('Kelder',S('f_globaal_kelder',['Neen','Ja']))}${F('Zolder',S('f_globaal_zolder',['Neen','Ja']))}</div>
+  <div id="zolder-det" style="display:${formData.globaal_zolder==='Ja'?'grid':'none'};grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
+    ${F('Toegang',S('f_zolder_toegang',['Vaste trap','Luik']))}
+    ${F('Type',S('f_zolder_type',['Uitgewerkte zolder','Stockagezolder'],'— kies —'))}
   </div>
-  ${field('Garage aanwezig',sel('f_globaal_garage',['Neen','Ja']))}
+  ${F('Garage',S('f_globaal_garage',['Neen','Ja']))}
 </div>
 <div class="section-card">${secLabel('Ruimtes (rondgang)')}
   <div id="ruimtes-container"></div>
   <button class="btn-add" onclick="addRuimte()">+ Ruimte toevoegen</button>
-</div>
-<div class="section-card">${secLabel('Renovatiekosten')}
-  <div class="g3">${field('Dringend (€)',num('f_kost_dringend',''))}${field('Middellange termijn (€)',num('f_kost_mlt',''))}${field('Totale renovatie (€)',num('f_kost_reno',''))}</div>
-</div>`;
-}
+  <div id="opp-samenvatting" style="margin-top:14px;display:none;">
+    <div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px;display:flex;align-items:center;gap:8px;">Samenvatting oppervlaktes per verdieping<span style="flex:1;height:1px;background:var(--border);display:block;"></span></div>
+    <div id="opp-tabel"></div>
+  </div>
+</div>`;}
 
-// ── STEP 6: TUIN & EXTRA ──
-function renderStep6(){return`
+// ── STEP 6: RENOVATIE ──
+function s6(){
+  const ruimtesMetReno=(formData.ruimtes||[]).filter(r=>r.renovatie&&r.renovatie.nodig);
+  const totDringend=ruimtesMetReno.filter(r=>r.renovatie.prioriteit==='dringend').reduce((s,r)=>s+(parseFloat(r.renovatie.kost)||0),0);
+  const totMlt=ruimtesMetReno.filter(r=>r.renovatie.prioriteit==='mlt').reduce((s,r)=>s+(parseFloat(r.renovatie.kost)||0),0);
+  const totKan=ruimtesMetReno.filter(r=>r.renovatie.prioriteit==='kan-wachten').reduce((s,r)=>s+(parseFloat(r.renovatie.kost)||0),0);
+  return`
+<div class="section-card">${secLabel('Samenvatting te renoveren (vanuit ruimtes)')}
+  ${ruimtesMetReno.length?`
+    ${ruimtesMetReno.map(r=>`<div style="background:var(--bg);border-radius:var(--radius-sm);padding:10px 12px;margin-bottom:8px;border-left:3px solid ${r.renovatie.prioriteit==='dringend'?'var(--red)':r.renovatie.prioriteit==='mlt'?'var(--orange)':'var(--green)'};">
+      <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+        <span style="font-weight:600;font-size:14px;">${r.naam}</span>
+        <span class="reno-${r.renovatie.prioriteit}">${r.renovatie.prioriteit==='dringend'?'Dringend':r.renovatie.prioriteit==='mlt'?'MLT':'Kan wachten'}</span>
+      </div>
+      <div style="font-size:13px;color:var(--text-muted);">${r.renovatie.omschrijving||'—'}${r.renovatie.kost?' · €'+parseFloat(r.renovatie.kost).toLocaleString('nl-BE'):''}</div>
+    </div>`).join('')}
+    <div style="background:var(--accent-light);border-radius:var(--radius-sm);padding:12px;margin-top:8px;">
+      <div style="display:flex;justify-content:space-between;font-size:14px;margin-bottom:4px;"><span>🔴 Dringend</span><span style="font-weight:600;">€${totDringend.toLocaleString('nl-BE')}</span></div>
+      <div style="display:flex;justify-content:space-between;font-size:14px;margin-bottom:4px;"><span>🟠 Middellange termijn</span><span style="font-weight:600;">€${totMlt.toLocaleString('nl-BE')}</span></div>
+      <div style="display:flex;justify-content:space-between;font-size:14px;margin-bottom:4px;"><span>🟢 Kan wachten</span><span style="font-weight:600;">€${totKan.toLocaleString('nl-BE')}</span></div>
+      <div style="display:flex;justify-content:space-between;font-size:15px;font-weight:700;border-top:1px solid var(--border);padding-top:8px;margin-top:4px;"><span>Totaal</span><span>€${(totDringend+totMlt+totKan).toLocaleString('nl-BE')}</span></div>
+    </div>`:'<p style="font-size:14px;color:var(--text-muted);">Geen renovaties aangeduid in de ruimtes. Ga naar stap "Woonplaatsen" om renovaties per ruimte aan te duiden.</p>'}
+</div>
+<div class="section-card">${secLabel('Historiek uitgevoerde renovaties')}
+  <div id="historiek-container"></div>
+  <button class="btn-add" onclick="addHistoriek()">+ Renovatie toevoegen</button>
+</div>`;}
+
+// ── STEP 7: TUIN & EXTRA ──
+function s7(){return`
 <div class="section-card">${secLabel('Tuin')}
-  ${field('Tuin aanwezig',tiles('f_tuin_aanwezig',['Ja','Neen']))}
-  <div id="tuin-detail" style="display:${formData.tuin_aanwezig==='Ja'?'block':'none'}">
-    <div class="g2" style="margin-top:10px;">${field('Oppervlakte (m², optioneel)',num('f_tuin_oppervlakte',''))}${field('Bron oppervlakte',sel('f_tuin_opp_bron',BRON_OPP,'— kies —'))}</div>
-    <div class="g2">${field('Oriëntatie',sel('f_tuin_orientatie',WINDRICHTINGEN,'— kies —'))}${field('Ligging',sel('f_tuin_ligging',['Voor','Achter','Zij','Rondom'],'— kies —'))}</div>
-    <div class="field"><label>Type tuin</label><div class="g2">${checkRow('f_tuin_sier','Siertuin')}${checkRow('f_tuin_moes','Moestuin')}${checkRow('f_tuin_fruit','Fruittuin')}${checkRow('f_tuin_gazon','Gazon')}${checkRow('f_tuin_natuur','Natuurtuin')}</div>${field('Andere',txt('f_tuin_andere',''))}</div>
-    ${field('Afsluiting',sel('f_afsluiting',['Geen','Haag','Houten omheining','Metalen omheining','Muur','Combinatie'],'— kies —'))}
-    ${field('Andere afsluiting',txt('f_afsluiting_andere',''))}
-    <div class="field"><label>Bestrating / verharding</label><div class="g2">${checkRow('f_bestrating_tegels','Tegels')}${checkRow('f_bestrating_kassein','Kasseien')}${checkRow('f_bestrating_hout','Hout/terrasplanken')}${checkRow('f_bestrating_grind','Grind')}${checkRow('f_bestrating_beton','Beton')}</div>${field('Andere',txt('f_bestrating_andere',''))}</div>
-    <div class="g2">${field('Tuinhuis',tiles('f_tuinhuis',['Ja','Neen']))}${field('Carport',tiles('f_carport',['Ja','Neen']))}</div>
-    ${field('Oprit (materiaal)',sel('f_oprit',['Tegels','Kasseien','Beton','Grind','Asfalt'],'— kies —'))}
-    <div class="g2">${field('Buitenverlichting',tiles('f_buitenverlichting',['Ja','Neen']))}${field('Beregeningssysteem',tiles('f_beregening',['Ja','Neen']))}</div>
-    ${field('Algemene toestand tuin',toestand('tuin'))}
-    ${field('Commentaar tuin',`<textarea id="f_tuin_comment" placeholder="Opmerkingen…"></textarea>`)}
+  ${F('Tuin aanwezig',TILES('f_tuin_aanwezig_r',['Ja','Neen']))}
+  <div id="tuin-det" style="display:${formData.tuin_aanwezig==='Ja'?'block':'none'}">
+    <div class="g2" style="margin-top:10px;">${F('Oppervlakte (m²)',N('f_tuin_oppervlakte',''))}${F('Bron',S('f_tuin_opp_bron',BRON_OPP,'— kies —'))}</div>
+    <div class="g2">${F('Oriëntatie',S('f_tuin_orientatie',WINDRICHTINGEN,'— kies —'))}${F('Ligging',S('f_tuin_ligging',['Voor','Achter','Zij','Rondom'],'— kies —'))}</div>
+    <div class="field"><label>Type tuin</label><div class="g2">${CB('f_tuin_sier','Siertuin')}${CB('f_tuin_moes','Moestuin')}${CB('f_tuin_fruit','Fruittuin')}${CB('f_tuin_gazon','Gazon')}${CB('f_tuin_natuur','Natuurtuin')}</div></div>
+    ${F('Afsluiting',S('f_afsluiting',['Geen','Haag','Houten omheining','Metalen omheining','Muur','Combinatie'],'— kies —'))}
+    <div class="field"><label>Bestrating</label><div class="g2">${CB('f_bestrating_tegels','Tegels')}${CB('f_bestrating_kassein','Kasseien')}${CB('f_bestrating_hout','Hout/terrasplanken')}${CB('f_bestrating_grind','Grind')}${CB('f_bestrating_beton','Beton')}</div></div>
+    <div class="g2">${F('Tuinhuis',TILES('f_tuinhuis_r',['Ja','Neen']))}${F('Carport',TILES('f_carport_r',['Ja','Neen']))}</div>
+    ${F('Oprit',S('f_oprit',['Tegels','Kasseien','Beton','Grind','Asfalt'],'— kies —'))}
+    <div class="g2">${F('Buitenverlichting',TILES('f_buitenverlichting_r',['Ja','Neen']))}${F('Beregeningssysteem',TILES('f_beregening_r',['Ja','Neen']))}</div>
+    ${F('Toestand tuin',TS('tuin'))}
+    ${F('Commentaar',`<textarea id="f_tuin_comment" placeholder="…"></textarea>`)}
   </div>
 </div>
 <div class="section-card">${secLabel('Extra voorzieningen')}
   <div class="g2">
-    ${field('Zwembad',tiles('f_zwembad',['Ja','Neen']))}
-    <div id="zwembad-type-wrap" style="display:${formData.zwembad==='Ja'?'block':'none'}">
-      ${field('Type zwembad',sel('f_zwembad_type',['Opzet','Inground','Binnen'],'— kies —'))}
-    </div>
+    ${F('Zwembad',TILES('f_zwembad_r',['Ja','Neen']))}
+    <div id="zw-det" style="display:${formData.zwembad==='Ja'?'block':'none'}">${F('Type',S('f_zwembad_type',['Opzet','Inground','Binnen'],'— kies —'))}</div>
   </div>
-  <div class="g2">
-    ${field('Sauna',tiles('f_sauna',['Ja','Neen']))}
-    ${field('Jacuzzi',tiles('f_jacuzzi',['Ja','Neen']))}
-  </div>
-  <div class="g2">
-    ${field('Tennisterrein',tiles('f_tennis',['Ja','Neen']))}
-    ${field('Vijver',tiles('f_vijver',['Ja','Neen']))}
-  </div>
-  ${field('Commentaar',`<textarea id="f_extra_comment" placeholder="Andere bijzonderheden…"></textarea>`)}
+  <div class="g2">${F('Sauna',TILES('f_sauna_r',['Ja','Neen']))}${F('Jacuzzi',TILES('f_jacuzzi_r',['Ja','Neen']))}</div>
+  <div class="g2">${F('Tennisterrein',TILES('f_tennis_r',['Ja','Neen']))}${F('Vijver',TILES('f_vijver_r',['Ja','Neen']))}</div>
+  ${F('Commentaar',`<textarea id="f_extra_comment" placeholder="…"></textarea>`)}
 </div>`;}
 
-// ── STEP 7: FOTO'S ──
-function renderStep7(){return`
-<div class="section-card">${secLabel("Foto's")}
-  <p style="font-size:14px;color:var(--text-muted);margin-bottom:14px;">Algemene foto's van het pand. Per ruimte kan je ook foto's toevoegen in stap 6.</p>
-  <input type="file" accept="image/*" capture="environment" class="hidden-file" id="photo-input-main" multiple onchange="handlePhotoUpload(this,'photos','photo-grid-main')">
-  <div class="photo-grid" id="photo-grid-main"></div>
+// ── STEP 8: FOTO'S ──
+function s8(){return`
+<div class="section-card">${secLabel("Algemene foto's")}
+  <p style="font-size:14px;color:var(--text-muted);margin-bottom:14px;">Algemene foto's van het pand. Per ruimte kan je ook foto's toevoegen in stap Woonplaatsen.</p>
+  <input type="file" accept="image/*" capture="environment" class="hidden-file" id="photo-input-main" multiple onchange="handlePhotoUpload(this,'photos','pg-main')">
+  <div class="photo-grid" id="pg-main"></div>
   <button class="btn-secondary" style="width:100%;margin-top:12px;padding:16px;" onclick="document.getElementById('photo-input-main').click()">📷 Foto toevoegen</button>
 </div>`;}
 
+// ── KAARTEN ──
+function renderKaartGrid(){
+  const grid=document.getElementById('kaart-grid');if(!grid)return;
+  grid.innerHTML=KAART_SLOTS.map(slot=>{
+    const img=formData[slot.key];
+    return`<div class="kaart-slot${img?' has-img':''}" id="ks_${slot.key}">
+      ${img?`<img src="${img}" alt="${slot.label}">`:
+        `<div class="kaart-slot-empty" onclick="document.getElementById('ki_${slot.key}').click()">
+          <div class="kaart-icon">${slot.icon}</div>
+          <span>Tik om toe te voegen</span>
+        </div>`}
+      <div class="kaart-slot-label">
+        <span>${slot.label}</span>
+        ${img?`<button onclick="deleteKaart('${slot.key}')" style="background:none;border:none;color:var(--red);cursor:pointer;font-size:16px;">✕</button>`:
+          `<button onclick="document.getElementById('ki_${slot.key}').click()" style="background:none;border:none;color:var(--accent);cursor:pointer;font-size:13px;">+ Upload</button>`}
+      </div>
+      <input type="file" accept="image/*" class="hidden-file" id="ki_${slot.key}" onchange="handleKaartUpload('${slot.key}',this)">
+    </div>`;
+  }).join('');
+}
+
+function handleKaartUpload(key,input){
+  const file=input.files[0];if(!file)return;
+  const reader=new FileReader();
+  reader.onload=e=>{
+    const img=new Image();
+    img.onload=()=>{
+      const canvas=document.createElement('canvas');
+      const MAX=1200;let w=img.width,h=img.height;
+      if(w>MAX){h=Math.round(h*MAX/w);w=MAX;}
+      canvas.width=w;canvas.height=h;
+      canvas.getContext('2d').drawImage(img,0,0,w,h);
+      formData[key]=canvas.toDataURL('image/jpeg',.85);
+      saveCurrentDossier();renderKaartGrid();
+    };img.src=e.target.result;
+  };reader.readAsDataURL(file);input.value='';
+}
+function deleteKaart(key){formData[key]='';saveCurrentDossier();renderKaartGrid();}
+
 // ── RUIMTES ──
-const RUIMTE_TYPES=['Living','Eetkamer','Keuken','Slaapkamer','Badkamer','WC','Bureau','Hobbyruimte','Wasplaats','Berging','Kelder','Zolder','Garage','Andere'];
+function addRuimte(){
+  if(!formData.ruimtes)formData.ruimtes=[];
+  formData.ruimtes.push({naam:'Living',verdiep:'Gelijkvloers',metingen:[],opp_bron:'',vloer:[],toestand:'',comment:'',photos:[],renovatie:{nodig:false,prioriteit:'',omschrijving:'',kost:''}});
+  renderRuimtesContainer();
+}
+function deleteRuimte(i){formData.ruimtes.splice(i,1);renderRuimtesContainer();}
+function updateRuimte(i,k,v){if(formData.ruimtes[i])formData.ruimtes[i][k]=v;}
+function updateRuimteNaam(i,v){if(formData.ruimtes[i]){formData.ruimtes[i].naam=v;renderRuimtesContainer();}}
+function updateRuimteVloer(i,v,c){if(!formData.ruimtes[i].vloer)formData.ruimtes[i].vloer=[];if(c){if(!formData.ruimtes[i].vloer.includes(v))formData.ruimtes[i].vloer.push(v);}else{formData.ruimtes[i].vloer=formData.ruimtes[i].vloer.filter(x=>x!==v);}}
+function updateRenovatie(i,k,v){if(formData.ruimtes[i]){if(!formData.ruimtes[i].renovatie)formData.ruimtes[i].renovatie={nodig:false,prioriteit:'',omschrijving:'',kost:''};formData.ruimtes[i].renovatie[k]=v;}}
+function setPrio(i,v,el){formData.ruimtes[i].renovatie.prioriteit=v;el.closest('.prio-group').querySelectorAll('.prio-btn').forEach(b=>b.className='prio-btn');el.classList.add('sel-'+v);}
+function setTsRuimte(i,v,el){formData.ruimtes[i].toestand=v;el.closest('.toestand-group').querySelectorAll('.ts').forEach(t=>t.className='ts');el.classList.add('sel-'+v);}
+
+// Metingen
+function addMeting(i){if(!formData.ruimtes[i].metingen)formData.ruimtes[i].metingen=[];formData.ruimtes[i].metingen.push({l:'',b:'',label:''});renderRuimtesContainer();}
+function deleteMeting(ri,mi){formData.ruimtes[ri].metingen.splice(mi,1);renderRuimtesContainer();}
+function updateMeting(ri,mi,k,v){formData.ruimtes[ri].metingen[mi][k]=v;calcTotaalOpp(ri);}
+function calcTotaalOpp(ri){
+  const r=formData.ruimtes[ri];if(!r)return;
+  const tot=(r.metingen||[]).reduce((s,m)=>{const l=parseFloat(m.l)||0;const b=parseFloat(m.b)||0;return s+l*b;},0);
+  r.totaal_opp=tot>0?Math.round(tot*100)/100:0;
+  const el=document.getElementById('totaal_opp_'+ri);
+  if(el)el.textContent=tot>0?`Totaal: ${r.totaal_opp} m²`:'';
+  (r.metingen||[]).forEach((m,mi)=>{
+    const res=document.getElementById(`mres_${ri}_${mi}`);
+    const l=parseFloat(m.l)||0;const b=parseFloat(m.b)||0;
+    if(res)res.textContent=l&&b?`${Math.round(l*b*100)/100} m²`:'';
+  });
+  renderOppSamenvatting();
+}
+
+function renderRuimtesContainer(){
+  const c=document.getElementById('ruimtes-container');if(!c)return;
+  if(!formData.ruimtes)formData.ruimtes=[];
+  c.innerHTML=formData.ruimtes.map((r,i)=>renderRuimteCard(r,i)).join('');
+  formData.ruimtes.forEach((r,i)=>{
+    if(!r.photos)r.photos=[];
+    renderPhotoGrid('pg-ruimte-'+i,r.photos,'ruimtes.'+i+'.photos');
+  });
+  renderOppSamenvatting();
+}
+
+function renderOppSamenvatting(){
+  const el=document.getElementById('opp-samenvatting');
+  const tbl=document.getElementById('opp-tabel');
+  if(!el||!tbl)return;
+  if(!formData.ruimtes||!formData.ruimtes.length){el.style.display='none';return;}
+
+  // Group by verdiep
+  const verdiepOrder=['Gelijkvloers','1e verdiep','2e verdiep','3e verdiep','4e verdiep','5e verdiep+','Onbekend'];
+  const groups={};
+  formData.ruimtes.forEach(r=>{
+    const verd=r.verdiep||'Onbekend';
+    if(!groups[verd])groups[verd]={ruimtes:[],totaal:0};
+    const opp=(r.metingen||[]).reduce((s,m)=>s+(parseFloat(m.l)||0)*(parseFloat(m.b)||0),0);
+    const oppR=Math.round(opp*100)/100;
+    groups[verd].ruimtes.push({naam:r.naam,opp:oppR,toestand:r.toestand});
+    groups[verd].totaal=Math.round((groups[verd].totaal+opp)*100)/100;
+  });
+
+  const totaalAlles=Object.values(groups).reduce((s,g)=>s+g.totaal,0);
+  const bewoonbaar=parseFloat(formData.bewoonbaar)||0;
+  const diff=bewoonbaar?Math.round((totaalAlles-bewoonbaar)*100)/100:null;
+
+  const tsKleur={nieuw:'var(--green)',zg:'#1a7a50',goed:'#4a7a2a',matig:'var(--orange)',slecht:'var(--red)'};
+
+  const rows=verdiepOrder.filter(v=>groups[v]).map(v=>{
+    const g=groups[v];
+    const ruimteList=g.ruimtes.map(r=>`<span style="display:inline-flex;align-items:center;gap:4px;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:2px 7px;font-size:12px;margin:2px;">
+      ${r.naam}${r.opp?` <em style="color:var(--text-muted);font-style:normal;">${r.opp}m²</em>`:''}
+      ${r.toestand?`<span style="width:8px;height:8px;border-radius:50%;background:${tsKleur[r.toestand]||'var(--border)'};display:inline-block;"></span>`:''}
+    </span>`).join('');
+    return`<tr>
+      <td style="padding:8px 10px;font-weight:600;font-size:13px;white-space:nowrap;vertical-align:top;border-bottom:1px solid var(--bg);">${v}</td>
+      <td style="padding:8px 10px;font-size:13px;vertical-align:top;border-bottom:1px solid var(--bg);">${ruimteList}</td>
+      <td style="padding:8px 10px;font-weight:600;font-size:13px;white-space:nowrap;text-align:right;vertical-align:top;border-bottom:1px solid var(--bg);color:var(--accent);">${g.totaal>0?g.totaal+' m²':'—'}</td>
+    </tr>`;
+  }).join('');
+
+  const diffHtml=diff!==null?`<tr>
+    <td colspan="2" style="padding:8px 10px;font-size:12px;color:${Math.abs(diff)>5?'var(--orange)':'var(--text-muted)'};">
+      ${Math.abs(diff)>5?'⚠ ':''}Verschil met pre-visit bewoonbaar (${bewoonbaar} m²): ${diff>0?'+':''}${diff} m²
+    </td>
+    <td></td>
+  </tr>`:'';
+
+  tbl.innerHTML=`<table style="width:100%;border-collapse:collapse;background:var(--surface);border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--border);">
+    <thead><tr style="background:var(--accent);">
+      <th style="padding:8px 10px;font-size:11px;font-weight:600;color:#fff;text-align:left;">Verdieping</th>
+      <th style="padding:8px 10px;font-size:11px;font-weight:600;color:#fff;text-align:left;">Ruimtes</th>
+      <th style="padding:8px 10px;font-size:11px;font-weight:600;color:#fff;text-align:right;">Totaal m²</th>
+    </tr></thead>
+    <tbody>
+      ${rows}
+      <tr style="background:var(--accent-light);">
+        <td style="padding:10px;font-weight:700;font-size:14px;color:var(--accent);">Totaal gemeten</td>
+        <td></td>
+        <td style="padding:10px;font-weight:700;font-size:14px;text-align:right;color:var(--accent);">${Math.round(totaalAlles*100)/100} m²</td>
+      </tr>
+      ${diffHtml}
+    </tbody>
+  </table>
+  <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;font-size:12px;">
+    <span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:50%;background:var(--green);display:inline-block;"></span>Nieuw/ZG</span>
+    <span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:50%;background:#4a7a2a;display:inline-block;"></span>Goed</span>
+    <span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:50%;background:var(--orange);display:inline-block;"></span>Matig</span>
+    <span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:50%;background:var(--red);display:inline-block;"></span>Slecht</span>
+  </div>`;
+  el.style.display='block';
+}
 
 function renderRuimteCard(r,i){
   const tsVal=r.toestand||'';
-  return`<div class="ruimte-card" id="ruimte-card-${i}">
+  const renoNodig=r.renovatie&&r.renovatie.nodig;
+  const priVal=r.renovatie&&r.renovatie.prioriteit||'';
+  const metHtml=(r.metingen||[]).map((m,mi)=>`
+    <div class="meting-row">
+      <input class="meting-input" type="number" placeholder="L" value="${m.l||''}" oninput="updateMeting(${i},${mi},'l',this.value)">
+      <span style="color:var(--text-muted);font-size:13px;">×</span>
+      <input class="meting-input" type="number" placeholder="B" value="${m.b||''}" oninput="updateMeting(${i},${mi},'b',this.value)">
+      <span style="color:var(--text-muted);font-size:13px;">m</span>
+      <span class="meting-result" id="mres_${i}_${mi}">${m.l&&m.b?`${Math.round(parseFloat(m.l)*parseFloat(m.b)*100)/100} m²`:''}</span>
+      <input class="meting-label-input" type="text" placeholder="Label (bv. nis)" value="${m.label||''}" oninput="updateMeting(${i},${mi},'label',this.value)">
+      <button class="meting-del" onclick="deleteMeting(${i},${mi})">✕</button>
+    </div>`).join('');
+  const totOpp=r.totaal_opp||(r.metingen||[]).reduce((s,m)=>s+(parseFloat(m.l)||0)*(parseFloat(m.b)||0),0);
+
+  return`<div class="ruimte-card" id="rc_${i}">
     <div class="ruimte-header">
-      <div class="ruimte-title">${r.naam||'Nieuwe ruimte'} ${i+1}</div>
+      <div class="ruimte-title">${r.naam||'Ruimte'} ${i+1}</div>
       <button class="ruimte-del" onclick="deleteRuimte(${i})">✕</button>
     </div>
     <div class="g2" style="margin-bottom:10px;">
-      ${field('Type ruimte',`<select onchange="updateRuimteNaam(${i},this.value)">${RUIMTE_TYPES.map(t=>`<option${t===r.naam?' selected':''}>${t}</option>`).join('')}</select>`)}
-      ${field('Verdieping',`<select onchange="updateRuimte(${i},'verdiep',this.value)">${VERDIEP_OPTIES.map(v=>`<option${v===r.verdiep?' selected':''}>${v}</option>`).join('')}</select>`)}
+      ${F('Type',`<select onchange="updateRuimteNaam(${i},this.value)">${RUIMTE_TYPES.map(t=>`<option${t===r.naam?' selected':''}>${t}</option>`).join('')}</select>`)}
+      ${F('Verdieping',`<select onchange="updateRuimte(${i},'verdiep',this.value)">${VERDIEP_OPTIES.map(v=>`<option${v===r.verdiep?' selected':''}>${v}</option>`).join('')}</select>`)}
     </div>
-    <div class="g2" style="margin-bottom:10px;">
-      ${field('Oppervlakte (m², optioneel)',`<input type="number" placeholder="" value="${r.opp||''}" onchange="updateRuimte(${i},'opp',this.value)">`)}
-      ${field('Bron oppervlakte',`<select onchange="updateRuimte(${i},'opp_bron',this.value)">${['','Gemeten ter plaatse','Uit bouwplan','Geschat','Onbekend'].map(v=>`<option${v===r.opp_bron?' selected':''}>${v}</option>`).join('')}</select>`)}
+    <div class="field"><label>📐 Metingen</label>
+      ${metHtml}
+      ${totOpp>0?`<div class="meting-totaal" id="totaal_opp_${i}">Totaal: ${Math.round(totOpp*100)/100} m²</div>`:`<div id="totaal_opp_${i}"></div>`}
+      <button class="btn-add" style="margin-top:8px;padding:10px;" onclick="addMeting(${i})">+ Meting toevoegen</button>
     </div>
-    <div class="field"><label>Vloer</label><div style="display:flex;flex-wrap:wrap;gap:6px;">${VLOER_OPTIES.map(v=>`<label style="display:flex;align-items:center;gap:5px;font-size:13px;cursor:pointer;"><input type="checkbox" ${(r.vloer||[]).includes(v)?'checked':''} onchange="updateRuimteVloer(${i},'${v}',this.checked)"> ${v}</label>`).join('')}</div></div>
+    ${F('Bron oppervlakte',`<select onchange="updateRuimte(${i},'opp_bron',this.value)">${['','Gemeten ter plaatse','Uit bouwplan','Geschat','Onbekend'].map(v=>`<option${v===r.opp_bron?' selected':''}>${v}</option>`).join('')}</select>`)}
+    <div class="field"><label>Vloer</label><div style="display:flex;flex-wrap:wrap;gap:6px;">${VLOER_OPTIES.map(v=>`<label style="display:flex;align-items:center;gap:5px;font-size:13px;cursor:pointer;border:1.5px solid ${(r.vloer||[]).includes(v)?'var(--accent)':'var(--border)'};border-radius:6px;padding:6px 10px;background:${(r.vloer||[]).includes(v)?'var(--accent-light)':'var(--bg)'}"><input type="checkbox" style="display:none" ${(r.vloer||[]).includes(v)?'checked':''} onchange="updateRuimteVloer(${i},'${v}',this.checked);this.parentElement.style.borderColor=this.checked?'var(--accent)':'var(--border)';this.parentElement.style.background=this.checked?'var(--accent-light)':'var(--bg)'"> ${v}</label>`).join('')}</div></div>
     ${renderRuimteExtra(r,i)}
     <div class="field"><label>Toestand</label>
-      <div class="toestand-group">${['Nieuw','ZG','Goed','Matig','Slecht'].map(t=>`<div class="ts${tsVal===t.toLowerCase()?' sel-'+t.toLowerCase():''}" onclick="updateRuimte(${i},'toestand','${t.toLowerCase()}');setTsDirect(this)">${t}</div>`).join('')}</div>
+      <div class="toestand-group">${['Nieuw','ZG','Goed','Matig','Slecht'].map(t=>`<div class="ts${tsVal===t.toLowerCase()?' sel-'+t.toLowerCase():''}" onclick="setTsRuimte(${i},'${t.toLowerCase()}',this)">${t}</div>`).join('')}</div>
     </div>
     <div class="field"><label>Commentaar</label><textarea placeholder="Opmerkingen…" onchange="updateRuimte(${i},'comment',this.value)">${r.comment||''}</textarea></div>
+    <div class="field" style="background:${renoNodig?'var(--red-light)':'var(--bg)'};border-radius:var(--radius-sm);padding:10px;border:1.5px solid ${renoNodig?'#e8c0c0':'var(--border)'};">
+      <label style="display:flex;align-items:center;gap:10px;cursor:pointer;font-weight:600;"><input type="checkbox" ${renoNodig?'checked':''} onchange="updateRenovatie(${i},'nodig',this.checked);this.closest('.field').style.background=this.checked?'var(--red-light)':'var(--bg)';this.closest('.field').style.borderColor=this.checked?'#e8c0c0':'var(--border)'"> 🔧 Renovatie nodig</label>
+      ${renoNodig?`<div style="margin-top:10px;">
+        <div class="field"><label>Prioriteit</label>
+          <div class="prio-group">
+            <div class="prio-btn${priVal==='dringend'?' sel-dringend':''}" onclick="setPrio(${i},'dringend',this)">🔴 Dringend</div>
+            <div class="prio-btn${priVal==='mlt'?' sel-mlt':''}" onclick="setPrio(${i},'mlt',this)">🟠 MLT</div>
+            <div class="prio-btn${priVal==='kan-wachten'?' sel-kan-wachten':''}" onclick="setPrio(${i},'kan-wachten',this)">🟢 Kan wachten</div>
+          </div>
+        </div>
+        <div class="field"><label>Omschrijving</label><textarea placeholder="Wat moet er gebeuren?" onchange="updateRenovatie(${i},'omschrijving',this.value)">${r.renovatie.omschrijving||''}</textarea></div>
+        ${F('Geschatte kost (€)',`<input type="number" placeholder="" value="${r.renovatie.kost||''}" onchange="updateRenovatie(${i},'kost',this.value)">`)}
+      </div>`:''}
+    </div>
     <div class="field"><label>📷 Foto's van deze ruimte</label>
-      <input type="file" accept="image/*" capture="environment" class="hidden-file" id="photo-input-ruimte-${i}" multiple onchange="handlePhotoUpload(this,'ruimtes.${i}.photos','photo-grid-ruimte-${i}')">
-      <div class="photo-grid" id="photo-grid-ruimte-${i}"></div>
-      <button class="btn-secondary" style="width:100%;margin-top:8px;padding:12px;font-size:13px;" onclick="document.getElementById('photo-input-ruimte-${i}').click()">📷 Foto toevoegen</button>
+      <input type="file" accept="image/*" capture="environment" class="hidden-file" id="pi-r-${i}" multiple onchange="handlePhotoUpload(this,'ruimtes.${i}.photos','pg-ruimte-${i}')">
+      <div class="photo-grid" id="pg-ruimte-${i}"></div>
+      <button class="btn-secondary" style="width:100%;margin-top:8px;padding:12px;font-size:13px;" onclick="document.getElementById('pi-r-${i}').click()">📷 Foto toevoegen</button>
     </div>
   </div>`;
 }
 
 function renderRuimteExtra(r,i){
-  const naam=r.naam||'';
-  let html='';
-  if(naam==='Keuken'){
-    html+=`<div class="g2" style="margin-bottom:10px;">
-      ${field('Type keuken',`<select onchange="updateRuimte(${i},'keuken_type',this.value)"><option>Open</option><option>Half-open</option><option>Gesloten</option></select>`)}
-      ${field('Kooktoestel',`<select onchange="updateRuimte(${i},'kook',this.value)"><option>Gas</option><option>Inductie</option><option>Keramisch</option><option>IR</option></select>`)}
+  let h='';const n=r.naam||'';
+  if(n==='Keuken'){
+    h+=`<div class="g2" style="margin-bottom:10px;">
+      ${F('Type keuken',`<select onchange="updateRuimte(${i},'keuken_type',this.value)"><option>Open</option><option>Half-open</option><option>Gesloten</option></select>`)}
+      ${F('Kooktoestel',`<select onchange="updateRuimte(${i},'kook',this.value)"><option>Gas</option><option>Inductie</option><option>Keramisch</option><option>IR</option></select>`)}
     </div>
-    <div class="g2" style="margin-bottom:10px;">
-      ${field('Afwasmachine',`<div class="tile-group"><input type="radio" id="afwas_ja_${i}" name="afwas_${i}" value="Ja" ${r.afwas==='Ja'?'checked':''}><label for="afwas_ja_${i}">Ja</label><input type="radio" id="afwas_neen_${i}" name="afwas_${i}" value="Neen" ${r.afwas!=='Ja'?'checked':''}><label for="afwas_neen_${i}">Neen</label></div>`)}
-      ${field('Leeftijd keuken (jaar)',`<input type="number" placeholder="" value="${r.keuken_leeft||''}" onchange="updateRuimte(${i},'keuken_leeft',this.value)">`)}
-    </div>`;
+    <div class="g2">${F('Afwasmachine',`<div class="tile-group"><input type="radio" id="aw_j_${i}" name="aw_${i}" value="Ja" ${r.afwas==='Ja'?'checked':''}><label for="aw_j_${i}">Ja</label><input type="radio" id="aw_n_${i}" name="aw_${i}" value="Neen" ${r.afwas!=='Ja'?'checked':''}><label for="aw_n_${i}">Neen</label></div>`)}
+    ${F('Leeftijd (jaar)',`<input type="number" value="${r.keuken_leeft||''}" onchange="updateRuimte(${i},'keuken_leeft',this.value)">`)}</div>`;
   }
-  if(naam==='Badkamer'){
-    html+=`<div class="g2" style="margin-bottom:10px;">
-      ${field('Bad',`<div class="tile-group"><input type="radio" id="bad_ja_${i}" name="bad_${i}" value="Ja" ${r.bad==='Ja'?'checked':''}><label for="bad_ja_${i}">Ja</label><input type="radio" id="bad_neen_${i}" name="bad_${i}" value="Neen" ${r.bad!=='Ja'?'checked':''}><label for="bad_neen_${i}">Neen</label></div>`)}
-      ${field('Douche',`<div class="tile-group"><input type="radio" id="douche_ja_${i}" name="douche_${i}" value="Ja" ${r.douche==='Ja'?'checked':''}><label for="douche_ja_${i}">Ja</label><input type="radio" id="douche_neen_${i}" name="douche_${i}" value="Neen" ${r.douche!=='Ja'?'checked':''}><label for="douche_neen_${i}">Neen</label></div>`)}
-    </div>
-    <div class="g2" style="margin-bottom:10px;">
-      ${field('Lavabo',`<select onchange="updateRuimte(${i},'lavabo',this.value)"><option>Enkel</option><option>Dubbel</option><option>Geen</option></select>`)}
-      ${field('WC aanwezig',`<div class="tile-group"><input type="radio" id="bdk_wc_ja_${i}" name="bdk_wc_${i}" value="Ja" ${r.wc==='Ja'?'checked':''}><label for="bdk_wc_ja_${i}">Ja</label><input type="radio" id="bdk_wc_neen_${i}" name="bdk_wc_${i}" value="Neen" ${r.wc!=='Ja'?'checked':''}><label for="bdk_wc_neen_${i}">Neen</label></div>`)}
-    </div>
-    ${field('Leeftijd badkamer (jaar)',`<input type="number" placeholder="" value="${r.bdk_leeft||''}" onchange="updateRuimte(${i},'bdk_leeft',this.value)">`)}`;
+  if(n==='Badkamer'){
+    h+=`<div class="g2">${F('Bad',`<div class="tile-group"><input type="radio" id="bad_j_${i}" name="bad_${i}" value="Ja" ${r.bad==='Ja'?'checked':''}><label for="bad_j_${i}">Ja</label><input type="radio" id="bad_n_${i}" name="bad_${i}" value="Neen" ${r.bad!=='Ja'?'checked':''}><label for="bad_n_${i}">Neen</label></div>`)}
+    ${F('Douche',`<div class="tile-group"><input type="radio" id="dou_j_${i}" name="dou_${i}" value="Ja" ${r.douche==='Ja'?'checked':''}><label for="dou_j_${i}">Ja</label><input type="radio" id="dou_n_${i}" name="dou_${i}" value="Neen" ${r.douche!=='Ja'?'checked':''}><label for="dou_n_${i}">Neen</label></div>`)}</div>
+    <div class="g2">${F('Lavabo',`<select onchange="updateRuimte(${i},'lavabo',this.value)"><option>Enkel</option><option>Dubbel</option><option>Geen</option></select>`)}
+    ${F('WC aanwezig',`<div class="tile-group"><input type="radio" id="wc_j_${i}" name="wc_${i}" value="Ja" ${r.wc==='Ja'?'checked':''}><label for="wc_j_${i}">Ja</label><input type="radio" id="wc_n_${i}" name="wc_${i}" value="Neen" ${r.wc!=='Ja'?'checked':''}><label for="wc_n_${i}">Neen</label></div>`)}</div>
+    ${F('Leeftijd (jaar)',`<input type="number" value="${r.bdk_leeft||''}" onchange="updateRuimte(${i},'bdk_leeft',this.value)">`)}`;
   }
-  if(naam==='Slaapkamer'){
-    html+=field('Ingebouwde kasten',`<div class="tile-group"><input type="radio" id="kasten_ja_${i}" name="kasten_${i}" value="Ja" ${r.kasten==='Ja'?'checked':''}><label for="kasten_ja_${i}">Ja</label><input type="radio" id="kasten_neen_${i}" name="kasten_${i}" value="Neen" ${r.kasten!=='Ja'?'checked':''}><label for="kasten_neen_${i}">Neen</label></div>`);
-  }
-  if(naam==='Living'||naam==='Eetkamer'){
-    html+=field('Open haard',`<div class="tile-group"><input type="radio" id="haard_ja_${i}" name="haard_${i}" value="Ja" ${r.haard==='Ja'?'checked':''}><label for="haard_ja_${i}">Ja</label><input type="radio" id="haard_neen_${i}" name="haard_${i}" value="Neen" ${r.haard!=='Ja'?'checked':''}><label for="haard_neen_${i}">Neen</label></div>`);
-  }
-  if(naam==='WC'){
-    html+=field('Lavabo aanwezig',`<div class="tile-group"><input type="radio" id="wc_lav_ja_${i}" name="wc_lav_${i}" value="Ja" ${r.lavabo_wc==='Ja'?'checked':''}><label for="wc_lav_ja_${i}">Ja</label><input type="radio" id="wc_lav_neen_${i}" name="wc_lav_${i}" value="Neen" ${r.lavabo_wc!=='Ja'?'checked':''}><label for="wc_lav_neen_${i}">Neen</label></div>`);
-  }
-  if(naam==='Kelder'){
-    html+=field('Vochtigheid',`<div class="tile-group"><input type="radio" id="keld_dr_${i}" name="keld_v_${i}" value="Droog" ${r.vochtig!=='Vochtig'?'checked':''}><label for="keld_dr_${i}">Droog</label><input type="radio" id="keld_vo_${i}" name="keld_v_${i}" value="Vochtig" ${r.vochtig==='Vochtig'?'checked':''}><label for="keld_vo_${i}">Vochtig</label></div>`);
-    html+=field('Hoogte',`<select onchange="updateRuimte(${i},'hoogte',this.value)"><option>Laag</option><option>Normaal</option><option>Hoog</option></select>`);
-  }
-  if(naam==='Zolder'){
-    html+=`<div class="g2">
-      ${field('Toegang',`<select onchange="updateRuimte(${i},'toegang',this.value)"><option>Vaste trap</option><option>Luik</option></select>`)}
-      ${field('Type',`<select onchange="updateRuimte(${i},'zolder_type',this.value)"><option>Uitgewerkte zolder</option><option>Stockagezolder</option></select>`)}
-    </div>`;
-    html+=`<div class="g2">
-      ${field('Geïsoleerd',`<div class="tile-group"><input type="radio" id="zold_iso_ja_${i}" name="zold_iso_${i}" value="Ja" ${r.geiso==='Ja'?'checked':''}><label for="zold_iso_ja_${i}">Ja</label><input type="radio" id="zold_iso_neen_${i}" name="zold_iso_${i}" value="Neen" ${r.geiso!=='Ja'?'checked':''}><label for="zold_iso_neen_${i}">Neen</label></div>`)}
-      ${field('Vochtigheid',`<div class="tile-group"><input type="radio" id="zold_dr_${i}" name="zold_v_${i}" value="Droog" ${r.vochtig!=='Vochtig'?'checked':''}><label for="zold_dr_${i}">Droog</label><input type="radio" id="zold_vo_${i}" name="zold_v_${i}" value="Vochtig" ${r.vochtig==='Vochtig'?'checked':''}><label for="zold_vo_${i}">Vochtig</label></div>`)}
-    </div>`;
-  }
-  if(naam==='Garage'){
-    html+=`<div class="g2">
-      ${field('Type',`<select onchange="updateRuimte(${i},'garage_type',this.value)"><option>Box</option><option>Carport</option><option>Inpandig</option></select>`)}
-      ${field('Aantal wagens',`<input type="number" placeholder="" value="${r.wagens||''}" onchange="updateRuimte(${i},'wagens',this.value)">`)}
-    </div>`;
-    html+=`<div class="g2">
-      ${field('Elektrische poort',`<div class="tile-group"><input type="radio" id="poort_ja_${i}" name="poort_${i}" value="Ja" ${r.poort==='Ja'?'checked':''}><label for="poort_ja_${i}">Ja</label><input type="radio" id="poort_neen_${i}" name="poort_${i}" value="Neen" ${r.poort!=='Ja'?'checked':''}><label for="poort_neen_${i}">Neen</label></div>`)}
-      ${field('Afmetingen',`<input type="text" placeholder="bv. 5 x 2.5" value="${r.afm||''}" onchange="updateRuimte(${i},'afm',this.value)">`)}
-    </div>`;
-  }
-  if(naam==='Wasplaats'||naam==='Berging'){
-    html+=`<div class="g2">
-      ${field('Aansluiting wasmachine',`<div class="tile-group"><input type="radio" id="was_ja_${i}" name="was_${i}" value="Ja" ${r.wasmachine==='Ja'?'checked':''}><label for="was_ja_${i}">Ja</label><input type="radio" id="was_neen_${i}" name="was_${i}" value="Neen" ${r.wasmachine!=='Ja'?'checked':''}><label for="was_neen_${i}">Neen</label></div>`)}
-      ${field('Aansluiting droogkast',`<div class="tile-group"><input type="radio" id="droog_ja_${i}" name="droog_${i}" value="Ja" ${r.droogkast==='Ja'?'checked':''}><label for="droog_ja_${i}">Ja</label><input type="radio" id="droog_neen_${i}" name="droog_${i}" value="Neen" ${r.droogkast!=='Ja'?'checked':''}><label for="droog_neen_${i}">Neen</label></div>`)}
-    </div>`;
-  }
-  return html;
-}
-
-function addRuimte(){
-  if(!formData.ruimtes)formData.ruimtes=[];
-  formData.ruimtes.push({naam:'Living',verdiep:'Gelijkvloers',opp:'',opp_bron:'',vloer:[],toestand:'',comment:'',photos:[]});
-  renderRuimtesContainer();
-}
-function deleteRuimte(i){formData.ruimtes.splice(i,1);renderRuimtesContainer();}
-function updateRuimteNaam(i,val){
-  formData.ruimtes[i].naam=val;
-  const card=document.getElementById('ruimte-card-'+i);
-  if(card){card.querySelector('.ruimte-title').textContent=val+' '+(i+1);}
-  renderRuimtesContainer();
-}
-function updateRuimte(i,key,val){if(formData.ruimtes[i])formData.ruimtes[i][key]=val;}
-function updateRuimteVloer(i,val,checked){
-  if(!formData.ruimtes[i].vloer)formData.ruimtes[i].vloer=[];
-  if(checked){if(!formData.ruimtes[i].vloer.includes(val))formData.ruimtes[i].vloer.push(val);}
-  else{formData.ruimtes[i].vloer=formData.ruimtes[i].vloer.filter(v=>v!==val);}
-}
-function setTsDirect(el){el.closest('.toestand-group').querySelectorAll('.ts').forEach(t=>t.className='ts');el.classList.add('sel-'+el.dataset.val);}
-
-function renderRuimtesContainer(){
-  const c=document.getElementById('ruimtes-container');
-  if(!c)return;
-  if(!formData.ruimtes)formData.ruimtes=[];
-  c.innerHTML=formData.ruimtes.map((r,i)=>renderRuimteCard(r,i)).join('');
-  formData.ruimtes.forEach((r,i)=>{
-    if(!r.photos)r.photos=[];
-    renderPhotoGrid('photo-grid-ruimte-'+i,r.photos,'ruimtes.'+i+'.photos');
-  });
+  if(n==='Slaapkamer')h+=F('Ingebouwde kasten',`<div class="tile-group"><input type="radio" id="ik_j_${i}" name="ik_${i}" value="Ja" ${r.kasten==='Ja'?'checked':''}><label for="ik_j_${i}">Ja</label><input type="radio" id="ik_n_${i}" name="ik_${i}" value="Neen" ${r.kasten!=='Ja'?'checked':''}><label for="ik_n_${i}">Neen</label></div>`);
+  if(n==='Living'||n==='Eetkamer')h+=F('Open haard',`<div class="tile-group"><input type="radio" id="oh_j_${i}" name="oh_${i}" value="Ja" ${r.haard==='Ja'?'checked':''}><label for="oh_j_${i}">Ja</label><input type="radio" id="oh_n_${i}" name="oh_${i}" value="Neen" ${r.haard!=='Ja'?'checked':''}><label for="oh_n_${i}">Neen</label></div>`);
+  if(n==='WC')h+=F('Lavabo aanwezig',`<div class="tile-group"><input type="radio" id="wl_j_${i}" name="wl_${i}" value="Ja" ${r.lavabo_wc==='Ja'?'checked':''}><label for="wl_j_${i}">Ja</label><input type="radio" id="wl_n_${i}" name="wl_${i}" value="Neen" ${r.lavabo_wc!=='Ja'?'checked':''}><label for="wl_n_${i}">Neen</label></div>`);
+  if(n==='Kelder')h+=`<div class="g2">${F('Vochtigheid',`<div class="tile-group"><input type="radio" id="kv_d_${i}" name="kv_${i}" value="Droog" ${r.vochtig!=='Vochtig'?'checked':''}><label for="kv_d_${i}">Droog</label><input type="radio" id="kv_v_${i}" name="kv_${i}" value="Vochtig" ${r.vochtig==='Vochtig'?'checked':''}><label for="kv_v_${i}">Vochtig</label></div>`)}${F('Hoogte',`<select onchange="updateRuimte(${i},'hoogte',this.value)"><option>Laag</option><option>Normaal</option><option>Hoog</option></select>`)}</div>`;
+  if(n==='Zolder')h+=`<div class="g2">${F('Type',`<select onchange="updateRuimte(${i},'zolder_type',this.value)"><option>Uitgewerkte zolder</option><option>Stockagezolder</option></select>`)}${F('Geïsoleerd',`<div class="tile-group"><input type="radio" id="zi_j_${i}" name="zi_${i}" value="Ja" ${r.geiso==='Ja'?'checked':''}><label for="zi_j_${i}">Ja</label><input type="radio" id="zi_n_${i}" name="zi_${i}" value="Neen" ${r.geiso!=='Ja'?'checked':''}><label for="zi_n_${i}">Neen</label></div>`)}</div><div class="g2">${F('Toegang',`<select onchange="updateRuimte(${i},'toegang',this.value)"><option>Vaste trap</option><option>Luik</option></select>`)}${F('Vochtigheid',`<div class="tile-group"><input type="radio" id="zv_d_${i}" name="zv_${i}" value="Droog" ${r.vochtig!=='Vochtig'?'checked':''}><label for="zv_d_${i}">Droog</label><input type="radio" id="zv_v_${i}" name="zv_${i}" value="Vochtig" ${r.vochtig==='Vochtig'?'checked':''}><label for="zv_v_${i}">Vochtig</label></div>`)}</div>`;
+  if(n==='Garage')h+=`<div class="g2">${F('Type',`<select onchange="updateRuimte(${i},'garage_type',this.value)"><option>Box</option><option>Carport</option><option>Inpandig</option></select>`)}${F('Aantal wagens',`<input type="number" value="${r.wagens||''}" onchange="updateRuimte(${i},'wagens',this.value)">`)}</div><div class="g2">${F('Elektrische poort',`<div class="tile-group"><input type="radio" id="ep_j_${i}" name="ep_${i}" value="Ja" ${r.poort==='Ja'?'checked':''}><label for="ep_j_${i}">Ja</label><input type="radio" id="ep_n_${i}" name="ep_${i}" value="Neen" ${r.poort!=='Ja'?'checked':''}><label for="ep_n_${i}">Neen</label></div>`)}${F('Afmetingen',`<input type="text" value="${r.afm||''}" onchange="updateRuimte(${i},'afm',this.value)">`)}</div>`;
+  if(n==='Wasplaats'||n==='Berging')h+=`<div class="g2">${F('Aansluiting wasmachine',`<div class="tile-group"><input type="radio" id="wm_j_${i}" name="wm_${i}" value="Ja" ${r.wasmachine==='Ja'?'checked':''}><label for="wm_j_${i}">Ja</label><input type="radio" id="wm_n_${i}" name="wm_${i}" value="Neen" ${r.wasmachine!=='Ja'?'checked':''}><label for="wm_n_${i}">Neen</label></div>`)}${F('Aansluiting droogkast',`<div class="tile-group"><input type="radio" id="dk_j_${i}" name="dk_${i}" value="Ja" ${r.droogkast==='Ja'?'checked':''}><label for="dk_j_${i}">Ja</label><input type="radio" id="dk_n_${i}" name="dk_${i}" value="Neen" ${r.droogkast!=='Ja'?'checked':''}><label for="dk_n_${i}">Neen</label></div>`)}</div>`;
+  return h;
 }
 
 // ── TERRASSEN ──
-function addTerras(){
-  if(!formData.terrassen)formData.terrassen=[];
-  formData.terrassen.push({orientatie:'',opp:'',verdiep:'Gelijkvloers',toestand:'',comment:''});
-  renderTerrassenContainer();
-}
+function addTerras(){if(!formData.terrassen)formData.terrassen=[];formData.terrassen.push({orientatie:'',opp:'',verdiep:'Gelijkvloers',toestand:''});renderTerrassenContainer();}
 function deleteTerras(i){formData.terrassen.splice(i,1);renderTerrassenContainer();}
-function updateTerras(i,key,val){if(formData.terrassen[i])formData.terrassen[i][key]=val;}
-
+function updateTerras(i,k,v){if(formData.terrassen[i])formData.terrassen[i][k]=v;}
 function renderTerrassenContainer(){
-  const c=document.getElementById('terrassen-container');
-  if(!c)return;
-  if(!formData.terrassen)formData.terrassen=[];
-  c.innerHTML=formData.terrassen.map((t,i)=>`
+  const c=document.getElementById('terrassen-container');if(!c)return;
+  c.innerHTML=(formData.terrassen||[]).map((t,i)=>`
     <div class="ruimte-card" style="margin-top:8px;">
       <div class="ruimte-header"><div class="ruimte-title">Terras ${i+1}</div><button class="ruimte-del" onclick="deleteTerras(${i})">✕</button></div>
-      <div class="g2">
-        ${field('Oriëntatie',`<select onchange="updateTerras(${i},'orientatie',this.value)">${['','N','NO','O','ZO','Z','ZW','W','NW'].map(v=>`<option${v===t.orientatie?' selected':''}>${v}</option>`).join('')}</select>`)}
-        ${field('Oppervlakte (m²)',`<input type="number" placeholder="" value="${t.opp||''}" onchange="updateTerras(${i},'opp',this.value)">`)}
-      </div>
-      ${field('Verdieping/ligging',`<select onchange="updateTerras(${i},'verdiep',this.value)">${VERDIEP_OPTIES.map(v=>`<option${v===t.verdiep?' selected':''}>${v}</option>`).join('')}</select>`)}
-      <div class="field"><label>Toestand</label><div class="toestand-group">${['Nieuw','ZG','Goed','Matig','Slecht'].map(ts=>`<div class="ts${(t.toestand||'')===ts.toLowerCase()?' sel-'+ts.toLowerCase():''}" onclick="updateTerras(${i},'toestand','${ts.toLowerCase()}');setTsDirect(this)">${ts}</div>`).join('')}</div></div>
+      <div class="g2">${F('Oriëntatie',`<select onchange="updateTerras(${i},'orientatie',this.value)">${['','N','NO','O','ZO','Z','ZW','W','NW'].map(v=>`<option${v===t.orientatie?' selected':''}>${v}</option>`).join('')}</select>`)}${F('Oppervlakte (m²)',`<input type="number" value="${t.opp||''}" onchange="updateTerras(${i},'opp',this.value)">`)}</div>
+      ${F('Verdieping',`<select onchange="updateTerras(${i},'verdiep',this.value)">${VERDIEP_OPTIES.map(v=>`<option${v===t.verdiep?' selected':''}>${v}</option>`).join('')}</select>`)}
+      <div class="field"><label>Toestand</label><div class="toestand-group">${['Nieuw','ZG','Goed','Matig','Slecht'].map(ts=>`<div class="ts${(t.toestand||'')===ts.toLowerCase()?' sel-'+ts.toLowerCase():''}" onclick="updateTerras(${i},'toestand','${ts.toLowerCase()}');this.closest('.toestand-group').querySelectorAll('.ts').forEach(x=>x.className='ts');this.classList.add('sel-${ts.toLowerCase()}')">${ts}</div>`).join('')}</div></div>
+    </div>`).join('');
+}
+
+// ── HISTORIEK ──
+const RENO_TYPES=['Dak','Elektriciteit','Sanitair','Keuken','Badkamer','Ramen','Isolatie','Gevel','Vloer','Verwarming','Schilderwerk','Tuin','Andere'];
+function addHistoriek(){if(!formData.renovaties_historiek)formData.renovaties_historiek=[];formData.renovaties_historiek.push({jaar:'',type:'',omschrijving:''});renderHistoriekContainer();}
+function deleteHistoriek(i){formData.renovaties_historiek.splice(i,1);renderHistoriekContainer();}
+function updateHistoriek(i,k,v){if(formData.renovaties_historiek[i])formData.renovaties_historiek[i][k]=v;}
+function renderHistoriekContainer(){
+  const c=document.getElementById('historiek-container');if(!c)return;
+  c.innerHTML=(formData.renovaties_historiek||[]).map((h,i)=>`
+    <div class="ruimte-card" style="margin-bottom:8px;">
+      <div class="ruimte-header"><div class="ruimte-title">Renovatie ${i+1}</div><button class="ruimte-del" onclick="deleteHistoriek(${i})">✕</button></div>
+      <div class="g2">${F('Jaar',`<input type="number" placeholder="bv. 2018" value="${h.jaar||''}" onchange="updateHistoriek(${i},'jaar',this.value)">`)}${F('Type',`<select onchange="updateHistoriek(${i},'type',this.value)">${RENO_TYPES.map(t=>`<option${t===h.type?' selected':''}>${t}</option>`).join('')}</select>`)}</div>
+      ${F('Omschrijving',`<textarea placeholder="Wat werd gedaan?" onchange="updateHistoriek(${i},'omschrijving',this.value)">${h.omschrijving||''}</textarea>`)}
     </div>`).join('');
 }
 
 // ── FOTOS ──
-function renderPhotoGrid(gridId,photos,path){
-  const grid=document.getElementById(gridId);
-  if(!grid)return;
-  if(!photos)photos=[];
-  grid.innerHTML=photos.map((p,i)=>`
-    <div class="photo-thumb">
-      <img src="${p.data}" alt="${p.label||'foto'}">
-      <button class="del-photo" onclick="deletePhoto('${path}',${i},'${gridId}')">✕</button>
-      <input class="photo-label-input" type="text" placeholder="Label" value="${p.label||''}" oninput="updatePhotoLabel('${path}',${i},this.value)">
-    </div>`).join('');
-}
-
-function getPhotoArray(path){
-  const parts=path.split('.');
-  if(parts.length===1)return formData[parts[0]];
-  if(parts.length===3)return formData[parts[0]][parseInt(parts[1])][parts[2]];
-  return[];
-}
-function setPhotoArray(path,arr){
-  const parts=path.split('.');
-  if(parts.length===1)formData[parts[0]]=arr;
-  else if(parts.length===3)formData[parts[0]][parseInt(parts[1])][parts[2]]=arr;
-}
-
+function getArr(path){const p=path.split('.');if(p.length===1)return formData[p[0]];if(p.length===3)return formData[p[0]][parseInt(p[1])][p[2]];return[];}
+function setArr(path,arr){const p=path.split('.');if(p.length===1)formData[p[0]]=arr;else if(p.length===3)formData[p[0]][parseInt(p[1])][p[2]]=arr;}
 function handlePhotoUpload(input,path,gridId){
-  const files=Array.from(input.files);
-  let arr=getPhotoArray(path)||[];
-  let loaded=0;
-  files.forEach(file=>{
-    const reader=new FileReader();
-    reader.onload=e=>{
-      const img=new Image();
-      img.onload=()=>{
-        const canvas=document.createElement('canvas');
-        const MAX=1200;let w=img.width,h=img.height;
-        if(w>MAX){h=Math.round(h*MAX/w);w=MAX;}
-        canvas.width=w;canvas.height=h;
-        canvas.getContext('2d').drawImage(img,0,0,w,h);
-        arr.push({data:canvas.toDataURL('image/jpeg',.82),label:''});
-        loaded++;
-        if(loaded===files.length){setPhotoArray(path,arr);saveCurrentDossier();renderPhotoGrid(gridId,arr,path);}
-      };img.src=e.target.result;
-    };reader.readAsDataURL(file);
-  });
-  input.value='';
+  const files=Array.from(input.files);let arr=getArr(path)||[];let loaded=0;
+  files.forEach(file=>{const reader=new FileReader();reader.onload=e=>{const img=new Image();img.onload=()=>{const canvas=document.createElement('canvas');const MAX=1200;let w=img.width,h=img.height;if(w>MAX){h=Math.round(h*MAX/w);w=MAX;}canvas.width=w;canvas.height=h;canvas.getContext('2d').drawImage(img,0,0,w,h);arr.push({data:canvas.toDataURL('image/jpeg',.82),label:''});loaded++;if(loaded===files.length){setArr(path,arr);saveCurrentDossier();renderPhotoGrid(gridId,arr,path);}};img.src=e.target.result;};reader.readAsDataURL(file);});input.value='';
 }
-function deletePhoto(path,i,gridId){
-  let arr=getPhotoArray(path)||[];arr.splice(i,1);
-  setPhotoArray(path,arr);saveCurrentDossier();renderPhotoGrid(gridId,arr,path);
-}
-function updatePhotoLabel(path,i,val){
-  let arr=getPhotoArray(path)||[];if(arr[i])arr[i].label=val;
-  setPhotoArray(path,arr);saveCurrentDossier();
+function deletePhoto(path,i,gridId){let arr=getArr(path)||[];arr.splice(i,1);setArr(path,arr);saveCurrentDossier();renderPhotoGrid(gridId,arr,path);}
+function updatePhotoLabel(path,i,v){let arr=getArr(path)||[];if(arr[i])arr[i].label=v;setArr(path,arr);}
+function renderPhotoGrid(gridId,photos,path){
+  const grid=document.getElementById(gridId);if(!grid)return;if(!photos)photos=[];
+  grid.innerHTML=photos.map((p,i)=>`<div class="photo-thumb"><img src="${p.data}" alt="${p.label||''}"><button class="del-photo" onclick="deletePhoto('${path}',${i},'${gridId}')">✕</button><input class="photo-label-input" type="text" placeholder="Label" value="${p.label||''}" oninput="updatePhotoLabel('${path}',${i},this.value)"></div>`).join('');
 }
 
 // ── FILL / COLLECT ──
-const simpleFields=['schattingnummer','datum','naam','tel','straat','huisnummer','postcode','gemeente',
-  'grond','breedte_perc','diepte_perc','tuin_opp','bewoonbaar','bouwgebied','bouwjaar','gevel_b','gebouw_d','gebouw_h','verdiep',
-  'gem_verkoop','gem_huur','gem_ppm2','mobiliteit','vraagprijs',
-  'ki','eigenaar_verd','eigenaar_comment','overtred_comment',
-  'app_verdieping','app_verdiepingen_gebouw','app_welke_verdiep',
-  'con_andere','tv_andere','gev_andere','bui_andere',
-  'dak_andere','dakmat_andere','goten_andere',
-  'int_andere','plaf_andra','bd_andere','trap_andere',
-  'epc_waarde','verw_andere','ketel_locatie_andere','iso_andere','ramen_andere',
-  'zp_aantal','zp_vermogen','zp_jaar','zb_m2','bat_kwh',
-  'domotica_comment','inbraak_comment','vent_comment',
-  'globaal_sk','globaal_bdk','globaal_wc_in','globaal_wc_buiten',
-  'kost_dringend','kost_mlt','kost_reno',
-  'tuin_oppervlakte','tuin_andere','afsluiting_andere','bestrating_andere','oprit_andere','tuin_comment','extra_comment'
-];
-const selFields=['overstr','ro','orientatie','pscore','gscore','bebouwing','typepand',
-  'aard','aard_subtype','app_type','overtred','vkr','erfd','gekl',
-  'epc_klasse','ketel_locatie','teller','parlefoon','domotica','inbraak','brand',
-  'vent_warmterec','globaal_kelder','globaal_zolder','zolder_toegang','zolder_type','globaal_garage',
-  'tuin_aanwezig','afsluiting','oprit','tuinhuis','carport','buitenverlichting','beregening',
-  'zwembad','zwembad_type','sauna','jacuzzi','tennis','vijver',
-  'zonnepanelen','zonneboiler','batterij','zp_orientatie','tuin_ligging','tuin_opp_bron'
-];
-const checkFields=['con_trad','con_gelijmd','con_prefab','con_houtskelet','con_houtmassief','con_staal',
-  'tv_hout','tv_beton','tv_metselwerk',
-  'gev_trad','gev_prefab','gev_baksteen','gev_beton','gev_pleister','gev_hout','gev_natuur','gev_metaal','gev_silex','gev_leien','gev_trespa',
-  'bui_hout','bui_pvc','bui_alu',
-  'dak_plat','dak_schild','dak_shed','dak_stro','dak_zadel','dak_toren','dak_vlinder','dak_wolfs',
-  'dakmat_glas','dakmat_koper','dakmat_asbest','dakmat_natuurleien','dakmat_kunststofleien','dakmat_natuur','dakmat_pannen','dakmat_betonpannen','dakmat_tegelpannen','dakmat_riet','dakmat_bitumen_dek','dakmat_zink','dakmat_groen','dakmat_epdm','dakmat_bitumen','dakmat_metalen','dakmat_stro',
-  'goten_koper','goten_alu','goten_pvc','goten_pvc_bekleed','goten_zink','goten_hout_ges','goten_hout_bek',
-  'int_pleister','int_behang','int_geschilderd','int_beton','int_betegeld','int_metselwerk','int_gips','int_schroten','int_sandwich',
-  'plaf_pleister','plaf_behang','plaf_geschilderd','plaf_beton','plaf_gips','plaf_schroten_h','plaf_schroten_p','plaf_span','plaf_welf','plaf_tegels',
-  'bd_geschilderd','bd_fineer','bd_volhout','bd_veiligheid','bd_glas','bd_staal',
-  'trap_hout','trap_beton_teg','trap_beton_hout','trap_natuur','trap_metaal','trap_glas',
-  'verw_gasketel','verw_stookolie','verw_elek','verw_conv','verw_hout','verw_zonne','verw_kolen','verw_wp','verw_pellets','verw_geo','verw_warme_lucht','verw_elek_acc','verw_elek_geen_acc','verw_houtkachel','verw_kolenkachel','verw_pelletkachel','verw_ind','verw_coll','verw_airco','verw_wp_lw','verw_wp_ll','verw_wp_gw','verw_wp_ww','verw_wp_hyb','verw_rad','verw_vloer','verw_gaskachel','verw_oliekachel','verw_cv','verw_geen',
-  'iso_akoestisch','iso_dak','iso_spouw','iso_hr_glas','iso_vloer','iso_binnenmuur','iso_buitengevel',
-  'ramen_enkel','ramen_dubbel','ramen_drievoud','ramen_zonwerend','ramen_hr','ramen_rolluiken',
-  'vent_a','vent_b','vent_c','vent_cplus','vent_d','vent_nat','vent_geen',
-  'app_lift',
-  'tuin_sier','tuin_moes','tuin_fruit','tuin_gazon','tuin_natuur',
-  'bestrating_tegels','bestrating_kassein','bestrating_hout','bestrating_grind','bestrating_beton'
-];
+const SF=['schattingnummer','datum','naam','tel','straat','huisnummer','postcode','gemeente','grond','breedte_perc','diepte_perc','tuin_opp','bewoonbaar','bouwgebied','bouwjaar','gevel_b','gebouw_d','gebouw_h','verdiep','gem_verkoop','gem_huur','gem_ppm2','mobiliteit','vraagprijs','ki','eigenaar_verd','eigenaar_comment','overtred_comment','app_verdieping','app_verdiepingen_gebouw','app_welke_verdiep','con_andere','tv_andere','gev_andere','bui_andere','dak_andere','dakmat_andere','goten_andere','int_andere','plaf_andere','bd_andere','trap_andere','epc_waarde','verw_andere','ketel_locatie_andere','iso_andere','ramen_andere','zp_aantal','zp_vermogen','zp_jaar','zb_m2','bat_kwh','domotica_comment','inbraak_comment','vent_comment','globaal_sk','globaal_bdk','globaal_wc_in','globaal_wc_buiten','tuin_oppervlakte','tuin_comment','extra_comment','iso_dak_dikte','iso_spouw_dikte','iso_vloer_dikte','iso_binnenmuur_dikte','iso_buitengevel_dikte'];
+const SELF=['overstr','ro','orientatie','pscore','gscore','bebouwing','typepand','aard','aard_subtype','overtred','vkr','erfd','erfgoed','erfgoed_type','epc_klasse','epc_geschat','ketel_locatie','bouwjaar_bron','globaal_kelder','globaal_zolder','zolder_toegang','zolder_type','globaal_garage','afsluiting','oprit','zwembad_type','tuin_opp_bron','tuin_ligging','tuin_orientatie','iso_dak_type','iso_dak_ligging','iso_spouw_type','iso_vloer_type','iso_binnenmuur_type','iso_buitengevel_type','iso_buitengevel_ligging','zp_orientatie'];
+const CBF=['con_trad','con_gelijmd','con_prefab','con_houtskelet','con_houtmassief','con_staal','tv_hout','tv_beton','tv_metselwerk','gev_trad','gev_prefab','gev_baksteen','gev_beton','gev_pleister','gev_hout','gev_natuur','gev_metaal','gev_silex','gev_leien','gev_trespa','bui_hout','bui_pvc','bui_alu','dak_plat','dak_schild','dak_shed','dak_stro','dak_zadel','dak_toren','dak_vlinder','dak_wolfs','dakmat_glas','dakmat_koper','dakmat_asbest','dakmat_natuurleien','dakmat_kunststofleien','dakmat_natuur','dakmat_pannen','dakmat_betonpannen','dakmat_tegelpannen','dakmat_riet','dakmat_bitumen_dek','dakmat_zink','dakmat_groen','dakmat_epdm','dakmat_bitumen','dakmat_metalen','dakmat_stro','goten_koper','goten_alu','goten_pvc','goten_pvc_bekleed','goten_zink','goten_hout_ges','goten_hout_bek','int_pleister','int_behang','int_geschilderd','int_beton','int_betegeld','int_metselwerk','int_gips','int_schroten','int_sandwich','plaf_pleister','plaf_behang','plaf_geschilderd','plaf_beton','plaf_gips','plaf_schroten_h','plaf_schroten_p','plaf_span','plaf_welf','plaf_tegels','bd_geschilderd','bd_fineer','bd_volhout','bd_veiligheid','bd_glas','bd_staal','trap_hout','trap_beton_teg','trap_beton_hout','trap_natuur','trap_metaal','trap_glas','verw_gasketel','verw_stookolie','verw_elek','verw_conv','verw_hout','verw_kolen','verw_wp','verw_pellets','verw_geo','verw_warme_lucht','verw_elek_acc','verw_elek_geen_acc','verw_houtkachel','verw_kolenkachel','verw_pelletkachel','verw_ind','verw_coll','verw_airco','verw_wp_lw','verw_wp_ll','verw_wp_gw','verw_wp_ww','verw_wp_hyb','verw_rad','verw_vloer','verw_gaskachel','verw_oliekachel','verw_cv','verw_geen','iso_akoestisch','iso_dak','iso_spouw','iso_hr_glas','iso_vloer','iso_binnenmuur','iso_buitengevel','ramen_enkel','ramen_dubbel','ramen_drievoud','ramen_zonwerend','ramen_hr','ramen_rolluiken','vent_a','vent_b','vent_c','vent_cplus','vent_d','vent_nat','vent_geen','app_lift','tuin_sier','tuin_moes','tuin_fruit','tuin_gazon','tuin_natuur','bestrating_tegels','bestrating_kassein','bestrating_hout','bestrating_grind','bestrating_beton'];
 
 function fillStep(){
-  simpleFields.forEach(k=>{const el=document.getElementById('f_'+k);if(el)el.value=formData[k]||'';});
-  selFields.forEach(k=>{const el=document.getElementById('f_'+k);if(el)el.value=formData[k]||'';});
-  checkFields.forEach(k=>{const el=document.getElementById('f_'+k);if(el)el.checked=!!formData[k];});
-  if(currentStep===6){
-    setTsDisplay('tuin',formData.tuin_toestand||'');
-    ['tuin_aanwezig','zwembad'].forEach(k=>{
-      const ja=document.getElementById('f_'+k+'_Ja');
-      const ne=document.getElementById('f_'+k+'_Neen');
-      if(ja)ja.checked=formData[k]==='Ja';
-      if(ne)ne.checked=formData[k]!=='Ja';
-    });
-    const td=document.getElementById('tuin-detail');
-    if(td)td.style.display=formData.tuin_aanwezig==='Ja'?'block':'none';
-    const zw=document.getElementById('zwembad-type-wrap');
-    if(zw)zw.style.display=formData.zwembad==='Ja'?'block':'none';
-  }
-  if(currentStep===5){
-    renderRuimtesContainer();
-    const zd=document.getElementById('zolder-detail');
-    if(zd)zd.style.display=formData.globaal_zolder==='Ja'?'grid':'none';
-  }
+  SF.forEach(k=>{const e=document.getElementById('f_'+k);if(e)e.value=formData[k]||'';});
+  SELF.forEach(k=>{const e=document.getElementById('f_'+k);if(e)e.value=formData[k]||'';});
+  CBF.forEach(k=>{const e=document.getElementById('f_'+k);if(e)e.checked=!!formData[k];});
+  // isolatie show/hide
+  ['iso_dak','iso_spouw','iso_vloer','iso_binnenmuur','iso_buitengevel'].forEach(k=>{
+    const ja=document.getElementById('f_'+k+'_Ja');const ne=document.getElementById('f_'+k+'_Neen');
+    if(ja)ja.checked=!!formData[k];if(ne)ne.checked=!formData[k];
+    const det=document.getElementById(k+'_detail');if(det)det.style.display=formData[k]?'block':'none';
+    if(ja)ja.addEventListener('change',()=>{formData[k]=true;const d=document.getElementById(k+'_detail');if(d)d.style.display='block';});
+    if(ne)ne.addEventListener('change',()=>{formData[k]=false;const d=document.getElementById(k+'_detail');if(d)d.style.display='none';});
+  });
+  // radio groups
+  const radios={f_app_type:'app_type',f_zonnepanelen_r:'zonnepanelen_r',f_zonneboiler_r:'zonneboiler_r',f_batterij_r:'batterij_r',f_domotica_r:'domotica',f_parlefoon_r:'parlefoon',f_inbraak_r:'inbraak',f_brand_r:'brand',f_teller_r:'teller',f_vent_warmterec_r:'vent_warmterec',f_tuin_aanwezig_r:'tuin_aanwezig',f_tuinhuis_r:'tuinhuis',f_carport_r:'carport',f_buitenverlichting_r:'buitenverlichting',f_beregening_r:'beregening',f_zwembad_r:'zwembad',f_sauna_r:'sauna',f_jacuzzi_r:'jacuzzi',f_tennis_r:'tennis',f_vijver_r:'vijver',f_app_lift:'app_lift'};
+  Object.entries(radios).forEach(([name,key])=>{
+    const v=key==='app_lift'?(formData[key]?'Ja':'Neen'):(key==='zonnepanelen_r'?(formData.zonnepanelen?'Ja':'Neen'):key==='zonneboiler_r'?(formData.zonneboiler?'Ja':'Neen'):key==='batterij_r'?(formData.batterij?'Ja':'Neen'):formData[key]||formData[key.replace('_r','')] );
+    if(v){const el=document.getElementById(name+'_'+String(v).replace(/[^a-zA-Z0-9]/g,'_'));if(el)el.checked=true;}
+  });
+  // dynamic show/hide
+  if(currentStep===0)renderKaartGrid();
   if(currentStep===1){
-    const isApp=(formData.aard||'')==='Appartement of studio';
-    const aw=document.getElementById('app-subtype-wrap');
-    if(aw)aw.style.display=isApp?'block':'none';
-    if(isApp){renderTerrassenContainer();}
-    const hw=document.getElementById('app-welke-wrap');
-    if(hw)hw.style.display=formData.app_type!=='Enkel'?'block':'none';
-    const oc=document.getElementById('overtred-comment-wrap');
-    if(oc)oc.style.display=(formData.overtred==='Ja – gekend'||formData.overtred==='Onbekend')?'block':'none';
-    // radio app_type
-    const rt=document.querySelector(`input[name="f_app_type"][value="${formData.app_type}"]`);
-    if(rt)rt.checked=true;
-    const al=document.getElementById('f_app_lift_Ja');const aln=document.getElementById('f_app_lift_Neen');
-    if(al)al.checked=!!formData.app_lift;if(aln)aln.checked=!formData.app_lift;
+    const aw=document.getElementById('app-wrap');if(aw)aw.style.display=(formData.aard||'')==='Appartement of studio'?'block':'none';
+    const ww=document.getElementById('app-welke');if(ww)ww.style.display=formData.app_type!=='Enkel'?'block':'none';
+    const ow=document.getElementById('overtred-wrap');if(ow)ow.style.display=(formData.overtred==='Ja – gekend'||formData.overtred==='Onbekend')?'block':'none';
+    const ew=document.getElementById('erfgoed-wrap');if(ew)ew.style.display=formData.erfgoed==='Ja'?'block':'none';
+    renderTerrassenContainer();
+    addStep1Listeners();
   }
   if(currentStep===4){
-    ['zonnepanelen','zonneboiler','batterij'].forEach(k=>{
-      const ja=document.getElementById('f_'+k+'_Ja');
-      const ne=document.getElementById('f_'+k+'_Neen');
-      if(ja)ja.checked=!!formData[k];if(ne)ne.checked=!formData[k];
-    });
-    const zpx=document.getElementById('zp-extra');if(zpx)zpx.style.display=formData.zonnepanelen?'block':'none';
-    const zbx=document.getElementById('zb-extra');if(zbx)zbx.style.display=formData.zonneboiler?'block':'none';
-    const bax=document.getElementById('bat-extra');if(bax)bax.style.display=formData.batterij?'block':'none';
-    ['domotica','inbraak','brand','teller','parlefoon','vent_warmterec'].forEach(k=>{
-      const v=formData[k];
-      const el=document.querySelector(`input[name="f_${k}"][value="${v}"]`);
-      if(el)el.checked=true;
-    });
-    const dw=document.getElementById('domotica-comment-wrap');if(dw)dw.style.display=formData.domotica==='Ja'?'block':'none';
-    const iw=document.getElementById('inbraak-comment-wrap');if(iw)iw.style.display=formData.inbraak==='Ja'?'block':'none';
+    const zpd=document.getElementById('zp-detail');if(zpd)zpd.style.display=formData.zonnepanelen?'block':'none';
+    const zbd=document.getElementById('zb-detail');if(zbd)zbd.style.display=formData.zonneboiler?'block':'none';
+    const bad=document.getElementById('bat-detail');if(bad)bad.style.display=formData.batterij?'block':'none';
+    const dd=document.getElementById('dom-detail');if(dd)dd.style.display=formData.domotica==='Ja'?'block':'none';
+    const id2=document.getElementById('inbraak-detail');if(id2)id2.style.display=formData.inbraak==='Ja'?'block':'none';
+    addStep4Listeners();
   }
-  // add event listeners for dynamic show/hide
-  addDynamicListeners();
+  if(currentStep===5){renderRuimtesContainer();const zd=document.getElementById('zolder-det');if(zd)zd.style.display=formData.globaal_zolder==='Ja'?'grid':'none';}
+  if(currentStep===7){
+    const td=document.getElementById('tuin-det');if(td)td.style.display=formData.tuin_aanwezig==='Ja'?'block':'none';
+    const zwd=document.getElementById('zw-det');if(zwd)zwd.style.display=formData.zwembad==='Ja'?'block':'none';
+    setTsDisp('tuin',formData.tuin_toestand||'');
+    addStep7Listeners();
+  }
 }
 
-function addDynamicListeners(){
-  const aardEl=document.getElementById('f_aard');
-  if(aardEl)aardEl.addEventListener('change',function(){
-    formData.aard=this.value;
-    const w=document.getElementById('app-subtype-wrap');
-    if(w)w.style.display=this.value==='Appartement of studio'?'block':'none';
-  });
-  const appType=document.querySelectorAll('input[name="f_app_type"]');
-  appType.forEach(el=>el.addEventListener('change',function(){
-    formData.app_type=this.value;
-    const w=document.getElementById('app-welke-wrap');
-    if(w)w.style.display=this.value!=='Enkel'?'block':'none';
-  }));
-  const overtredEl=document.getElementById('f_overtred');
-  if(overtredEl)overtredEl.addEventListener('change',function(){
-    formData.overtred=this.value;
-    const w=document.getElementById('overtred-comment-wrap');
-    if(w)w.style.display=(this.value==='Ja – gekend'||this.value==='Onbekend')?'block':'none';
-  });
-  ['zonnepanelen','zonneboiler','batterij'].forEach(k=>{
-    const ja=document.getElementById('f_'+k+'_Ja');
-    const ne=document.getElementById('f_'+k+'_Neen');
-    if(ja)ja.addEventListener('change',function(){formData[k]=true;const x=document.getElementById(k.replace('zonnepanelen','zp').replace('zonneboiler','zb').replace('batterij','bat')+'-extra')||document.getElementById(k==='zonnepanelen'?'zp-extra':k==='zonneboiler'?'zb-extra':'bat-extra');if(x)x.style.display='block';});
-    if(ne)ne.addEventListener('change',function(){formData[k]=false;const x=document.getElementById(k==='zonnepanelen'?'zp-extra':k==='zonneboiler'?'zb-extra':'bat-extra');if(x)x.style.display='none';});
-  });
-  const domJa=document.getElementById('f_domotica_Ja');const domNe=document.getElementById('f_domotica_Neen');
-  if(domJa)domJa.addEventListener('change',()=>{formData.domotica='Ja';const w=document.getElementById('domotica-comment-wrap');if(w)w.style.display='block';});
-  if(domNe)domNe.addEventListener('change',()=>{formData.domotica='Neen';const w=document.getElementById('domotica-comment-wrap');if(w)w.style.display='none';});
-  const inbrJa=document.getElementById('f_inbraak_Ja');const inbrNe=document.getElementById('f_inbraak_Neen');
-  if(inbrJa)inbrJa.addEventListener('change',()=>{formData.inbraak='Ja';const w=document.getElementById('inbraak-comment-wrap');if(w)w.style.display='block';});
-  if(inbrNe)inbrNe.addEventListener('change',()=>{formData.inbraak='Neen';const w=document.getElementById('inbraak-comment-wrap');if(w)w.style.display='none';});
-  const tuinJa=document.getElementById('f_tuin_aanwezig_Ja');const tuinNe=document.getElementById('f_tuin_aanwezig_Neen');
-  if(tuinJa)tuinJa.addEventListener('change',()=>{formData.tuin_aanwezig='Ja';const w=document.getElementById('tuin-detail');if(w)w.style.display='block';});
-  if(tuinNe)tuinNe.addEventListener('change',()=>{formData.tuin_aanwezig='Neen';const w=document.getElementById('tuin-detail');if(w)w.style.display='none';});
-  const zwJa=document.getElementById('f_zwembad_Ja');const zwNe=document.getElementById('f_zwembad_Neen');
-  if(zwJa)zwJa.addEventListener('change',()=>{formData.zwembad='Ja';const w=document.getElementById('zwembad-type-wrap');if(w)w.style.display='block';});
-  if(zwNe)zwNe.addEventListener('change',()=>{formData.zwembad='Neen';const w=document.getElementById('zwembad-type-wrap');if(w)w.style.display='none';});
-  const zoldEl=document.getElementById('f_globaal_zolder');
-  if(zoldEl)zoldEl.addEventListener('change',function(){
-    formData.globaal_zolder=this.value;
-    const w=document.getElementById('zolder-detail');
-    if(w)w.style.display=this.value==='Ja'?'grid':'none';
-  });
+function addStep1Listeners(){
+  const ae=document.getElementById('f_aard');if(ae)ae.addEventListener('change',function(){formData.aard=this.value;const w=document.getElementById('app-wrap');if(w)w.style.display=this.value==='Appartement of studio'?'block':'none';});
+  document.querySelectorAll('input[name="f_app_type"]').forEach(e=>e.addEventListener('change',function(){formData.app_type=this.value;const w=document.getElementById('app-welke');if(w)w.style.display=this.value!=='Enkel'?'block':'none';}));
+  const oe=document.getElementById('f_overtred');if(oe)oe.addEventListener('change',function(){formData.overtred=this.value;const w=document.getElementById('overtred-wrap');if(w)w.style.display=(this.value==='Ja – gekend'||this.value==='Onbekend')?'block':'none';});
+  const ee=document.getElementById('f_erfgoed');if(ee)ee.addEventListener('change',function(){formData.erfgoed=this.value;const w=document.getElementById('erfgoed-wrap');if(w)w.style.display=this.value==='Ja'?'block':'none';});
 }
+function addStep4Listeners(){
+  [['zonnepanelen_r','zonnepanelen','zp-detail'],['zonneboiler_r','zonneboiler','zb-detail'],['batterij_r','batterij','bat-detail']].forEach(([n,k,d])=>{
+    const ja=document.getElementById('f_'+n+'_Ja');const ne=document.getElementById('f_'+n+'_Neen');
+    if(ja)ja.addEventListener('change',()=>{formData[k]=true;const x=document.getElementById(d);if(x)x.style.display='block';});
+    if(ne)ne.addEventListener('change',()=>{formData[k]=false;const x=document.getElementById(d);if(x)x.style.display='none';});
+  });
+  const dj=document.getElementById('f_domotica_r_Ja');const dn=document.getElementById('f_domotica_r_Neen');
+  if(dj)dj.addEventListener('change',()=>{formData.domotica='Ja';const d=document.getElementById('dom-detail');if(d)d.style.display='block';});
+  if(dn)dn.addEventListener('change',()=>{formData.domotica='Neen';const d=document.getElementById('dom-detail');if(d)d.style.display='none';});
+  const ij=document.getElementById('f_inbraak_r_Ja');const in2=document.getElementById('f_inbraak_r_Neen');
+  if(ij)ij.addEventListener('change',()=>{formData.inbraak='Ja';const d=document.getElementById('inbraak-detail');if(d)d.style.display='block';});
+  if(in2)in2.addEventListener('change',()=>{formData.inbraak='Neen';const d=document.getElementById('inbraak-detail');if(d)d.style.display='none';});
+}
+function addStep7Listeners(){
+  const tj=document.getElementById('f_tuin_aanwezig_r_Ja');const tn=document.getElementById('f_tuin_aanwezig_r_Neen');
+  if(tj)tj.addEventListener('change',()=>{formData.tuin_aanwezig='Ja';const d=document.getElementById('tuin-det');if(d)d.style.display='block';});
+  if(tn)tn.addEventListener('change',()=>{formData.tuin_aanwezig='Neen';const d=document.getElementById('tuin-det');if(d)d.style.display='none';});
+  const zj=document.getElementById('f_zwembad_r_Ja');const zn=document.getElementById('f_zwembad_r_Neen');
+  if(zj)zj.addEventListener('change',()=>{formData.zwembad='Ja';const d=document.getElementById('zw-det');if(d)d.style.display='block';});
+  if(zn)zn.addEventListener('change',()=>{formData.zwembad='Neen';const d=document.getElementById('zw-det');if(d)d.style.display='none';});
+}
+
+function setTs(id,v,el){const c=document.getElementById('tsg_'+id);if(c)c.querySelectorAll('.ts').forEach(t=>t.className='ts');el.classList.add('sel-'+v);formData.tuin_toestand=v;}
+function setTsDisp(id,v){if(!v)return;const c=document.getElementById('tsg_'+id);if(!c)return;c.querySelectorAll('.ts').forEach(t=>{t.className='ts'+(t.dataset.val===v?' sel-'+v:'');});}
 
 function collectStep(){
-  simpleFields.forEach(k=>{const el=document.getElementById('f_'+k);if(el)formData[k]=el.value;});
-  selFields.forEach(k=>{const el=document.getElementById('f_'+k);if(el)formData[k]=el.value;});
-  checkFields.forEach(k=>{const el=document.getElementById('f_'+k);if(el)formData[k]=el.checked;});
-  if(currentStep===4){
-    ['zonnepanelen','zonneboiler','batterij'].forEach(k=>{
-      const ja=document.getElementById('f_'+k+'_Ja');formData[k]=!!(ja&&ja.checked);
-    });
-    ['domotica','inbraak','brand','teller','parlefoon','vent_warmterec'].forEach(k=>{
-      const checked=document.querySelector(`input[name="f_${k}"]:checked`);if(checked)formData[k]=checked.value;
-    });
-  }
-  if(currentStep===1){
-    const at=document.querySelector('input[name="f_app_type"]:checked');if(at)formData.app_type=at.value;
-    const al=document.getElementById('f_app_lift_Ja');formData.app_lift=!!(al&&al.checked);
-  }
-  if(currentStep===6){
-    setTsFromGroup('tuin','tuin_toestand');
-    ['tuin_aanwezig','zwembad','sauna','jacuzzi','tennis','vijver','tuinhuis','carport','buitenverlichting','beregening'].forEach(k=>{
-      const ja=document.getElementById('f_'+k+'_Ja');if(ja!==null&&ja!==undefined)formData[k]=ja.checked?'Ja':'Neen';
-      else{const el=document.getElementById('f_'+k);if(el)formData[k]=el.value;}
-    });
-  }
-}
-
-function setTs(id,val,el){
-  const container=document.getElementById('tsg_'+id);
-  if(container)container.querySelectorAll('.ts').forEach(t=>t.className='ts');
-  el.classList.add('sel-'+val);
-  formData['tuin_toestand']=val;
-}
-function setTsFromGroup(groupId,key){
-  const container=document.getElementById('tsg_'+groupId);
-  if(!container)return;
-  const sel=container.querySelector('.ts[class*="sel-"]');
-  if(sel)formData[key]=sel.dataset.val;
-}
-function setTsDisplay(id,val){
-  if(!val)return;
-  const c=document.getElementById('tsg_'+id);
-  if(!c)return;
-  c.querySelectorAll('.ts').forEach(t=>{t.className='ts'+(t.dataset.val===val?' sel-'+val:'');});
+  SF.forEach(k=>{const e=document.getElementById('f_'+k);if(e)formData[k]=e.value;});
+  SELF.forEach(k=>{const e=document.getElementById('f_'+k);if(e)formData[k]=e.value;});
+  CBF.forEach(k=>{const e=document.getElementById('f_'+k);if(e)formData[k]=e.checked;});
+  // radio groups collect
+  const radColl={f_app_type:'app_type',f_domotica_r:'domotica',f_parlefoon_r:'parlefoon',f_inbraak_r:'inbraak',f_brand_r:'brand',f_teller_r:'teller',f_vent_warmterec_r:'vent_warmterec'};
+  Object.entries(radColl).forEach(([n,k])=>{const c=document.querySelector(`input[name="${n}"]:checked`);if(c)formData[k]=c.value;});
+  const at=document.querySelector('input[name="f_app_type"]:checked');if(at)formData.app_type=at.value;
+  const al=document.getElementById('f_app_lift_Ja');formData.app_lift=!!(al&&al.checked);
+  ['zonnepanelen_r','zonneboiler_r','batterij_r'].forEach(n=>{const ja=document.getElementById('f_'+n+'_Ja');const key=n.replace('_r','');formData[key]=!!(ja&&ja.checked);});
+  ['tuin_aanwezig','tuinhuis','carport','buitenverlichting','beregening','zwembad','sauna','jacuzzi','tennis','vijver'].forEach(k=>{const c=document.querySelector(`input[name="f_${k}_r"]:checked`);if(c)formData[k]=c.value;});
+  ['iso_dak','iso_spouw','iso_vloer','iso_binnenmuur','iso_buitengevel'].forEach(k=>{const ja=document.getElementById('f_'+k+'_Ja');formData[k]=!!(ja&&ja.checked);});
 }
 
 // ── VALUATION ──
 function calcVerdict(d){
-  const vraag=parseFloat(d.vraagprijs)||0;
-  const bewoon=parseFloat(d.bewoonbaar)||0;
-  const ppm2=parseFloat(d.gem_ppm2)||0;
-  const gemV=parseFloat(d.gem_verkoop)||0;
-  const kdring=parseFloat(d.kost_dringend)||0;
-  const kmlt=parseFloat(d.kost_mlt)||0;
-  const kreno=parseFloat(d.kost_reno)||0;
-  const scores=[];
-  if(d.ruimtes)d.ruimtes.forEach(r=>{if(r.toestand&&tsMap[r.toestand])scores.push(tsMap[r.toestand]);});
+  const vraag=parseFloat(d.vraagprijs)||0,bewoon=parseFloat(d.bewoonbaar)||0,ppm2=parseFloat(d.gem_ppm2)||0,gemV=parseFloat(d.gem_verkoop)||0;
+  const scores=[];(d.ruimtes||[]).forEach(r=>{if(r.toestand&&tsMap[r.toestand])scores.push(tsMap[r.toestand]);});
   let cond=scores.length?scores.reduce((a,b)=>a+b,0)/scores.length:3;
   if(d.dakmat_asbest)cond=Math.max(1,cond-.5);
+  const totReno=(d.ruimtes||[]).reduce((s,r)=>s+(r.renovatie&&r.renovatie.nodig?(parseFloat(r.renovatie.kost)||0):0),0);
   const markt=ppm2&&bewoon?ppm2*bewoon:gemV||vraag;
-  const factor=0.80+(cond/5)*.40;
-  const geschat=Math.round(markt*factor);
-  const totaal=vraag+kdring+kmlt+kreno;
+  const geschat=Math.round(markt*(0.80+(cond/5)*.40));
+  const totaal=vraag+totReno;
   const marge=geschat>0?((geschat-totaal)/geschat*100):0;
   let short,cls;
   if(marge>8&&cond>=3){short='OK';cls='green';}
   else if(marge>0||cond>=2.5){short='~';cls='orange';}
   else{short='!';cls='red';}
-  return{geschat,totaal,marge,cond,markt,short,cls};
+  return{geschat,totaal,marge,cond,markt,short,cls,totReno};
 }
 
 // ── RAPPORT ──
 function showRapport(){
   const d=formData;const v=calcVerdict(d);
-  const adres=d.straat?`${d.straat} ${d.huisnummer}, ${d.postcode} ${d.gemeente}`:(d.adres||'Geen adres');
-  const ppm2Vraag=parseFloat(d.bewoonbaar)>0?Math.round(parseFloat(d.vraagprijs)/parseFloat(d.bewoonbaar)):0;
-  const verdictTxt=v.cls==='green'?'Interessant aanbod':v.cls==='orange'?'Aanvaardbaar – onderhandel over prijs of werken':'Voorzichtigheid geboden – herzie prijs en staat';
+  const adres=d.straat?`${d.straat} ${d.huisnummer}, ${d.postcode} ${d.gemeente}`:'Geen adres';
+  const ppm2V=parseFloat(d.bewoonbaar)>0?Math.round(parseFloat(d.vraagprijs)/parseFloat(d.bewoonbaar)):0;
+  const verdictTxt=v.cls==='green'?'Interessant aanbod':v.cls==='orange'?'Aanvaardbaar – onderhandel':'Voorzichtigheid geboden';
   const flags=[];
-  if(d.dakmat_asbest)flags.push({c:'bad',t:'Asbest dakmateriaal – verwijdering vereist'});
-  if(d.overtred==='Ja – gekend')flags.push({c:'bad',t:'Gekende bouwovertredingen'});
-  if(d.epc_klasse==='F'||d.epc_klasse==='G')flags.push({c:'warn',t:`EPC klasse ${d.epc_klasse} – renovatieplicht mogelijk`});
-  if(d.ramen_enkel)flags.push({c:'warn',t:'Enkel glas aanwezig'});
+  if(d.dakmat_asbest)flags.push({c:'bad',t:'Asbest – verwijdering vereist'});
+  if(d.overtred==='Ja – gekend')flags.push({c:'bad',t:'Bouwovertredingen!'});
+  if(d.epc_klasse==='F'||d.epc_klasse==='G')flags.push({c:'warn',t:`EPC ${d.epc_klasse}`});
+  if(d.ramen_enkel)flags.push({c:'warn',t:'Enkel glas'});
   if(parseFloat(d.bouwjaar)<1975&&d.bouwjaar)flags.push({c:'warn',t:'Bouwjaar voor 1975'});
-  if(d.zonnepanelen)flags.push({c:'ok',t:'Zonnepanelen aanwezig'});
-  if(d.verw_wp||d.verw_wp_lw||d.verw_wp_ll||d.verw_wp_gw)flags.push({c:'ok',t:'Warmtepomp aanwezig'});
-  if(v.marge>10)flags.push({c:'ok',t:'Vraagprijs onder geschatte marktwaarde'});
-  if(v.marge<-5)flags.push({c:'bad',t:'Vraagprijs boven geschatte marktwaarde'});
+  if(d.zonnepanelen)flags.push({c:'ok',t:'Zonnepanelen'});
+  if(d.verw_wp||d.verw_wp_lw)flags.push({c:'ok',t:'Warmtepomp'});
+  if(v.marge>10)flags.push({c:'ok',t:'Vraagprijs onder marktwaarde'});
+  if(v.marge<-5)flags.push({c:'bad',t:'Vraagprijs boven marktwaarde'});
   if(v.cond>=4)flags.push({c:'ok',t:'Goede tot uitstekende staat'});
-  const verw=[d.verw_gasketel&&'Gasketel',d.verw_stookolie&&'Stookolie',d.verw_wp&&'Warmtepomp',d.verw_wp_lw&&'L/W WP',d.verw_cv&&'CV',d.verw_vloer&&'Vloerverwarming',d.verw_airco&&'Airco'].filter(Boolean).join(', ')||'—';
+
+  const kaartHtml=KAART_SLOTS.filter(s=>d[s.key]).map(s=>`<div class="kaart-rapport-item"><img src="${d[s.key]}" alt="${s.label}"><p>${s.label}</p></div>`).join('');
+  const ruimtesMetReno=(d.ruimtes||[]).filter(r=>r.renovatie&&r.renovatie.nodig);
+  const totD=ruimtesMetReno.filter(r=>r.renovatie.prioriteit==='dringend').reduce((s,r)=>s+(parseFloat(r.renovatie.kost)||0),0);
+  const totM=ruimtesMetReno.filter(r=>r.renovatie.prioriteit==='mlt').reduce((s,r)=>s+(parseFloat(r.renovatie.kost)||0),0);
+  const totK=ruimtesMetReno.filter(r=>r.renovatie.prioriteit==='kan-wachten').reduce((s,r)=>s+(parseFloat(r.renovatie.kost)||0),0);
   const allPhotos=[...(d.photos||[]),...(d.ruimtes||[]).flatMap(r=>r.photos||[])];
 
   document.getElementById('rapport-content').innerHTML=`
+${kaartHtml?`<div class="r-section" style="margin-bottom:14px;"><div class="r-section-title">Kaarten & referentiebeelden</div><div class="kaarten-rapport">${kaartHtml}</div></div>`:''}
 <div class="r-header">
   <div class="r-header-addr">${adres}</div>
-  <div class="r-header-meta">${d.schattingnummer?`nr. ${d.schattingnummer} · `:''}${d.aard||d.typepand||'—'} · bouwjaar ${d.bouwjaar||'—'} · bezoek ${d.datum||'—'}</div>
-  <div class="r-header-meta" style="margin-top:4px;">${d.naam||''} · ${d.tel||''}</div>
+  <div class="r-header-meta">${d.schattingnummer?`nr. ${d.schattingnummer} · `:''}${d.aard||d.typepand||'—'} · bouwjaar ${d.bouwjaar||'—'} · ${d.bouwjaar_bron||''}</div>
+  <div class="r-header-meta" style="margin-top:4px;">${d.naam||''} · ${d.tel||''} · bezoek ${d.datum||'—'}</div>
 </div>
 <div class="verdict-box ${v.cls}">
   <div class="verdict-title">${verdictTxt}</div>
-  <div style="font-size:14px;margin-top:4px;opacity:.8;">Marge t.o.v. markt: ${v.marge.toFixed(1)}% · Staat: ${v.cond.toFixed(1)}/5</div>
+  <div style="font-size:14px;margin-top:4px;opacity:.8;">Marge: ${v.marge.toFixed(1)}% · Staat: ${v.cond.toFixed(1)}/5</div>
   <div class="flags-wrap" style="margin-top:10px;">${flags.map(f=>`<span class="flag flag-${f.c}">${f.t}</span>`).join('')}</div>
 </div>
 <div class="metrics-grid">
   <div class="metric-box accent"><div class="metric-lbl">Vraagprijs</div><div class="metric-val">€${(parseFloat(d.vraagprijs)||0).toLocaleString('nl-BE')}</div></div>
   <div class="metric-box ${v.marge>5?'green':v.marge<-5?'red':'orange'}"><div class="metric-lbl">Geschatte waarde</div><div class="metric-val">€${v.geschat.toLocaleString('nl-BE')}</div></div>
-  <div class="metric-box"><div class="metric-lbl">Vraagprijs/m²</div><div class="metric-val">€${ppm2Vraag.toLocaleString('nl-BE')}</div></div>
+  <div class="metric-box"><div class="metric-lbl">Vraagprijs/m²</div><div class="metric-val">€${ppm2V.toLocaleString('nl-BE')}</div></div>
   <div class="metric-box"><div class="metric-lbl">Markt gem./m²</div><div class="metric-val">€${(parseFloat(d.gem_ppm2)||0).toLocaleString('nl-BE')}</div></div>
-  <div class="metric-box"><div class="metric-lbl">Totale kost</div><div class="metric-val">€${v.totaal.toLocaleString('nl-BE')}</div></div>
-  <div class="metric-box"><div class="metric-lbl">Gem. huurprijs</div><div class="metric-val">€${(parseFloat(d.gem_huur)||0).toLocaleString('nl-BE')}/mnd</div></div>
+  <div class="metric-box"><div class="metric-lbl">Totale renovatiekost</div><div class="metric-val">€${v.totReno.toLocaleString('nl-BE')}</div></div>
+  <div class="metric-box"><div class="metric-lbl">Gem. huurprijs buurt</div><div class="metric-val">€${(parseFloat(d.gem_huur)||0).toLocaleString('nl-BE')}/mnd</div></div>
 </div>
-<div class="r-section"><div class="r-section-title">Identificatie & perceel</div>
-  <div class="r-row"><span class="r-key">Schattingnummer</span><span class="r-val">${d.schattingnummer||'—'}</span></div>
+<div class="r-section"><div class="r-section-title">Perceel & ligging</div>
   <div class="r-row"><span class="r-key">Adres</span><span class="r-val">${adres}</span></div>
   <div class="r-row"><span class="r-key">Grondoppervlakte</span><span class="r-val">${d.grond||'—'} m²</span></div>
   <div class="r-row"><span class="r-key">Oriëntatie / RO</span><span class="r-val">${d.orientatie||'—'} · ${d.ro||'—'}</span></div>
@@ -1200,38 +1091,48 @@ function showRapport(){
 <div class="r-section"><div class="r-section-title">Gebouw</div>
   <div class="r-row"><span class="r-key">Type</span><span class="r-val">${d.aard||'—'}${d.aard_subtype?' – '+d.aard_subtype:''}</span></div>
   <div class="r-row"><span class="r-key">Bewoonbaar</span><span class="r-val">${d.bewoonbaar||'—'} m²</span></div>
-  <div class="r-row"><span class="r-key">Bouwjaar</span><span class="r-val">${d.bouwjaar||'—'}</span></div>
-  <div class="r-row"><span class="r-key">EPC</span><span class="r-val">${d.epc_klasse||'—'}${d.epc_waarde?' · '+d.epc_waarde+' kWh/m²/jaar':''}</span></div>
-  <div class="r-row"><span class="r-key">Verwarming</span><span class="r-val">${verw}</span></div>
+  <div class="r-row"><span class="r-key">Bouwjaar</span><span class="r-val">${d.bouwjaar||'—'}${d.bouwjaar_bron?' ('+d.bouwjaar_bron+')':''}</span></div>
+  <div class="r-row"><span class="r-key">EPC</span><span class="r-val">${d.epc_klasse||d.epc_geschat?(d.epc_klasse?'Officieel: '+d.epc_klasse:'')+(d.epc_geschat?' Geschat: '+d.epc_geschat:'')+(d.epc_waarde?' · '+d.epc_waarde+' kWh/m²/jaar':''):'—'}</span></div>
+  <div class="r-row"><span class="r-key">Erfgoed</span><span class="r-val">${d.erfgoed==='Ja'?(d.erfgoed_type||'Ja'):'Neen'}</span></div>
 </div>
-<div class="r-section"><div class="r-section-title">Indeling</div>
-  <div class="r-row"><span class="r-key">Slaapkamers</span><span class="r-val">${d.globaal_sk||'—'}</span></div>
-  <div class="r-row"><span class="r-key">Badkamers</span><span class="r-val">${d.globaal_bdk||'—'}</span></div>
-  <div class="r-row"><span class="r-key">WC (in bdk / buiten)</span><span class="r-val">${d.globaal_wc_in||'—'} / ${d.globaal_wc_buiten||'—'}</span></div>
-  ${d.ruimtes&&d.ruimtes.length?`<div class="r-row"><span class="r-key">Ruimtes</span><span class="r-val">${d.ruimtes.map(r=>`${r.naam}${r.opp?' ('+r.opp+'m²)':''} – ${r.toestand||'—'}`).join(', ')}</span></div>`:''}
-</div>
-<div class="r-section"><div class="r-section-title">Renovatiekosten</div>
-  <div class="r-row"><span class="r-key">Dringend</span><span class="r-val">€${(parseFloat(d.kost_dringend)||0).toLocaleString('nl-BE')}</span></div>
-  <div class="r-row"><span class="r-key">Middellange termijn</span><span class="r-val">€${(parseFloat(d.kost_mlt)||0).toLocaleString('nl-BE')}</span></div>
-  <div class="r-row"><span class="r-key">Totale renovatie</span><span class="r-val">€${(parseFloat(d.kost_reno)||0).toLocaleString('nl-BE')}</span></div>
-  <div class="r-row" style="font-weight:600;"><span class="r-key">Totaal alle werken</span><span class="r-val">€${((parseFloat(d.kost_dringend)||0)+(parseFloat(d.kost_mlt)||0)+(parseFloat(d.kost_reno)||0)).toLocaleString('nl-BE')}</span></div>
-</div>
-${allPhotos.length?`<div class="r-section"><div class="r-section-title">Foto's (${allPhotos.length})</div><div class="photo-grid">${allPhotos.map(p=>`<div class="photo-thumb"><img src="${p.data}" alt="${p.label||''}"><div style="padding:4px 6px;font-size:11px;color:var(--text-muted);">${p.label||''}</div></div>`).join('')}</div></div>`:''}
+${d.ruimtes&&d.ruimtes.length?`<div class="r-section"><div class="r-section-title">Ruimtes (${d.ruimtes.length})</div>
+  ${d.ruimtes.map(r=>{
+    const tot=r.totaal_opp||(r.metingen||[]).reduce((s,m)=>s+(parseFloat(m.l)||0)*(parseFloat(m.b)||0),0);
+    return`<div class="ruimte-rapport">
+      <div class="ruimte-rapport-title">${r.naam}${r.verdiep?' · '+r.verdiep:''}</div>
+      <div style="font-size:13px;color:var(--text-muted);">
+        ${tot?`Oppervlakte: ${Math.round(tot*100)/100} m²${r.opp_bron?' ('+r.opp_bron+')':''} · `:''}
+        ${r.vloer&&r.vloer.length?'Vloer: '+r.vloer.join(', ')+' · ':''}
+        Staat: <strong>${r.toestand||'—'}</strong>
+        ${r.comment?' · '+r.comment:''}
+      </div>
+      ${r.renovatie&&r.renovatie.nodig?`<div style="margin-top:4px;"><span class="reno-${r.renovatie.prioriteit}">${r.renovatie.prioriteit==='dringend'?'🔴 Dringend':r.renovatie.prioriteit==='mlt'?'🟠 MLT':'🟢 Kan wachten'}</span> ${r.renovatie.omschrijving||''}${r.renovatie.kost?' – €'+parseFloat(r.renovatie.kost).toLocaleString('nl-BE'):''}</div>`:''}
+      ${r.photos&&r.photos.length?`<div class="photo-grid" style="margin-top:8px;">${r.photos.map(p=>`<div class="photo-thumb"><img src="${p.data}" alt="${p.label||''}"><div style="padding:3px 6px;font-size:11px;color:var(--text-muted);">${p.label||''}</div></div>`).join('')}</div>`:''}
+    </div>`;
+  }).join('')}
+</div>`:''}
+${ruimtesMetReno.length?`<div class="r-section"><div class="r-section-title">Renovatiesamenvatting</div>
+  ${ruimtesMetReno.map(r=>`<div class="r-row"><span class="r-key">${r.naam}</span><span class="r-val"><span class="reno-${r.renovatie.prioriteit}" style="margin-right:6px;">${r.renovatie.prioriteit==='dringend'?'Dringend':r.renovatie.prioriteit==='mlt'?'MLT':'Kan wachten'}</span>${r.renovatie.kost?'€'+parseFloat(r.renovatie.kost).toLocaleString('nl-BE'):''}</span></div>`).join('')}
+  <div class="r-row" style="font-weight:700;border-top:1px solid var(--border);padding-top:8px;margin-top:4px;"><span class="r-key">🔴 Dringend</span><span class="r-val">€${totD.toLocaleString('nl-BE')}</span></div>
+  <div class="r-row" style="font-weight:700;"><span class="r-key">🟠 MLT</span><span class="r-val">€${totM.toLocaleString('nl-BE')}</span></div>
+  <div class="r-row" style="font-weight:700;"><span class="r-key">🟢 Kan wachten</span><span class="r-val">€${totK.toLocaleString('nl-BE')}</span></div>
+  <div class="r-row" style="font-weight:700;font-size:15px;"><span class="r-key">Totaal</span><span class="r-val">€${(totD+totM+totK).toLocaleString('nl-BE')}</span></div>
+</div>`:''}
+${d.renovaties_historiek&&d.renovaties_historiek.length?`<div class="r-section"><div class="r-section-title">Uitgevoerde renovaties</div>
+  ${d.renovaties_historiek.map(h=>`<div class="r-row"><span class="r-key">${h.jaar||'—'} – ${h.type||'—'}</span><span class="r-val">${h.omschrijving||''}</span></div>`).join('')}
+</div>`:''}
+${allPhotos.length?`<div class="r-section"><div class="r-section-title">Foto's (${allPhotos.length})</div><div class="photo-grid">${allPhotos.map(p=>`<div class="photo-thumb"><img src="${p.data}" alt="${p.label||''}"><div style="padding:3px 6px;font-size:11px;color:var(--text-muted);">${p.label||''}</div></div>`).join('')}</div></div>`:''}
   `;
-  showScreen('rapport');
-  document.getElementById('topbar-sub').textContent=adres;
-  window.scrollTo(0,0);
+  showScreen('rapport');document.getElementById('topbar-sub').textContent=adres;window.scrollTo(0,0);
 }
 
 // ── CSV ──
 function exportCSV(){
-  const arr=getDossiers();
-  if(!arr.length){alert('Geen dossiers.');return;}
-  const keys=['schattingnummer','datum','naam','tel','straat','huisnummer','postcode','gemeente','grond','bewoonbaar','bouwjaar','typepand','aard','vraagprijs','gem_verkoop','gem_ppm2','gem_huur','epc_klasse','epc_waarde','kost_dringend','kost_mlt','kost_reno','ro','overstr','pscore','gscore'];
+  const arr=getDossiers();if(!arr.length){alert('Geen dossiers.');return;}
+  const keys=['schattingnummer','datum','naam','tel','straat','huisnummer','postcode','gemeente','grond','bewoonbaar','bouwjaar','aard','vraagprijs','gem_verkoop','gem_ppm2','gem_huur','epc_klasse','epc_geschat','ro','overstr','pscore','gscore'];
   const csv=[keys.join(';'),...arr.map(d=>keys.map(k=>{const v=d[k];if(typeof v==='boolean')return v?'Ja':'Neen';if(typeof v==='string'&&v.includes(';'))return'"'+v+'"';return v??'';}).join(';'))].join('\n');
   const blob=new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8;'});
-  const url=URL.createObjectURL(blob);
-  const a=document.createElement('a');a.href=url;a.download='schattingen.csv';a.click();URL.revokeObjectURL(url);
+  const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='schattingen.csv';a.click();URL.revokeObjectURL(url);
 }
 
 renderDossierList();
