@@ -56,11 +56,11 @@ textarea{height:72px;resize:vertical;}
 .toestand-group{display:flex;gap:6px;margin-top:4px;}
 .ts{flex:1;border:2px solid var(--border);border-radius:var(--radius-sm);padding:12px 6px;font-size:14px;font-weight:700;text-align:center;cursor:pointer;background:var(--bg);color:var(--text-muted);transition:all .2s;user-select:none;}
 .ts:active{transform:scale(.97);}
-.ts.sel-nieuw{border-color:var(--green);background:var(--green);color:#fff;}
-.ts.sel-zg{border-color:#1a7a50;background:#1a7a50;color:#fff;}
-.ts.sel-goed{border-color:#4a7a2a;background:#4a7a2a;color:#fff;}
-.ts.sel-matig{border-color:var(--orange);background:var(--orange);color:#fff;}
-.ts.sel-slecht{border-color:var(--red);background:var(--red);color:#fff;}
+.ts.sel-nieuw{border-color:#1a6b3c;background:#1a6b3c;color:#fff;}
+.ts.sel-zg{border-color:#4a8c2a;background:#4a8c2a;color:#fff;}
+.ts.sel-goed{border-color:#f0a500;background:#f0a500;color:#fff;}
+.ts.sel-matig{border-color:#d96020;background:#d96020;color:#fff;}
+.ts.sel-slecht{border-color:#b01e1e;background:#b01e1e;color:#fff;}
 .bottom-nav{position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-top:1px solid var(--border);padding:12px 20px;display:flex;gap:10px;z-index:100;}
 .bottom-nav button{flex:1;padding:14px;font-size:15px;font-weight:600;border-radius:var(--radius);cursor:pointer;font-family:inherit;border:none;}
 .btn-next{background:var(--accent);color:#fff;}
@@ -150,6 +150,12 @@ input[type=file].hidden-file{display:none;}
 .modal-title{font-size:18px;font-weight:600;margin-bottom:16px;}
 .modal-actions{display:flex;flex-direction:column;gap:10px;margin-top:20px;}
 .readonly-field{background:#f0ede8!important;font-family:'IBM Plex Mono',monospace;font-weight:600;color:var(--accent)!important;}
+.tooltip-btn{background:none;border:none;cursor:pointer;font-size:13px;color:var(--accent);padding:0 3px;vertical-align:middle;opacity:.7;}
+.tooltip-btn:active{opacity:1;}
+.tooltip-box{display:none;position:fixed;z-index:500;background:var(--text);color:#fff;border-radius:var(--radius);padding:14px 16px;font-size:13px;line-height:1.6;max-width:300px;box-shadow:0 4px 20px rgba(0,0,0,.3);left:50%;transform:translateX(-50%);top:50%;transform:translate(-50%,-50%);}
+.tooltip-box.open{display:block;}
+.tooltip-overlay{display:none;position:fixed;inset:0;z-index:499;background:rgba(0,0,0,.3);}
+.tooltip-overlay.open{display:block;}
 @media print{
   .topbar,.bottom-nav,.no-print{display:none!important;}
   body{background:#fff;font-size:12px;}
@@ -167,9 +173,17 @@ input[type=file].hidden-file{display:none;}
   <div><div class="topbar-title">Schattingsformulier</div><div class="topbar-sub" id="topbar-sub">Dossiers</div></div>
   <div class="topbar-right">
     <button class="icon-btn no-print" onclick="exportCSV()" id="btn-export" style="display:none">↓ CSV</button>
+    <button class="icon-btn no-print" onclick="importViaQR()">📷 Scan QR</button>
+    <button class="icon-btn no-print" onclick="document.getElementById('import-input').click()">↑ Import</button>
+    <button class="icon-btn no-print" onclick="openPasteModal()">📋 Plak JSON</button>
+    <input type="file" accept=".json" class="hidden-file" id="import-input" onchange="importDossier(this)">
+    <input type="file" accept="image/*" capture="environment" class="hidden-file" id="qr-scan-input" onchange="handleQRScan(this)">
     <button class="icon-btn no-print" onclick="showDossiers()">☰ Dossiers</button>
   </div>
 </div>
+
+<div class="tooltip-overlay" id="tt-overlay" onclick="closeTooltip()"></div>
+<div class="tooltip-box" id="tt-box"><span id="tt-text"></span><br><br><button onclick="closeTooltip()" style="background:var(--accent-light);color:var(--accent);border:none;border-radius:6px;padding:6px 14px;font-size:13px;cursor:pointer;margin-top:4px;">Sluiten</button></div>
 
 <div class="screen active" id="screen-list">
   <div class="list-wrap">
@@ -202,12 +216,38 @@ input[type=file].hidden-file{display:none;}
   </div>
 </div>
 
+<div class="modal-overlay" id="modal-paste">
+  <div class="modal-box">
+    <div class="modal-title">📋 Plak dossier JSON</div>
+    <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px;">
+      Open de mail op je iPad, tik lang op de JSON tekst, kies <strong>"Selecteer alles"</strong> → <strong>"Kopieer"</strong>. Plak daarna hier:
+    </p>
+    <textarea id="paste-input" style="height:140px;font-family:'IBM Plex Mono',monospace;font-size:12px;" placeholder='Plak hier de JSON tekst (begint met { "id": "..." }'></textarea>
+    <div class="modal-actions">
+      <button class="btn-primary" onclick="importFromPaste()">✅ Importeer dossier</button>
+      <button class="btn-secondary" onclick="closePasteModal()">Annuleren</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-qr">
+  <div class="modal-box" style="text-align:center;">
+    <div class="modal-title" id="qr-title">QR-code dossier</div>
+    <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px;">Laat de schatter deze QR-code scannen met zijn iPad om het dossier te importeren.</p>
+    <div id="qr-container" style="display:flex;justify-content:center;margin-bottom:16px;"></div>
+    <p id="qr-info" style="font-size:12px;color:var(--text-muted);margin-bottom:16px;"></p>
+    <button class="btn-primary" style="width:100%;" onclick="closeQR()">Sluiten</button>
+  </div>
+</div>
+
 <div class="modal-overlay" id="modal-dossier">
   <div class="modal-box">
     <div class="modal-title" id="modal-title">Dossier</div>
     <div class="modal-actions">
       <button class="btn-primary" onclick="openDossierEdit()">✏️ Bewerken</button>
       <button class="btn-secondary" onclick="openDossierRapport()">📄 Rapport</button>
+      <button class="btn-secondary" onclick="toonQR()">📱 QR-code voor schatter</button>
+      <button class="btn-secondary" onclick="exportDossier()">📤 Exporteer dossier (JSON)</button>
       <button class="btn-danger" onclick="deleteDossier()">🗑 Verwijderen</button>
       <button class="btn-secondary" onclick="closeModal()">Annuleren</button>
     </div>
@@ -373,6 +413,32 @@ const N=(id,ph='')=>`<input type="number" id="${id}" placeholder="${ph}">`;
 const S=(id,opts,blank='')=>`<select id="${id}">${blank?`<option value="">${blank}</option>`:''}${opts.map(o=>`<option>${o}</option>`).join('')}</select>`;
 const SL=(n,opts)=>`<div class="section-label">${n}</div>`;
 const CB=(id,lbl)=>`<label style="display:flex;align-items:center;gap:10px;font-size:14px;padding:5px 0;cursor:pointer;"><input type="checkbox" id="${id}"> ${lbl}</label>`;
+
+const VENT_INFO={
+  vent_a:'<strong>Systeem A — Natuurlijke toe- en afvoer</strong><br>Zowel toevoer van verse lucht als afvoer van verbruikte lucht gebeurt natuurlijk via roosters en schachten. Geen mechanische hulp.',
+  vent_b:'<strong>Systeem B — Mechanische toevoer, natuurlijke afvoer</strong><br>Verse lucht wordt mechanisch ingeblazen. Verbruikte lucht verlaat het gebouw op natuurlijke wijze via roosters.',
+  vent_c:'<strong>Systeem C — Natuurlijke toevoer, mechanische afvoer</strong><br>Verse lucht komt op natuurlijke wijze binnen via roosters. Verbruikte lucht wordt mechanisch afgezogen via een centrale ventilator.',
+  vent_cplus:'<strong>Systeem C+ — Vraaggestuurde mechanische afvoer</strong><br>Zoals systeem C, maar de ventilatie past zich automatisch aan op basis van luchtvochtigheid of CO₂-sensoren. Energiezuiniger dan standaard C.',
+  vent_d:'<strong>Systeem D — Mechanische toe- én afvoer met warmterecuperatie (WTW)</strong><br>Zowel toevoer als afvoer zijn mechanisch. Een warmtewisselaar recupereert warmte uit de afgevoerde lucht. Meest energiezuinig.',
+  vent_nat:'<strong>Natuurlijke ventilatie</strong><br>Ventilatie uitsluitend via ramen, deuren en roosters. Geen mechanische installatie aanwezig.',
+  vent_geen:'<strong>Geen ventilatie</strong><br>Geen aantoonbaar ventilatiesysteem aanwezig in het gebouw.'
+};
+
+function ventCB(id,label,key){
+  return`<label style="display:flex;align-items:center;gap:8px;font-size:14px;padding:5px 0;cursor:pointer;">
+    <input type="checkbox" id="${id}"> ${label}
+    <button class="tooltip-btn" onclick="event.preventDefault();showTooltip('${key}')">ℹ️</button>
+  </label>`;
+}
+function showTooltip(key){
+  document.getElementById('tt-text').innerHTML=VENT_INFO[key]||'';
+  document.getElementById('tt-box').classList.add('open');
+  document.getElementById('tt-overlay').classList.add('open');
+}
+function closeTooltip(){
+  document.getElementById('tt-box').classList.remove('open');
+  document.getElementById('tt-overlay').classList.remove('open');
+}
 const TILES=(n,opts,m=false)=>`<div class="tile-group">${opts.map(o=>{const id=n+'_'+o.replace(/[^a-zA-Z0-9]/g,'_');return m?`<input type="checkbox" id="${id}" name="${n}"><label for="${id}">${o}</label>`:`<input type="radio" id="${id}" name="${n}" value="${o}"><label for="${id}">${o}</label>`;}).join('')}</div>`;
 const TS=(id)=>`<div class="toestand-group" id="tsg_${id}">${['Nieuw','ZG','Goed','Matig','Slecht'].map(t=>`<div class="ts" data-val="${t.toLowerCase()}" onclick="setTs('${id}','${t.toLowerCase()}',this)">${t}</div>`).join('')}</div>`;
 const SC=(t)=>`<div class="section-card">`;
@@ -516,11 +582,9 @@ function s4(){return`
 <div class="section-card">${secLabel('Isolatie')}
   ${CB('f_iso_akoestisch','Akoestische isolatie')}
   ${isoDetail('iso_dak','Dakisolatie',['Tussen de spanten','Op de zolderverdieping','Aan de binnenzijde','Aan de buitenzijde'])}
-  ${isoDetail('iso_spouw','Spouwisolatie',[])}
-  ${CB('f_iso_hr_glas','Hoogrendementsglas')}
-  ${isoDetail('iso_vloer','Vloerisolatie',['Onder de vloer','In de vloer'])}
+  ${isoDetail('iso_vloer','Vloerisolatie',['Onder de vloer','In de vloer','PUR-chape'])}
   ${isoDetail('iso_binnenmuur','Binnenmuurisolatie',[])}
-  ${isoDetail('iso_buitengevel','Buitengevelisolatie',['Aan de buitenzijde','Aan de binnenzijde'])}
+  ${isoDetail('iso_buitengevel','Buitengevelisolatie',['Spouw','Aan de buitenzijde','Aan de binnenzijde'])}
   ${F('Andere',T('f_iso_andere',''))}
 </div>
 <div class="section-card">${secLabel('Ramen & beglazing')}
@@ -554,7 +618,12 @@ function s4(){return`
   ${F('Elektrische teller',TILES('f_teller_r',['Digitaal','Analoog']))}
 </div>
 <div class="section-card">${secLabel('Ventilatie')}
-  <div class="g2">${CB('f_vent_a','Systeem A')}${CB('f_vent_b','Systeem B')}${CB('f_vent_c','Systeem C')}${CB('f_vent_cplus','Systeem C+')}${CB('f_vent_d','Systeem D (WTW)')}${CB('f_vent_nat','Natuurlijk')}${CB('f_vent_geen','Geen')}</div>
+  <div class="g2">
+    ${ventCB('f_vent_a','Systeem A','vent_a')}${ventCB('f_vent_b','Systeem B','vent_b')}
+    ${ventCB('f_vent_c','Systeem C','vent_c')}${ventCB('f_vent_cplus','Systeem C+','vent_cplus')}
+    ${ventCB('f_vent_d','Systeem D (WTW)','vent_d')}${ventCB('f_vent_nat','Natuurlijk','vent_nat')}
+    ${ventCB('f_vent_geen','Geen','vent_geen')}
+  </div>
   ${F('Warmterecuperatie',TILES('f_vent_warmterec_r',['Ja','Neen']))}
   ${F('Commentaar',`<textarea id="f_vent_comment" placeholder="…"></textarea>`)}
 </div>`;}
@@ -693,6 +762,16 @@ function updateRuimte(i,k,v){if(formData.ruimtes[i])formData.ruimtes[i][k]=v;}
 function updateRuimteNaam(i,v){if(formData.ruimtes[i]){formData.ruimtes[i].naam=v;renderRuimtesContainer();}}
 function updateRuimteVloer(i,v,c){if(!formData.ruimtes[i].vloer)formData.ruimtes[i].vloer=[];if(c){if(!formData.ruimtes[i].vloer.includes(v))formData.ruimtes[i].vloer.push(v);}else{formData.ruimtes[i].vloer=formData.ruimtes[i].vloer.filter(x=>x!==v);}}
 function updateRenovatie(i,k,v){if(formData.ruimtes[i]){if(!formData.ruimtes[i].renovatie)formData.ruimtes[i].renovatie={nodig:false,prioriteit:'',omschrijving:'',kost:''};formData.ruimtes[i].renovatie[k]=v;}}
+
+function toggleRenovatie(i,cb){
+  if(!formData.ruimtes[i].renovatie)formData.ruimtes[i].renovatie={nodig:false,prioriteit:'',omschrijving:'',kost:''};
+  formData.ruimtes[i].renovatie.nodig=cb.checked;
+  const det=document.getElementById('reno-detail-'+i);
+  const field=document.getElementById('reno-field-'+i);
+  if(det)det.style.display=cb.checked?'block':'none';
+  if(field){field.style.background=cb.checked?'var(--red-light)':'var(--bg)';field.style.borderColor=cb.checked?'#e8c0c0':'var(--border)';}
+  renderOppSamenvatting();
+}
 function setPrio(i,v,el){formData.ruimtes[i].renovatie.prioriteit=v;el.closest('.prio-group').querySelectorAll('.prio-btn').forEach(b=>b.className='prio-btn');el.classList.add('sel-'+v);}
 function setTsRuimte(i,v,el){formData.ruimtes[i].toestand=v;el.closest('.toestand-group').querySelectorAll('.ts').forEach(t=>t.className='ts');el.classList.add('sel-'+v);}
 
@@ -747,7 +826,7 @@ function renderOppSamenvatting(){
   const bewoonbaar=parseFloat(formData.bewoonbaar)||0;
   const diff=bewoonbaar?Math.round((totaalAlles-bewoonbaar)*100)/100:null;
 
-  const tsKleur={nieuw:'var(--green)',zg:'#1a7a50',goed:'#4a7a2a',matig:'var(--orange)',slecht:'var(--red)'};
+  const tsKleur={nieuw:'#1a6b3c',zg:'#4a8c2a',goed:'#f0a500',matig:'#d96020',slecht:'#b01e1e'};
 
   const rows=verdiepOrder.filter(v=>groups[v]).map(v=>{
     const g=groups[v];
@@ -786,10 +865,11 @@ function renderOppSamenvatting(){
     </tbody>
   </table>
   <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;font-size:12px;">
-    <span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:50%;background:var(--green);display:inline-block;"></span>Nieuw/ZG</span>
-    <span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:50%;background:#4a7a2a;display:inline-block;"></span>Goed</span>
-    <span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:50%;background:var(--orange);display:inline-block;"></span>Matig</span>
-    <span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:50%;background:var(--red);display:inline-block;"></span>Slecht</span>
+    <span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:50%;background:#1a6b3c;display:inline-block;"></span>Nieuw</span>
+    <span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:50%;background:#4a8c2a;display:inline-block;"></span>ZG</span>
+    <span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:50%;background:#f0a500;display:inline-block;"></span>Goed</span>
+    <span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:50%;background:#d96020;display:inline-block;"></span>Matig</span>
+    <span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:50%;background:#b01e1e;display:inline-block;"></span>Slecht</span>
   </div>`;
   el.style.display='block';
 }
@@ -812,7 +892,7 @@ function renderRuimteCard(r,i){
 
   return`<div class="ruimte-card" id="rc_${i}">
     <div class="ruimte-header">
-      <div class="ruimte-title">${r.naam||'Ruimte'} ${i+1}</div>
+      <div class="ruimte-title">${i+1}. ${r.naam||'Ruimte'}</div>
       <button class="ruimte-del" onclick="deleteRuimte(${i})">✕</button>
     </div>
     <div class="g2" style="margin-bottom:10px;">
@@ -831,9 +911,9 @@ function renderRuimteCard(r,i){
       <div class="toestand-group">${['Nieuw','ZG','Goed','Matig','Slecht'].map(t=>`<div class="ts${tsVal===t.toLowerCase()?' sel-'+t.toLowerCase():''}" onclick="setTsRuimte(${i},'${t.toLowerCase()}',this)">${t}</div>`).join('')}</div>
     </div>
     <div class="field"><label>Commentaar</label><textarea placeholder="Opmerkingen…" onchange="updateRuimte(${i},'comment',this.value)">${r.comment||''}</textarea></div>
-    <div class="field" style="background:${renoNodig?'var(--red-light)':'var(--bg)'};border-radius:var(--radius-sm);padding:10px;border:1.5px solid ${renoNodig?'#e8c0c0':'var(--border)'};">
-      <label style="display:flex;align-items:center;gap:10px;cursor:pointer;font-weight:600;"><input type="checkbox" ${renoNodig?'checked':''} onchange="updateRenovatie(${i},'nodig',this.checked);this.closest('.field').style.background=this.checked?'var(--red-light)':'var(--bg)';this.closest('.field').style.borderColor=this.checked?'#e8c0c0':'var(--border)'"> 🔧 Renovatie nodig</label>
-      ${renoNodig?`<div style="margin-top:10px;">
+    <div class="field" id="reno-field-${i}" style="background:${renoNodig?'var(--red-light)':'var(--bg)'};border-radius:var(--radius-sm);padding:10px;border:1.5px solid ${renoNodig?'#e8c0c0':'var(--border)'};">
+      <label style="display:flex;align-items:center;gap:10px;cursor:pointer;font-weight:600;"><input type="checkbox" ${renoNodig?'checked':''} onchange="toggleRenovatie(${i},this)"> 🔧 Renovatie nodig</label>
+      <div id="reno-detail-${i}" style="display:${renoNodig?'block':'none'};margin-top:10px;">
         <div class="field"><label>Prioriteit</label>
           <div class="prio-group">
             <div class="prio-btn${priVal==='dringend'?' sel-dringend':''}" onclick="setPrio(${i},'dringend',this)">🔴 Dringend</div>
@@ -841,9 +921,9 @@ function renderRuimteCard(r,i){
             <div class="prio-btn${priVal==='kan-wachten'?' sel-kan-wachten':''}" onclick="setPrio(${i},'kan-wachten',this)">🟢 Kan wachten</div>
           </div>
         </div>
-        <div class="field"><label>Omschrijving</label><textarea placeholder="Wat moet er gebeuren?" onchange="updateRenovatie(${i},'omschrijving',this.value)">${r.renovatie.omschrijving||''}</textarea></div>
-        ${F('Geschatte kost (€)',`<input type="number" placeholder="" value="${r.renovatie.kost||''}" onchange="updateRenovatie(${i},'kost',this.value)">`)}
-      </div>`:''}
+        <div class="field"><label>Omschrijving</label><textarea placeholder="Wat moet er gebeuren?" onchange="updateRenovatie(${i},'omschrijving',this.value)">${r.renovatie&&r.renovatie.omschrijving||''}</textarea></div>
+        ${F('Geschatte kost (€)',`<input type="number" placeholder="" value="${r.renovatie&&r.renovatie.kost||''}" onchange="updateRenovatie(${i},'kost',this.value)">`)}
+      </div>
     </div>
     <div class="field"><label>📷 Foto's van deze ruimte</label>
       <input type="file" accept="image/*" capture="environment" class="hidden-file" id="pi-r-${i}" multiple onchange="handlePhotoUpload(this,'ruimtes.${i}.photos','pg-ruimte-${i}')">
@@ -1127,6 +1207,136 @@ ${allPhotos.length?`<div class="r-section"><div class="r-section-title">Foto's (
 }
 
 // ── CSV ──
+function exportDossier(){
+  const arr=getDossiers();
+  const d=arr.find(x=>x.id===selectedDossierId);
+  if(!d){closeModal();return;}
+  const blob=new Blob([JSON.stringify(d,null,2)],{type:'application/json'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  const adres=d.straat?`${d.straat}_${d.huisnummer}_${d.gemeente}`.replace(/\s+/g,'_'):'dossier';
+  a.href=url;a.download=`schatt_${d.schattingnummer||adres}.json`;a.click();
+  URL.revokeObjectURL(url);
+  closeModal();
+}
+
+function openPasteModal(){
+  document.getElementById('paste-input').value='';
+  document.getElementById('modal-paste').classList.add('open');
+}
+function closePasteModal(){
+  document.getElementById('modal-paste').classList.remove('open');
+}
+function importFromPaste(){
+  const tekst=document.getElementById('paste-input').value.trim();
+  if(!tekst){alert('Plak eerst de JSON tekst!');return;}
+  try{
+    const d=JSON.parse(tekst);
+    importDossierData(d);
+    closePasteModal();
+  }catch(err){
+    alert('❌ Ongeldige tekst. Controleer of je de volledige JSON hebt gekopieerd — van { tot }');
+  }
+}
+document.getElementById('modal-paste').addEventListener('click',function(e){if(e.target===this)closePasteModal();});
+
+function toonQR(){
+  const arr=getDossiers();
+  const d=arr.find(x=>x.id===selectedDossierId);
+  if(!d){closeModal();return;}
+  closeModal();
+
+  // Compress data - encode dossier as base64
+  const json=JSON.stringify(d);
+  const b64=btoa(unescape(encodeURIComponent(json)));
+
+  // Check size - QR codes have limits (~2KB practical)
+  if(b64.length > 2500){
+    // Too large for QR - show chunked message
+    alert('Dit dossier bevat te veel data (foto\'s) voor een QR-code.\nGebruik de JSON export via mail.');
+    return;
+  }
+
+  const adres=d.straat?`${d.straat} ${d.huisnummer}, ${d.gemeente}`:'Dossier';
+  document.getElementById('qr-title').textContent=adres;
+  document.getElementById('qr-info').textContent=`Schattingnummer: ${d.schattingnummer||'—'}`;
+
+  // Generate QR using Google Charts API
+  const data=encodeURIComponent('SCHATT:'+b64);
+  const qrUrl=`https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=${data}&choe=UTF-8`;
+  document.getElementById('qr-container').innerHTML=`<img src="${qrUrl}" width="280" height="280" style="border-radius:var(--radius-sm);border:4px solid var(--accent);">`;
+  document.getElementById('modal-qr').classList.add('open');
+}
+
+function closeQR(){
+  document.getElementById('modal-qr').classList.remove('open');
+  document.getElementById('qr-container').innerHTML='';
+}
+document.getElementById('modal-qr').addEventListener('click',function(e){if(e.target===this)closeQR();});
+
+function importViaQR(){
+  // Open camera scan - uses jsQR via file input as fallback
+  document.getElementById('qr-scan-input').click();
+}
+
+function handleQRScan(input){
+  const file=input.files[0];if(!file)return;
+  const reader=new FileReader();
+  reader.onload=e=>{
+    const img=new Image();
+    img.onload=()=>{
+      const canvas=document.createElement('canvas');
+      canvas.width=img.width;canvas.height=img.height;
+      const ctx=canvas.getContext('2d');
+      ctx.drawImage(img,0,0);
+      const imageData=ctx.getImageData(0,0,canvas.width,canvas.height);
+      // Try to decode with jsQR
+      const script=document.createElement('script');
+      script.src='https://cdnjs.cloudflare.com/ajax/libs/jsqr/1.4.0/jsQR.min.js';
+      script.onload=()=>{
+        const code=jsQR(imageData.data,imageData.width,imageData.height);
+        if(code&&code.data.startsWith('SCHATT:')){
+          try{
+            const b64=code.data.replace('SCHATT:','');
+            const json=decodeURIComponent(escape(atob(b64)));
+            const d=JSON.parse(json);
+            importDossierData(d);
+          }catch(e){alert('QR-code kon niet gelezen worden.');}
+        }else{alert('Geen geldig schattingsdossier gevonden in QR-code.');}
+      };
+      document.head.appendChild(script);
+    };
+    img.src=e.target.result;
+  };
+  reader.readAsDataURL(file);
+  input.value='';
+}
+
+function importDossierData(d){
+  if(!d.id)return;
+  const arr=getDossiers();
+  const bestaatAl=arr.find(x=>x.id===d.id);
+  if(bestaatAl){
+    if(!confirm(`Dossier "${d.straat||'onbekend'}" bestaat al.\nOverschrijven?`)){return;}
+    const idx=arr.findIndex(x=>x.id===d.id);arr[idx]=d;
+  }else{arr.unshift(d);}
+  saveDossiers(arr);renderDossierList();
+  alert(`✅ Dossier "${d.schattingnummer||d.straat||'onbekend'}" geïmporteerd!`);
+}
+
+function importDossier(input){
+  const file=input.files[0];if(!file)return;
+  const reader=new FileReader();
+  reader.onload=e=>{
+    try{
+      const d=JSON.parse(e.target.result);
+      importDossierData(d);
+    }catch(err){alert('❌ Ongeldig bestand.');}
+    input.value='';
+  };
+  reader.readAsText(file);
+}
+
 function exportCSV(){
   const arr=getDossiers();if(!arr.length){alert('Geen dossiers.');return;}
   const keys=['schattingnummer','datum','naam','tel','straat','huisnummer','postcode','gemeente','grond','bewoonbaar','bouwjaar','aard','vraagprijs','gem_verkoop','gem_ppm2','gem_huur','epc_klasse','epc_geschat','ro','overstr','pscore','gscore'];
